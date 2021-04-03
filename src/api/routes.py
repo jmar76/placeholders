@@ -15,8 +15,8 @@ def handle_hello():
         "message": "Hello! I'm a message that came from the backend"
     }
 
- @api.route('/CrearUsuario' , methods=['POST'])
- def CrearUsuario():
-     body = request.get_json()
-     User.create_user(body ["nombre"], ["email"], ["password"])
-     return jsonify({}), 200
+@api.route('/signup', methods=['POST'])
+def signup():
+    body = request.get_json()
+    User.create_user(body ["email"], body ["password"])
+    return jsonify({}), 200
