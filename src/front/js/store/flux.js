@@ -7,10 +7,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			saveAccessToken: accessToken => {
 				setStore({ accessToken: accessToken });
+				localStorage.setItem("access_token", accessToken);
 			},
 			getAccessToken: () => {
 				let store = getStore();
-				return store.accessToken;
+				if (store.accessToken) {
+					return store.accessToken;
+				} else {
+					return localStorage.getItem("access_token");
+				}
 			}
 		}
 	};

@@ -1,16 +1,23 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 
-function Profile() {
+const Profile = () => {
 	const [email, setEmail] = useState("");
-	const { store, actions } = useContext(Context);
+	const { actions } = useContext(Context);
+	const history = useHistory();
 
 	useEffect(() => {
+		let accesstoken = actions.getAccessToken();
+		if (!accesstoken) {
+			history.push("/login");
+			return;
+		}
 		fetch("https://3001-aquamarine-antlion-lo5rwf5k.ws-eu03.gitpod.io/api/profile", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: "Bearer" + actions.getAccessToken()
+				Authorization: "Bearer " + actions.getAccessToken()
 			}
 		})
 			.then(response => response.json())
@@ -25,5 +32,5 @@ function Profile() {
 			</div>
 		</div>
 	);
-}
+};
 export default Profile;
