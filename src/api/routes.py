@@ -6,9 +6,9 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_jwt_identity
 
 api = Blueprint('api', __name__)
-
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -25,12 +25,21 @@ def signup():
 
 @api.route("/login", methods=["POST"])
 def login():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    person = User.query.filter_by(email=email, password=password).first()
-    # if person == None:  
-    #     return jsonify({"msg": "Bad email or password"}), 401
-    # print(person)
+    body = request.get_json()
+    email = body["email"]
+    password = body ["password"]
 
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    user = User.get_with_login_credentials(email, password)
+
+    if user is None:
+        raise APIException("datos incorrectos")
+   
+    access_token = create_access_token(identity=user.id)
+    return jsonify({"access_token": access_token})
+
+@api.route("/profile", methods=['GET'])
+@jwt_required()
+def profile():
+    current_user_id = get_jwt_identity()
+    user = User.get(current_user_id)
+    return jsonify(user.serialize())

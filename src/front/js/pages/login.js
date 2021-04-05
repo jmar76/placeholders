@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 export const LogIn = () => {
 	// const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
-
+	const { actions } = useContext(Context);
 	function login() {
 		setError("");
 		// if (password != confirmpass) {
@@ -13,7 +13,7 @@ export const LogIn = () => {
 		// 	return;
 		// }
 		// let responseOk = false;
-		fetch("https://3001-pink-aphid-rjd62ynl.ws-eu03.gitpod.io/api/login", {
+		fetch("https://3001-aquamarine-antlion-lo5rwf5k.ws-eu03.gitpod.io/api/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -22,7 +22,22 @@ export const LogIn = () => {
 				email: email,
 				password: password
 			})
-		});
+		})
+			.then(response => {
+				responseOk = response.ok;
+				return response.json();
+			})
+			.then(responseJson => {
+				if (responseOk) {
+					actions.saveAccessToken(responseJson.access_token);
+				} else {
+					setError(responseJson.message);
+				}
+			})
+			.catch(error => {
+				setError(error.message);
+			});
+		return false;
 	}
 	return (
 		<div className="jumbotron">
