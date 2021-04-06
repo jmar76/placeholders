@@ -13,7 +13,7 @@ const Profile = () => {
 			history.push("/login");
 			return;
 		}
-		fetch("https://3001-aquamarine-antlion-lo5rwf5k.ws-eu03.gitpod.io/api/profile", {
+		fetch("https://3001-yellow-silverfish-gqhnxz8e.ws-eu03.gitpod.io/api/profile", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -27,8 +27,7 @@ const Profile = () => {
 	return (
 		<div className="jumbotron">
 			<div>
-				Email:
-				{email}
+				<strong>Perfil del Usuario:</strong> {email}
 			</div>
 		</div>
 	);

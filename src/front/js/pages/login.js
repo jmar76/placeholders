@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
+import "../../styles/login.scss";
 
 export const LogIn = () => {
 	// const [name, setName] = useState("");
@@ -17,7 +18,7 @@ export const LogIn = () => {
 			return;
 		}
 		let responseOk = false;
-		fetch("https://3001-aquamarine-antlion-lo5rwf5k.ws-eu03.gitpod.io/api/login", {
+		fetch("https://3001-yellow-silverfish-gqhnxz8e.ws-eu03.gitpod.io/api/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -45,7 +46,7 @@ export const LogIn = () => {
 		return false;
 	}
 	return (
-		<div className="jumbotron">
+		<div className="jumbotron backgroundlogin">
 			<input
 				type="email"
 				placeholder="email"

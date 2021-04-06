@@ -20,7 +20,12 @@ def handle_hello():
 @api.route('/signup', methods=['POST'])
 def signup():
     body = request.get_json()
-    User.create_user(body ["email"], body ["password"])
+
+    try:
+        User.create_user(body ["email"], body ["password"])
+    except:
+        raise APIException("Hubo un problema")
+        
     return jsonify({}), 200
 
 @api.route("/login", methods=["POST"])
