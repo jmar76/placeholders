@@ -16,6 +16,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} else {
 					return localStorage.getItem("access_token");
 				}
+			},
+			deleteAccessToken: () => {
+				let store = getStore();
+				setStore({ accessToken: "" });
 			}
 		}
 	};
