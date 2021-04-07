@@ -13,7 +13,7 @@ const Profile = () => {
 			history.push("/login");
 			return;
 		}
-		fetch("https://3001-coffee-wallaby-npv48dw9.ws-eu03.gitpod.io/api/profile", {
+		fetch("https://3001-blue-hornet-u0kzmvoi.ws-eu03.gitpod.io/api/profile", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

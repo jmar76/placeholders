@@ -17,7 +17,7 @@ export const SignUp = () => {
 		}
 
 		let responseOk = false;
-		fetch("https://3001-coffee-wallaby-npv48dw9.ws-eu03.gitpod.io/api/signup", {
+		fetch("https://3001-blue-hornet-u0kzmvoi.ws-eu03.gitpod.io/api/signup", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
