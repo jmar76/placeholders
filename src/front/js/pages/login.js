@@ -46,22 +46,38 @@ export const LogIn = () => {
 		return false;
 	}
 	return (
-		<div className="jumbotron backgroundlogin">
-			<input
-				type="email"
-				placeholder="email"
-				onChange={event => {
-					setEmail(event.target.value);
-				}}
-			/>
-			<input
-				type="password"
-				placeholder="password"
-				onChange={event => {
-					setPassword(event.target.value);
-				}}
-			/>
-			<input type="button" value="entrar" onClick={login} />
+		<div className="container">
+			<div className="backgroundlogin">
+				<div className="contenedorinputslogin">
+					<div className="row ">
+						<input
+							type="email"
+							placeholder="email"
+							className="inputEmaillogin"
+							onChange={event => {
+								setEmail(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="row ">
+						<input
+							type="password"
+							placeholder="password"
+							className="inputpasswordlogin"
+							onChange={event => {
+								setPassword(event.target.value);
+							}}
+						/>
+					</div>
+					<button
+						type="button"
+						className="btn btn-primary posicionbotonlogin"
+						value="iniciar sesión"
+						onClick={login}>
+						Iniciar Sesión
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 };

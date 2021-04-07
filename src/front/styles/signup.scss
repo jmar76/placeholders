@@ -1,3 +1,38 @@
-.background{
-    background-color: rgba(0, 128, 0, 0);
+.backgroundcrearcuenta{
+    background-color: white;
+    margin:auto;
+    padding-top:20px;
+    width: 600px;
+    height: 350px;
+    border-radius: 15px;
+}
+.contenedorinputscrearcuenta{
+    width: 300px;
+    height: 150px;
+    margin:auto;
+    // background-color:red;
+    margin-top:66px;
+}
+.inputEmailcrearcuenta{
+    border-radius: 5px;
+    width: 270px;
+    margin: auto;
+    margin-top:15px;
+}
+.inputpasswordcrearcuenta{
+    border-radius: 5px;
+    width: 270px;
+    margin: auto;
+    margin-top:15px;
+}
+.inputconfirmpasswordcrearcuenta{
+    border-radius: 5px;
+    width: 270px;
+    margin: auto;
+    margin-top:15px;
+}
+.posicionbotoncrearcuenta{
+    width: 270px;
+    margin: auto;
+    margin-top: 15px;
 }

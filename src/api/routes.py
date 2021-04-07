@@ -24,7 +24,7 @@ def signup():
     try:
         User.create_user(body ["email"], body ["password"])
     except:
-        raise APIException("Hubo un problema")
+        raise APIException("Error al introducir los datos, pruebe de nuevo!")
         
     return jsonify({}), 200
 
