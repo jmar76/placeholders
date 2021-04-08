@@ -9,6 +9,8 @@ export const SignUp = () => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 	const history = useHistory();
+	const [name, setName] = useState("");
+	const [lastname, setLastname] = useState("");
 
 	function crear() {
 		setError("");
@@ -18,12 +20,14 @@ export const SignUp = () => {
 		}
 
 		let responseOk = false;
-		fetch("https://3001-blue-hornet-u0kzmvoi.ws-eu03.gitpod.io/api/signup", {
+		fetch("https://3001-green-tarsier-x6z28oz4.ws-eu03.gitpod.io/api/signup", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
+				name: name,
+				lastname: lastname,
 				email: email,
 				password: password
 			})
@@ -55,12 +59,27 @@ export const SignUp = () => {
 						{error ? <h4>{error}</h4> : ""}
 						{/* {message ? <h4> {message}</h4> : ""} */}
 						{/* <input
-                    type="name"
-                    placeholder="name"
-                    onChange={event => {
-                        setName(event.target.value);
-                    }}
                 /> */}
+					</div>
+					<div className="row ">
+						<input
+							type="nombre"
+							placeholder="nombre"
+							className="inputnombrecrearcuenta"
+							onChange={event => {
+								setName(event.target.value);
+							}}
+						/>
+					</div>
+					<div className="row ">
+						<input
+							type="apellidos"
+							placeholder="apellidos"
+							className="inputapellidoscrearcuenta"
+							onChange={event => {
+								setLastname(event.target.value);
+							}}
+						/>
 					</div>
 					<div className="row ">
 						<input

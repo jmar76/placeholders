@@ -22,7 +22,7 @@ def signup():
     body = request.get_json()
 
     try:
-        User.create_user(body ["email"], body ["password"])
+        User.create_user(body ["name"], body ["lastname"], body ["email"], body ["password"])
     except:
         raise APIException("Error al introducir los datos, pruebe de nuevo!")
         

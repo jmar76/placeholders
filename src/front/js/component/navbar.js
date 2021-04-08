@@ -7,10 +7,11 @@ import "../../styles/navbar.scss";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 
 	useEffect(
 		() => {
-			fetch("https://3001-blue-hornet-u0kzmvoi.ws-eu03.gitpod.io/api/profile", {
+			fetch("https://3001-green-tarsier-x6z28oz4.ws-eu03.gitpod.io/api/profile", {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -18,7 +19,7 @@ export const Navbar = () => {
 				}
 			})
 				.then(response => response.json())
-				.then(responseJson => setEmail(responseJson.email));
+				.then(responseJson => setName(responseJson.name));
 		},
 		[actions.getAccessToken()]
 	);
@@ -74,7 +75,7 @@ export const Navbar = () => {
 			{!accesstoken ? barraLogin : ""}
 			{accesstoken ? profile : ""}
 			{accesstoken ? usuario : ""}
-			{accesstoken ? <span className="navbar-brand mb-0 h1 text-warning">{email}</span> : ""}
+			{accesstoken ? <span className="navbar-brand mb-0 h1 text-warning">Hola {name}</span> : ""}
 			{!accesstoken ? barraPropiedad : ""}
 			{accesstoken ? htmlLogout : ""}
 		</nav>
