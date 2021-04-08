@@ -53,11 +53,7 @@ export const Navbar = () => {
 	// 		</Link>
 	// 	</div>
 	// );
-	let profile = (
-		<Link to="/profile">
-			<span className="navbar-brand mb-0 h1 text-white">Profile</span>
-		</Link>
-	);
+	let profile = <span className="navbar-brand mb-0 h1 text-white">Profile</span>;
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light text-white">
 			<div className="collapse navbar-collapse">
@@ -82,11 +78,14 @@ export const Navbar = () => {
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false">
-							{" "}
 							<i className="fas fa-arrow-circle-down">
 								{" "}
-								{accesstoken ? usuario : ""}{" "}
-								{accesstoken ? <span className="navbar-brand mb-0 h1 text-warning"> {name}</span> : ""}
+								{accesstoken ? usuario : ""}
+								{accesstoken ? (
+									<span className="navbar-brand mb-0 h text-warning font"> {name}</span>
+								) : (
+									""
+								)}
 							</i>
 						</button>
 						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -94,7 +93,7 @@ export const Navbar = () => {
 								Agregar propiedades
 							</a>
 							<a className="dropdown-item" href="#">
-								favoritos
+								Favoritos
 							</a>
 							<a className="dropdown-item" href="#">
 								Reservas

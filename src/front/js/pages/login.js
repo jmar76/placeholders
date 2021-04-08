@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import "../../styles/login.scss";
+import { Link } from "react-router-dom";
 
 export const LogIn = () => {
 	// const [name, setName] = useState("");
@@ -71,11 +72,19 @@ export const LogIn = () => {
 					</div>
 					<button
 						type="button"
-						className="btn btn-primary posicionbotonlogin"
+						className="btn btn-danger posicionbotonlogin"
 						value="iniciar sesión"
 						onClick={login}>
-						Iniciar Sesión
+						<strong>Iniciar Sesión</strong>
 					</button>
+
+					<div className="row positioncuenta">
+						<p>¿No tienes una cuenta? </p>
+						<Link to="/signup">
+							{" "}
+							<p> Crea una cuenta</p>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>

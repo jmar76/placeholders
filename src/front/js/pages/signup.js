@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/signup.scss";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 export const SignUp = () => {
 	// const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
@@ -15,7 +16,7 @@ export const SignUp = () => {
 	function crear() {
 		setError("");
 		if (password != confirmpass) {
-			setError("Las contraseñas no coinciden");
+			setError("Las contraseñas no coinciden, pruebe de nuevo!");
 			return;
 		}
 
@@ -54,17 +55,17 @@ export const SignUp = () => {
 		<div className="container">
 			<div className="backgroundcrearcuenta">
 				<div className="contenedorinputscrearcuenta">
-					<div className="row ">
+					<div className="row errorstyles ">
 						{/* <h1>Crea tu cuenta!</h1> */}
-						{error ? <h4>{error}</h4> : ""}
+						{error ? <p>{error}</p> : ""}
 						{/* {message ? <h4> {message}</h4> : ""} */}
 						{/* <input
-                /> */}
+                        /> */}
 					</div>
 					<div className="row ">
 						<input
 							type="nombre"
-							placeholder="nombre"
+							placeholder="Nombre"
 							className="inputnombrecrearcuenta"
 							onChange={event => {
 								setName(event.target.value);
@@ -74,7 +75,7 @@ export const SignUp = () => {
 					<div className="row ">
 						<input
 							type="apellidos"
-							placeholder="apellidos"
+							placeholder="Apellidos"
 							className="inputapellidoscrearcuenta"
 							onChange={event => {
 								setLastname(event.target.value);
@@ -84,7 +85,7 @@ export const SignUp = () => {
 					<div className="row ">
 						<input
 							type="email"
-							placeholder="email"
+							placeholder="Email"
 							className="inputEmailcrearcuenta"
 							onChange={event => {
 								setEmail(event.target.value);
@@ -94,7 +95,7 @@ export const SignUp = () => {
 					<div className="row ">
 						<input
 							type="password"
-							placeholder="password"
+							placeholder="Password"
 							className="inputEmailcrearcuenta"
 							onChange={event => {
 								setPassword(event.target.value);
@@ -104,7 +105,7 @@ export const SignUp = () => {
 					<div className="row ">
 						<input
 							type="password"
-							placeholder="confirmar password"
+							placeholder="Confirmar Password"
 							className="inputconfirmpasswordcrearcuenta"
 							onChange={event => {
 								setConfirmpass(event.target.value);
@@ -114,11 +115,18 @@ export const SignUp = () => {
 					<div className="row">
 						<button
 							type="button"
-							className="btn btn-primary posicionbotoncrearcuenta"
+							className="btn btn-danger posicionbotoncrearcuenta"
 							value="crear"
 							onClick={crear}>
-							Crear Cuenta
+							<strong>Crear Cuenta</strong>
 						</button>
+					</div>
+					<div className="row positionlogin">
+						<p>¿Ya tienes una cuenta? </p>
+						<Link to="/login">
+							{" "}
+							<p> Inicia Sesión</p>
+						</Link>
 					</div>
 				</div>
 			</div>

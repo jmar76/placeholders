@@ -1,51 +1,77 @@
 .backgroundcrearcuenta{
     background-color: white;
     margin:auto;
-    padding-top:20px;
-    width: 600px;
-    height: 350px;
+    width: 469px;
+    height: 450px;
     border-radius: 15px;
 }
 .contenedorinputscrearcuenta{
-    width: 300px;
-    height: 241px;
+    width: 415px;
+    height: 275px;
     margin:auto;
     // background-color:red;
     margin-top:6px;
 }
-
 .inputnombrecrearcuenta{
     border-radius: 5px;
-    width: 290px;
+    width: 399px;
+    height: 39px;
     margin: auto;
-    margin-top:15px;
+    margin-top:5px;
+    background-color: rgba(22, 108, 238, 0.144);
 }
 .inputapellidoscrearcuenta{
     border-radius: 5px;
-    width: 290px;
+    width: 399px;
+    height: 39px;
     margin: auto;
     margin-top:15px;
+    background-color: rgba(22, 108, 238, 0.144);
 }
 .inputEmailcrearcuenta{
     border-radius: 5px;
-    width: 290px;
+    width: 399px;
+    height: 39px;
     margin: auto;
     margin-top:15px;
+    background-color: rgba(22, 108, 238, 0.144);
 }
 .inputpasswordcrearcuenta{
     border-radius: 5px;
-    width: 290px;
+    width: 399px;
+    height: 39px;
     margin: auto;
     margin-top:15px;
+    background-color: rgba(22, 108, 238, 0.144);
 }
 .inputconfirmpasswordcrearcuenta{
     border-radius: 5px;
-    width: 290px;
+    width: 399px;
+    height: 39px;
     margin: auto;
     margin-top:15px;
+    background-color: rgba(22, 108, 238, 0.144);
 }
 .posicionbotoncrearcuenta{
-    width: 290px;
+    width: 399px;
     margin: auto;
     margin-top: 15px;
+}
+.positionlogin{
+    // background-color: brown;
+    margin-left:8px;
+    margin-top: 21px;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+.errorstyles{
+    width: 400px;
+    height: 50px;
+    margin:auto;
+    // background-color:green;
+    font-size: 17px;
+    color:black;
+    padding-top:10px;
 }
