@@ -148,14 +148,16 @@ export const SignUp = () => {
 									/>
 								</div>
 							</div>
-							<div className="row">
-								<button
-									type="button"
-									className="btn btn-danger form-control"
-									value="crear"
-									onClick={crear}>
-									<strong>Crear Cuenta</strong>
-								</button>
+							<div className="form-group row">
+								<div className="col-sm-12">
+									<button
+										type="button"
+										className="btn btn-danger form-control"
+										value="crear"
+										onClick={crear}>
+										<strong>Crear Cuenta</strong>
+									</button>
+								</div>
 							</div>
 							<div className="row mt-3">
 								<div className="col-12 d-inline text-center">

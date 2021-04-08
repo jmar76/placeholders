@@ -93,13 +93,15 @@ export const LogIn = () => {
 								</div>
 							</div>
 							<div className="row">
-								<button
-									type="button"
-									className="btn btn-danger form-control"
-									value="crear"
-									onClick={login}>
-									<strong>Iniciar Sesión</strong>
-								</button>
+								<div className="col-sm-12">
+									<button
+										type="button"
+										className="btn btn-danger form-control"
+										value="crear"
+										onClick={login}>
+										<strong>Iniciar Sesión</strong>
+									</button>
+								</div>
 							</div>
 							<div className="row mt-3">
 								<div className="col-12 d-inline text-center">
