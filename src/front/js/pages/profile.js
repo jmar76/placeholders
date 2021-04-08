@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const { actions } = useContext(Context);
@@ -14,7 +15,7 @@ const Profile = () => {
 			history.push("/login");
 			return;
 		}
-		fetch("https://3001-green-tarsier-x6z28oz4.ws-eu03.gitpod.io/api/profile", {
+		fetch(API_URL + "/api/profile", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export const LogIn = () => {
 	// const [name, setName] = useState("");
+	const API_URL = process.env.REACT_APP_API_URL;
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ export const LogIn = () => {
 			return;
 		}
 		let responseOk = false;
-		fetch("https://3001-green-tarsier-x6z28oz4.ws-eu03.gitpod.io/api/login", {
+		fetch(API_URL + "/api/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -48,43 +49,68 @@ export const LogIn = () => {
 	}
 	return (
 		<div className="container">
-			<div className="backgroundlogin">
-				<div className="contenedorinputslogin">
-					<div className="row ">
-						<input
-							type="email"
-							placeholder="email"
-							className="inputEmaillogin"
-							onChange={event => {
-								setEmail(event.target.value);
-							}}
-						/>
-					</div>
-					<div className="row ">
-						<input
-							type="password"
-							placeholder="password"
-							className="inputpasswordlogin"
-							onChange={event => {
-								setPassword(event.target.value);
-							}}
-						/>
-					</div>
-					<button
-						type="button"
-						className="btn btn-danger posicionbotonlogin"
-						value="iniciar sesión"
-						onClick={login}>
-						<strong>Iniciar Sesión</strong>
-					</button>
-
-					<div className="row positioncuenta">
-						<p>¿No tienes una cuenta? </p>
-						<Link to="/signup">
-							{" "}
-							<p> Crea una cuenta</p>
-						</Link>
-					</div>
+			<div className="row mt-5 pt-5">
+				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondas">
+					<form>
+						<div className="form-group">
+							{error ? (
+								<div className="alert alert-danger text-center" role="alert">
+									{error}
+								</div>
+							) : (
+								""
+							)}
+							<div className="form-group row">
+								<label className="col-3 col-form-label" htmlFor="email">
+									Email
+								</label>
+								<div className="col-sm-9">
+									<input
+										type="email"
+										id="email"
+										placeholder="Email"
+										className="form-control"
+										onChange={event => {
+											setEmail(event.target.value);
+										}}
+									/>
+								</div>
+							</div>
+							<div className="form-group row">
+								<label className="col-3 col-form-label" htmlFor="password">
+									Password
+								</label>
+								<div className="col-sm-9">
+									<input
+										type="password"
+										id="password"
+										placeholder="Password"
+										className="form-control"
+										onChange={event => {
+											setPassword(event.target.value);
+										}}
+									/>
+								</div>
+							</div>
+							<div className="row">
+								<button
+									type="button"
+									className="btn btn-danger form-control"
+									value="crear"
+									onClick={login}>
+									<strong>Iniciar Sesión</strong>
+								</button>
+							</div>
+							<div className="row mt-3">
+								<div className="col-12 d-inline text-center">
+									<p className="d-inline">¿No tienes una cuenta?&nbsp; </p>
+									<Link to="/signup" className="d-inline">
+										<p className="d-inline">Crea una cuenta</p>
+									</Link>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

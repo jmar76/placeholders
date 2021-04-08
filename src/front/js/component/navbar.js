@@ -4,12 +4,13 @@ import { Context } from "../store/appContext";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
+	const API_URL = process.env.REACT_APP_API_URL;
 	const { actions } = useContext(Context);
 	const [name, setName] = useState("");
 
 	useEffect(
 		() => {
-			fetch("https://3001-green-tarsier-x6z28oz4.ws-eu03.gitpod.io/api/profile", {
+			fetch(API_URL + "/api/profile", {
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json",
@@ -60,7 +61,7 @@ export const Navbar = () => {
 				<Link to="/">
 					<span className="navbar-brand mb-0 h1 text-white colorpuntocom">
 						Home
-						<spang className="colorpuntocom">.com</spang>
+						<span className="colorpuntocom">.com</span>
 					</span>
 				</Link>
 			</div>

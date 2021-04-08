@@ -37,7 +37,7 @@ def login():
     user = User.get_with_login_credentials(email, password)
 
     if user is None:
-        raise APIException("datos incorrectos")
+        raise APIException("Datos incorrectos")
    
     access_token = create_access_token(identity=user.id)
     return jsonify({"access_token": access_token})
