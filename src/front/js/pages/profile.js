@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const Profile = () => {
 	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 	const { actions } = useContext(Context);
 	const history = useHistory();
 
@@ -27,7 +28,7 @@ const Profile = () => {
 	return (
 		<div className="jumbotron">
 			<div>
-				<strong>Perfil del Usuario:</strong> {email}
+				<strong>Correo electrónico:</strong> {email}
 			</div>
 		</div>
 	);
