@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import { Steps, Step } from "react-step-builder";
+import { Navigation } from "./pages/formularios/Navigation";
 
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
@@ -12,10 +14,21 @@ import { Footer } from "./component/footer";
 import { SignUp } from "./pages/signup";
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
-import { AlquilaTuPropiedad } from "./pages/alquilaTuPropiedad";
+import { AlquilaTuPropiedad } from "./pages/formularios/alquilaTuPropiedad";
+import { FormularioCapacidadAlojamiento } from "./pages/formularios/formulario2";
+import { FormularioAmenidades } from "./pages/formularios/formulario3";
+import { FormularioFotos } from "./pages/formularios/formularioFotos";
 
 //create your first component
+
 const Layout = () => {
+	const config = {
+		navigation: {
+			component: Navigation,
+			location: "after"
+		}
+	};
+
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
@@ -42,7 +55,12 @@ const Layout = () => {
 							<Profile />
 						</Route>
 						<Route exact path="/alquilaTuPropiedad">
-							<AlquilaTuPropiedad />
+							<Steps config={config}>
+								<Step component={AlquilaTuPropiedad} />
+								<Step component={FormularioCapacidadAlojamiento} />
+								<Step component={FormularioAmenidades} />
+								<Step component={FormularioAmenidades} />
+							</Steps>
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export const AlquilaTuPropiedad = () => {
+export const AlquilaTuPropiedad = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
 	const [calle, setCalle] = useState("");
@@ -22,8 +22,11 @@ export const AlquilaTuPropiedad = () => {
 	return (
 		<div className="container">
 			<div className="row mt-5 pt-5">
-				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondas">
+				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
+						<div className="form-row">
+							<h4>¿Dónde se ubica?</h4>
+						</div>
 						<div className="form-row">
 							<div className="form-group col-md-10">
 								<label htmlFor="calle">Calle</label>
@@ -42,6 +45,7 @@ export const AlquilaTuPropiedad = () => {
 									type="number"
 									className="form-control"
 									id="numero"
+									min="0"
 									onChange={event => {
 										setNumero(event.target.value);
 									}}
@@ -66,6 +70,7 @@ export const AlquilaTuPropiedad = () => {
 									type="number"
 									className="form-control"
 									id="codigoPostal"
+									min="0"
 									onChange={event => {
 										setCodigoPostal(event.target.value);
 									}}
