@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import { SignUp } from "./pages/signup";
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
+import { AlquilaTuPropiedad } from "./pages/alquilaTuPropiedad";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +40,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/profile">
 							<Profile />
+						</Route>
+						<Route exact path="/alquilaTuPropiedad">
+							<AlquilaTuPropiedad />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const LogIn = () => {
 	// const [name, setName] = useState("");
-	const API_URL = process.env.REACT_APP_API_URL;
+	const API_URL = process.env.BACKEND_URL;
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");

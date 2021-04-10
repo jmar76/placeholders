@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
-	const API_URL = process.env.REACT_APP_API_URL;
+	const API_URL = process.env.BACKEND_URL;
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
 	const { actions } = useContext(Context);

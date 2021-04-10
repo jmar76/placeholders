@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
-	const API_URL = process.env.REACT_APP_API_URL;
+	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const [name, setName] = useState("");
 
@@ -41,20 +41,50 @@ export const Navbar = () => {
 		</Link>
 	);
 	let barraPropiedad = (
-		<Link to="/">
+		<Link to="/alquilaTuPropiedad">
 			<span className="navbar-brand my-2 my-lg-0 text-warning">Alquila tu Propiedad</span>
 		</Link>
 	);
-	// let htmlLogout = (
-	// 	<div className="ml-auto">
-	// 		<Link to="/">
-	// 			<button className="btn btn-primary" onClick={logout}>
-	// 				Cerrar Sesión
-	// 			</button>
-	// 		</Link>
-	// 	</div>
-	// );
-	let profile = <span className="navbar-brand mb-0 h1 text-white">Profile</span>;
+	let profile = (
+		<Link to="/profile">
+			<span className="navbar-brand mb-0 h1 text-white">Profile</span>
+		</Link>
+	);
+	let dropdown = (
+		<div className="dropdown">
+			<button
+				className="btn btn-outline-primary "
+				type="button"
+				id="dropdownMenuButton"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false">
+				<i className="fas fa-arrow-circle-down">
+					{" "}
+					{accesstoken ? usuario : ""}
+					{accesstoken ? <span className="navbar-brand mb-0 h text-warning font"> {name}</span> : ""}
+				</i>
+			</button>
+			<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<Link to="/alquilaTuPropiedad">
+					<a className="dropdown-item" href="#">
+						Agregar Propiedades
+					</a>
+				</Link>
+				<a className="dropdown-item" href="#">
+					Favoritos
+				</a>
+				<a className="dropdown-item" href="#">
+					Reservas
+				</a>
+				<Link to="/">
+					<a className="dropdown-item" onClick={logout} href="#">
+						Cerrar Sesión
+					</a>
+				</Link>
+			</div>
+		</div>
+	);
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light text-white">
 			<div className="collapse navbar-collapse">
@@ -70,45 +100,7 @@ export const Navbar = () => {
 				{!accesstoken ? barraLogin : ""}
 				{!accesstoken ? barraPropiedad : ""}
 				{accesstoken ? profile : ""}
-				{accesstoken ? (
-					<div className="dropdown">
-						<button
-							className="btn btn-outline-primary "
-							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							<i className="fas fa-arrow-circle-down">
-								{" "}
-								{accesstoken ? usuario : ""}
-								{accesstoken ? (
-									<span className="navbar-brand mb-0 h text-warning font"> {name}</span>
-								) : (
-									""
-								)}
-							</i>
-						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a className="dropdown-item" href="#">
-								Agregar propiedades
-							</a>
-							<a className="dropdown-item" href="#">
-								Favoritos
-							</a>
-							<a className="dropdown-item" href="#">
-								Reservas
-							</a>
-							<Link to="/">
-								<a className="dropdown-item" onClick={logout} href="#">
-									Cerrar Sesión
-								</a>
-							</Link>
-						</div>
-					</div>
-				) : (
-					""
-				)}
+				{accesstoken ? dropdown : ""}
 			</div>
 		</nav>
 	);
