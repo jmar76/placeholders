@@ -15,11 +15,9 @@ import { SignUp } from "./pages/signup";
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
 import { AlquilaTuPropiedad } from "./pages/formularios/alquilaTuPropiedad";
-import { FormularioCapacidadAlojamiento } from "./pages/formularios/formulario2";
-import { FormularioAmenidades } from "./pages/formularios/formulario3";
+import { FormularioCapacidadAlojamiento } from "./pages/formularios/FormularioCapacidadAlojamiento";
+import { FormularioAmenidades } from "./pages/formularios/FormularioAmenidades";
 import { FormularioFotos } from "./pages/formularios/formularioFotos";
-
-//create your first component
 
 const Layout = () => {
 	const config = {
@@ -59,7 +57,7 @@ const Layout = () => {
 								<Step component={AlquilaTuPropiedad} />
 								<Step component={FormularioCapacidadAlojamiento} />
 								<Step component={FormularioAmenidades} />
-								<Step component={FormularioAmenidades} />
+								<Step component={FormularioFotos} />
 							</Steps>
 						</Route>
 						<Route exact path="/single/:theid">

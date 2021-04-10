@@ -66,21 +66,17 @@ export const Navbar = () => {
 				</i>
 			</button>
 			<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<Link to="/alquilaTuPropiedad">
-					<a className="dropdown-item" href="#">
-						Agregar Propiedades
-					</a>
+				<Link to="/alquilaTuPropiedad" className="dropdown-item">
+					Agregar Propiedades
 				</Link>
-				<a className="dropdown-item" href="#">
+				<Link className="dropdown-item" to="#">
 					Favoritos
-				</a>
-				<a className="dropdown-item" href="#">
+				</Link>
+				<Link className="dropdown-item" to="#">
 					Reservas
-				</a>
-				<Link to="/">
-					<a className="dropdown-item" onClick={logout} href="#">
-						Cerrar Sesión
-					</a>
+				</Link>
+				<Link to="/" className="dropdown-item" onClick={logout}>
+					Cerrar Sesión
 				</Link>
 			</div>
 		</div>
