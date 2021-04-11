@@ -8,20 +8,17 @@ export const Navbar = () => {
 	const { actions } = useContext(Context);
 	const [name, setName] = useState("");
 
-	useEffect(
-		() => {
-			fetch(API_URL + "/api/profile", {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + actions.getAccessToken()
-				}
-			})
-				.then(response => response.json())
-				.then(responseJson => setName(responseJson.name));
-		},
-		[actions.getAccessToken()]
-	);
+	useEffect(() => {
+		fetch(API_URL + "/api/profile", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + actions.getAccessToken()
+			}
+		})
+			.then(response => response.json())
+			.then(responseJson => setName(responseJson.name));
+	}, [actions.getAccessToken()]);
 	let accesstoken = actions.getAccessToken();
 
 	function logout() {
