@@ -20,6 +20,7 @@ class User(db.Model):
         user.email = email
         user.password = password
         user.is_active = True
+        user.token = ""
 
         db.session.add(user)
         db.session.commit()

@@ -12,6 +12,18 @@ export const AlquilaTuPropiedad = props => {
 	const [codigoPostal, setCodigoPostal] = useState("");
 	const [comunidad, setComunidad] = useState("");
 
+	function handleComunidad(newComunidad) {
+		setComunidad(comunidad => newComunidad);
+	}
+
+	useEffect(() => {
+		actions.setCalle(calle);
+		actions.setNumero(numero);
+		actions.setCiudad(ciudad);
+		actions.setCodigoPostal(codigoPostal);
+		actions.setComunidad(comunidad);
+	}, [calle, numero, ciudad, codigoPostal, comunidad]);
+
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
 		if (!accesstoken) {
@@ -34,9 +46,8 @@ export const AlquilaTuPropiedad = props => {
 									type="text"
 									className="form-control"
 									id="calle"
-									onChange={event => {
-										setCalle(event.target.value);
-									}}
+									value={calle}
+									onChange={event => setCalle(event.target.value)}
 								/>
 							</div>
 							<div className="form-group col-md-2">
@@ -46,9 +57,8 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="numero"
 									min="0"
-									onChange={event => {
-										setNumero(event.target.value);
-									}}
+									value={numero}
+									onChange={event => setNumero(event.target.value)}
 								/>
 							</div>
 						</div>
@@ -59,9 +69,7 @@ export const AlquilaTuPropiedad = props => {
 									type="text"
 									className="form-control"
 									id="ciudad"
-									onChange={event => {
-										setCiudad(event.target.value);
-									}}
+									onChange={event => setCiudad(event.target.value)}
 								/>
 							</div>
 							<div className="form-group col-md-4">
@@ -71,16 +79,18 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="codigoPostal"
 									min="0"
-									onChange={event => {
-										setCodigoPostal(event.target.value);
-									}}
+									onChange={event => setCodigoPostal(event.target.value)}
 								/>
 							</div>
 						</div>
 						<div className="form-row">
 							<div className="form-group col-md-12">
 								<label htmlFor="comunidad">Comunidad</label>
-								<select id="comunidad" className="form-control">
+								<select
+									id="comunidad"
+									name="comunidad"
+									className="form-control"
+									onChange={event => handleComunidad(event.target.value)}>
 									<option>Andalucía</option>
 									<option>Aragón</option>
 									<option>Asturias</option>

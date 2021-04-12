@@ -1,7 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			accessToken: ""
+			accessToken: "",
+			calle: "",
+			numero: "",
+			ciudad: "",
+			codigoPostal: "",
+			comunidad: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -20,6 +25,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteAccessToken: () => {
 				let store = getStore();
 				setStore({ accessToken: "" });
+			},
+			setCalle: value => {
+				let store = getStore();
+				setStore({ calle: value });
+			},
+			setNumero: value => {
+				let store = getStore();
+				setStore({ numero: value });
+			},
+			setCiudad: value => {
+				let store = getStore();
+				setStore({ ciudad: value });
+			},
+			setCodigoPostal: value => {
+				let store = getStore();
+				setStore({ codigoPostal: value });
+			},
+			setComunidad: value => {
+				let store = getStore();
+				setStore({ comunidad: value });
 			}
 		}
 	};
