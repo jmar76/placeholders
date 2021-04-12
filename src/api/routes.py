@@ -54,33 +54,41 @@ def profile():
     current_user_id = get_jwt_identity()
     user = User.get(current_user_id)
     return jsonify(user.serialize())
+    
+@api.route("/forgot", methods=['POST'])
+ 
+def forgot():
+    request_json = request.get_json()
+ 
+    email=request_json ["email"]
 
-#@api.route("/forgot-password", methods=['POST'])
-#def forgot():
- #   request_json = request.get_json()
-  #  email = request_json["email"]
+    if email is None:
+        raise APIException("Correo Electronico Requerido")
 
-    #if email is None:
-   #     raise APIException("Correo Electronico Requerido")
+    n = random.randint(100000000, 122939393939)
+    print(n)
 
-    #n = random.randint(100000000, 122939393939)
-    #print(n)
-    #user = User.get_with_email(email)
-    #user.token = token
-    #db.session.commit()
-    #forgot_password_email = ForgotPasswordEmail(email, token)
-    #forgot_password_email.send()
-        # return jsonify({}), 200
+    user = User.get_with_email(email)
+    user.token = token
 
+    db.session.commit()
 
-#@api.route('/reset-password', methods=['POST'])
-#def forgot_password():
-  #  request_json = request.get_json()
- #   email = request_json["email"]
-   # token = request_json["token"]
+    forgot_password_email = ForgotPasswordEmail(email, token)
+    forgot_password_email.send()
 
-    #user = User.get_for_forgot(email, token)
-   # user.password = password
-   # user.token = None
-    #db.session.commit()
-        # return jsonify({}), 200
+    return jsonify({}), 200
+
+@api.route('/reset-password' , methods=['POST'])
+def forgot_password ():
+
+    request_json = request.get_json()
+
+    email = request_json["email"]
+    token = request_json["token"]
+
+    user=User.get_for_forgot(email, token)
+    user.password = password 
+    user.token = None
+    db.session.commit()
+
+    return jsonify({}), 200

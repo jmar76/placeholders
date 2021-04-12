@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
-export const Forgot = props => {
-	const [email, setEmail] = useState("");
+export const ForGot = () => {
+	const [ëmail, setEmail] = useState("");
+	const [ëmailError, setEmailError] = useState("");
 
 	function requestForgotPassword(event) {
-		event.preventDefault();
+		if (email.trim() == "") {
+			setEmailError("Email Obligatorio");
+			return;
+		}
+
 		fetch("https://3001-coffee-parrot-7llnb4t6.ws-eu03.gitpod.io/api/forgot-password", {
 			method: "POST",
 			headers: {
-				"content-type": "aplication/json"
+				"content-type": "application/json"
 			},
 			body: JSON.stringify({
 				email: email
@@ -16,14 +21,14 @@ export const Forgot = props => {
 		});
 	}
 
-	let errorEmailHTML = "";
-	/* if (emailError) {
-		errorEmailHTML = (
+	let emailError = "";
+	if (emailError) {
+		emailError = (
 			<div>
 				<div>Email obligatorio</div>
 			</div>
 		);
-	}*/
+	}
 
 	return (
 		<div className="jumbotron">
@@ -36,6 +41,7 @@ export const Forgot = props => {
 							setEmail(event.target.value);
 						}}
 					/>
+					{emailError ? <span>{emailError}</span> : ""}
 				</label>
 				<input type="button" value="Recuperar" onClick={requestForgotPassword} />
 			</form>
