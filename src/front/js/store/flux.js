@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			numero: "",
 			ciudad: "",
 			codigoPostal: "",
-			comunidad: ""
+			comunidad: "Andalucia"
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

@@ -6,23 +6,12 @@ import { Link } from "react-router-dom";
 export const AlquilaTuPropiedad = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [calle, setCalle] = useState("");
-	const [numero, setNumero] = useState("");
-	const [ciudad, setCiudad] = useState("");
-	const [codigoPostal, setCodigoPostal] = useState("");
-	const [comunidad, setComunidad] = useState("");
+	const [comunidad, setComunidad] = useState("Andalucia");
 
 	function handleComunidad(newComunidad) {
 		setComunidad(comunidad => newComunidad);
+		actions.setComunidad(newComunidad);
 	}
-
-	useEffect(() => {
-		actions.setCalle(calle);
-		actions.setNumero(numero);
-		actions.setCiudad(ciudad);
-		actions.setCodigoPostal(codigoPostal);
-		actions.setComunidad(comunidad);
-	}, [calle, numero, ciudad, codigoPostal, comunidad]);
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -46,8 +35,7 @@ export const AlquilaTuPropiedad = props => {
 									type="text"
 									className="form-control"
 									id="calle"
-									value={calle}
-									onChange={event => setCalle(event.target.value)}
+									onChange={event => actions.setCalle(event.target.value)}
 								/>
 							</div>
 							<div className="form-group col-md-2">
@@ -57,8 +45,7 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="numero"
 									min="0"
-									value={numero}
-									onChange={event => setNumero(event.target.value)}
+									onChange={event => actions.setNumero(event.target.value)}
 								/>
 							</div>
 						</div>
@@ -69,7 +56,7 @@ export const AlquilaTuPropiedad = props => {
 									type="text"
 									className="form-control"
 									id="ciudad"
-									onChange={event => setCiudad(event.target.value)}
+									onChange={event => actions.setCiudad(event.target.value)}
 								/>
 							</div>
 							<div className="form-group col-md-4">
@@ -79,7 +66,7 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="codigoPostal"
 									min="0"
-									onChange={event => setCodigoPostal(event.target.value)}
+									onChange={event => actions.setCodigoPostal(event.target.value)}
 								/>
 							</div>
 						</div>
