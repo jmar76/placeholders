@@ -18,7 +18,7 @@ import { AlquilaTuPropiedad } from "./pages/formularios/alquilaTuPropiedad";
 import { FormularioCapacidadAlojamiento } from "./pages/formularios/FormularioCapacidadAlojamiento";
 import { FormularioAmenidades } from "./pages/formularios/FormularioAmenidades";
 import { FormularioFotos } from "./pages/formularios/formularioFotos";
-import { forgot } from "./pages/forgot";
+import { ForGot } from "./pages/forgot";
 
 const Layout = () => {
 	const config = {
@@ -61,7 +61,7 @@ const Layout = () => {
 								<Step component={FormularioFotos} />
 							</Steps>
 						</Route>
-						<Route exact path="/forgot-password">
+						<Route exact path="/forgot">
 							<ForGot />
 						</Route>
 						<Route exact path="/single/:theid">
