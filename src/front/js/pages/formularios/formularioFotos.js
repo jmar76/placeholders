@@ -20,6 +20,13 @@ export const FormularioFotos = props => {
 		}
 	}, []);
 
+	// useEffect(() => {
+	// 	const timer = setTimeout(() => {
+	// 		history.push("/profile");
+	// 	}, 3000);
+	// 	return () => clearTimeout(timer);
+	// }, [mensaje]);
+
 	const acceptedFileItems = files.map(file => (
 		<li key={file.path}>
 			{file.path} - {file.size} bytes
@@ -41,9 +48,14 @@ export const FormularioFotos = props => {
 			responseOk = response.ok;
 			if (response.ok) {
 				setMensaje("Se subieron correctamente");
+				const timer = setTimeout(() => {
+					history.push("/profile");
+				}, 3000);
+				return () => clearTimeout(timer);
 			}
 			return response.json();
 		});
+
 		// .then(responseJson => {
 		// 	if (!responseOk) {
 		// 		setError(responseJson.message);
@@ -84,16 +96,12 @@ export const FormularioFotos = props => {
 								</section>
 							)}
 						</Dropzone>
-						<button
-							type="button"
-							className="btn btn-danger form-control"
-							value="crear"
-							onClick={handleSubmit}>
-							<strong>Subir Archivos</strong>
-						</button>
 					</form>
-					{!mensaje ? <h4>subir imagenes</h4> : ""}
+					{!mensaje ? <h4>Imágenes Seleccionadas</h4> : ""}
 					{!mensaje ? <ul>{acceptedFileItems}</ul> : ""}
+					<button type="button" className="btn btn-danger form-control" value="crear" onClick={handleSubmit}>
+						<strong>Subir Imágenes</strong>
+					</button>
 					{/* <h4>subir imagenes</h4>
 					<ul>{acceptedFileItems}</ul> */}
 				</div>
