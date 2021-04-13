@@ -6,7 +6,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			numero: "",
 			ciudad: "",
 			codigoPostal: "",
-			comunidad: "Andalucia"
+			comunidad: "Andalucia",
+			dormitorios: "",
+			huespedes: "",
+			camas: "",
+			bathrooms: "",
+			descripcion: "",
+			fotos: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -45,6 +51,58 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setComunidad: value => {
 				let store = getStore();
 				setStore({ comunidad: value });
+			},
+			setDormitorios: value => {
+				let store = getStore();
+				setStore({ dormitorios: value });
+			},
+			setHuespedes: value => {
+				let store = getStore();
+				setStore({ huespedes: value });
+			},
+			setCamas: value => {
+				let store = getStore();
+				setStore({ camas: value });
+			},
+			setBathrooms: value => {
+				let store = getStore();
+				setStore({ bathrooms: value });
+			},
+			setDescripcion: value => {
+				let store = getStore();
+				setStore({ descripcion: value });
+			},
+			setFotos: value => {
+				let store = getStore();
+				setStore({ fotos: value });
+			},
+			getFormValues: () => {
+				let store = getStore();
+				let respuestas = {};
+				let calle = store.calle;
+				let numero = store.numero;
+				let ciudad = store.ciudad;
+				let codigoPostal = store.codigoPostal;
+				let comunidad = store.comunidad;
+				let dormitorios = store.dormitorios;
+				let huespedes = store.huespedes;
+				let camas = store.camas;
+				let bathrooms = store.bathrooms;
+				let descripcion = store.descripcion;
+				let fotos = store.fotos;
+				return (respuestas = {
+					calle,
+					numero,
+					ciudad,
+					codigoPostal,
+					comunidad,
+					dormitorios,
+					huespedes,
+					camas,
+					bathrooms,
+					descripcion,
+					fotos
+				});
 			}
 		}
 	};

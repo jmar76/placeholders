@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
 import { Steps, Step } from "react-step-builder";
 import PropTypes from "prop-types";
 
 export const Navigation = props => {
+	const { actions } = useContext(Context);
+	const values = actions.getFormValues();
+
+	function handleSubmit() {
+		console.log(values);
+	}
+
 	return (
 		<div className="container">
 			<div className="row ">
@@ -17,7 +25,9 @@ export const Navigation = props => {
 						</button>
 					)}
 					{props.current === 4 ? (
-						""
+						<button className="btn btn-success ml-5" onClick={handleSubmit}>
+							Submit
+						</button>
 					) : (
 						<button
 							onClick={props.next}

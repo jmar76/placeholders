@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 export const FormularioCapacidadAlojamiento = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [dormitorios, setDormitorios] = useState("");
-	const [huespedes, setHuespedes] = useState("");
-	const [camas, setCamas] = useState("");
-	const [bathroom, setBathrooms] = useState("");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -37,7 +33,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="dormitorios"
 									onChange={event => {
-										setDormitorios(event.target.value);
+										actions.setDormitorios(event.target.value);
 									}}
 								/>
 							</div>
@@ -48,7 +44,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="huespedes"
 									onChange={event => {
-										setHuespedes(event.target.value);
+										actions.setHuespedes(event.target.value);
 									}}
 								/>
 							</div>
@@ -61,7 +57,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="camas"
 									onChange={event => {
-										setCamas(event.target.value);
+										actions.setCamas(event.target.value);
 									}}
 								/>
 							</div>
@@ -72,7 +68,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="bathroom"
 									onChange={event => {
-										setBathrooms(event.target.value);
+										actions.setBathrooms(event.target.value);
 									}}
 								/>
 							</div>

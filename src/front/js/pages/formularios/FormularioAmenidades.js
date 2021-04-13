@@ -6,10 +6,6 @@ import { Link } from "react-router-dom";
 export const FormularioAmenidades = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [descripcionAlojamiento, setDescripcionAlojamiento] = useState("");
-	const [huespedes, setHuespedes] = useState("");
-	const [camas, setCamas] = useState("");
-	const [bathroom, setBathrooms] = useState("");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -34,7 +30,7 @@ export const FormularioAmenidades = props => {
 									id="descripcionAlojamiento"
 									rows="5"
 									onChange={event => {
-										setDescripcionAlojamiento(event.target.value);
+										actions.setDescripcion(event.target.value);
 									}}
 								/>
 							</div>

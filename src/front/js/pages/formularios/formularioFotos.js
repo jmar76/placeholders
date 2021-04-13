@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Dropzone from "react-dropzone";
+import { FaTimesCircle } from "react-icons/fa";
 
 export const FormularioFotos = props => {
 	const API_URL = process.env.BACKEND_URL;
@@ -20,22 +21,21 @@ export const FormularioFotos = props => {
 		}
 	}, []);
 
-	// useEffect(() => {
-	// 	const timer = setTimeout(() => {
-	// 		history.push("/profile");
-	// 	}, 3000);
-	// 	return () => clearTimeout(timer);
-	// }, [mensaje]);
+	useEffect(() => {
+		actions.setFotos(files);
+	}, [files]);
 
 	const acceptedFileItems = files.map(file => (
 		<li key={file.path}>
 			{file.path} - {file.size} bytes
+			<FaTimesCircle />
 		</li>
 	));
 	let responseOk = false;
 	function handleSubmit() {
 		// Post al back del formulario lleno, las variables van a estar en el flux
 		const formData = new FormData();
+		console.log("submit");
 
 		for (var i = 0; i < files.length; i++) {
 			formData.append(i, files[i]);
@@ -67,7 +67,7 @@ export const FormularioFotos = props => {
 		<div className="container">
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
-					<form>
+					<form onSubmit={handleSubmit}>
 						{mensaje ? (
 							<div className="alert alert-success text-center" role="alert">
 								{mensaje}
@@ -79,11 +79,9 @@ export const FormularioFotos = props => {
 							<h4>Añade fotos de tu alojamiento</h4>
 						</label>
 						<Dropzone
-							onDrop={acceptedFiles =>
-								acceptedFiles.forEach(element => {
-									setFiles(files.concat(...acceptedFiles));
-								})
-							}
+							onDrop={acceptedFiles => {
+								setFiles(files.concat(...acceptedFiles));
+							}}
 							accept={"image/*"}>
 							{({ getRootProps, getInputProps }) => (
 								<section>
@@ -99,11 +97,6 @@ export const FormularioFotos = props => {
 					</form>
 					{!mensaje ? <h4>Imágenes Seleccionadas</h4> : ""}
 					{!mensaje ? <ul>{acceptedFileItems}</ul> : ""}
-					<button type="button" className="btn btn-danger form-control" value="crear" onClick={handleSubmit}>
-						<strong>Subir Imágenes</strong>
-					</button>
-					{/* <h4>subir imagenes</h4>
-					<ul>{acceptedFileItems}</ul> */}
 				</div>
 			</div>
 		</div>

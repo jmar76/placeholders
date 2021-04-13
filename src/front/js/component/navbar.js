@@ -48,12 +48,13 @@ export const Navbar = () => {
 		</Link>
 	);
 	let dropdown = (
-		<div className="dropdown">
+		<div className="dropdown ">
 			<button
-				className="btn btn-outline-primary "
+				className="btn btn-outline-primary"
 				type="button"
 				id="dropdownMenuButton"
 				data-toggle="dropdown"
+				data-display="static"
 				aria-haspopup="true"
 				aria-expanded="false">
 				<i className="fas fa-arrow-circle-down">
@@ -62,7 +63,7 @@ export const Navbar = () => {
 					{accesstoken ? <span className="navbar-brand mb-0 h text-warning font"> {name}</span> : ""}
 				</i>
 			</button>
-			<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 				<Link to="/alquilaTuPropiedad" className="dropdown-item">
 					Agregar Propiedades
 				</Link>
