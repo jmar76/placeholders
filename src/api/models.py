@@ -3,6 +3,37 @@ from flask import Flask
 
 db = SQLAlchemy()
 
+class Propiedad(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    calle = db.Column(db.String(120), unique=False, nullable=False)
+    numero = db.Column(db.Integer, unique=False, nullable=False)
+    ciudad = db.Column(db.String(120), unique=False, nullable=False)
+    codigo_postal = db.Column(db.Integer, unique=False, nullable=False)
+    comunidad = db.Column(db.String(120), unique=False, nullable=False)
+    dormitorios = db.Column(db.Integer, unique=False, nullable=False)
+    huespedes = db.Column(db.Integer, unique=False, nullable=False)
+    camas = db.Column(db.Integer, unique=False, nullable=False)
+    bathrooms = db.Column(db.Boolean(), unique=False, nullable=False)
+    descripcion = db.Column(db.String, unique=False, nullable=False)
+
+    @classmethod
+    def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion):
+        propiedad = cls()
+        propiedad.calle = calle
+        propiedad.numero = numero
+        propiedad.ciudad = ciudad
+        propiedad.codigo_postal = codigo_postal
+        propiedad.comunidad = comunidad
+        propiedad.dormitorios = dormitorios
+        propiedad.huespedes = huespedes
+        propiedad.camas = camas
+        propiedad.bathrooms = bathrooms
+        propiedad.descripcion = descripcion
+        
+
+        db.session.add(propiedad)
+        db.session.commit()
+        
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)

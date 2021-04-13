@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			numero: "",
 			ciudad: "",
 			codigoPostal: "",
-			comunidad: "Andalucia",
+			comunidad: "andalucia",
 			dormitorios: "",
 			huespedes: "",
 			camas: "",
@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setCalle: value => {
 				let store = getStore();
-				setStore({ calle: value });
+				setStore({ calle: value.toLowerCase() });
 			},
 			setNumero: value => {
 				let store = getStore();
@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setCiudad: value => {
 				let store = getStore();
-				setStore({ ciudad: value });
+				setStore({ ciudad: value.toLowerCase() });
 			},
 			setCodigoPostal: value => {
 				let store = getStore();
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setComunidad: value => {
 				let store = getStore();
-				setStore({ comunidad: value });
+				setStore({ comunidad: value.toLowerCase() });
 			},
 			setDormitorios: value => {
 				let store = getStore();

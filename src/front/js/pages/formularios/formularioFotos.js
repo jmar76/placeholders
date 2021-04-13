@@ -25,49 +25,26 @@ export const FormularioFotos = props => {
 		actions.setFotos(files);
 	}, [files]);
 
+	const borrarFotos = key => {
+		let resultado = files.filter(file => file.path != key);
+		setFiles(files => resultado);
+	};
+
 	const acceptedFileItems = files.map(file => (
 		<li key={file.path}>
 			{file.path} - {file.size} bytes
-			<FaTimesCircle />
+			<span className="ml-5" onClick={() => borrarFotos(file.path)}>
+				<FaTimesCircle />
+			</span>
 		</li>
 	));
 	let responseOk = false;
-	function handleSubmit() {
-		// Post al back del formulario lleno, las variables van a estar en el flux
-		const formData = new FormData();
-		console.log("submit");
-
-		for (var i = 0; i < files.length; i++) {
-			formData.append(i, files[i]);
-		}
-
-		fetch(API_URL + "/api/upload-images", {
-			method: "POST",
-			body: formData
-		}).then(response => {
-			responseOk = response.ok;
-			if (response.ok) {
-				setMensaje("Se subieron correctamente");
-				const timer = setTimeout(() => {
-					history.push("/profile");
-				}, 3000);
-				return () => clearTimeout(timer);
-			}
-			return response.json();
-		});
-
-		// .then(responseJson => {
-		// 	if (!responseOk) {
-		// 		setError(responseJson.message);
-		// 	}
-		// });
-	}
 
 	return (
 		<div className="container">
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
-					<form onSubmit={handleSubmit}>
+					<form>
 						{mensaje ? (
 							<div className="alert alert-success text-center" role="alert">
 								{mensaje}
