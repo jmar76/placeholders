@@ -3,7 +3,6 @@ import "../../styles/signup.scss";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 export const SignUp = () => {
-	// const [name, setName] = useState("");
 	const API_URL = process.env.BACKEND_URL;
 	const [password, setPassword] = useState("");
 	const [confirmpass, setConfirmpass] = useState("");

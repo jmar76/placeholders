@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 import Dropzone from "react-dropzone";
 
 export const FormularioFotos = props => {
+	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [fotos, setFotos] = useState([]);
-
-	const acceptedFileItems = fotos.map(file => (
-		<li key={file.path}>
-			{file.path} - {file.size} bytes
-		</li>
-	));
+	const [files, setFiles] = useState([]);
+	const [mensaje, setMensaje] = useState("");
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -23,8 +20,35 @@ export const FormularioFotos = props => {
 		}
 	}, []);
 
+	const acceptedFileItems = files.map(file => (
+		<li key={file.path}>
+			{file.path} - {file.size} bytes
+		</li>
+	));
+	let responseOk = false;
 	function handleSubmit() {
 		// Post al back del formulario lleno, las variables van a estar en el flux
+		const formData = new FormData();
+
+		for (var i = 0; i < files.length; i++) {
+			formData.append(i, files[i]);
+		}
+
+		fetch(API_URL + "/api/upload-images", {
+			method: "POST",
+			body: formData
+		}).then(response => {
+			responseOk = response.ok;
+			if (response.ok) {
+				setMensaje("Se subieron correctamente");
+			}
+			return response.json();
+		});
+		// .then(responseJson => {
+		// 	if (!responseOk) {
+		// 		setError(responseJson.message);
+		// 	}
+		// });
 	}
 
 	return (
@@ -32,13 +56,20 @@ export const FormularioFotos = props => {
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
+						{mensaje ? (
+							<div className="alert alert-success text-center" role="alert">
+								{mensaje}
+							</div>
+						) : (
+							""
+						)}
 						<label htmlFor="inputFotos">
 							<h4>Añade fotos de tu alojamiento</h4>
 						</label>
 						<Dropzone
 							onDrop={acceptedFiles =>
 								acceptedFiles.forEach(element => {
-									setFotos(fotos.concat(...acceptedFiles));
+									setFiles(files.concat(...acceptedFiles));
 								})
 							}
 							accept={"image/*"}>
@@ -53,9 +84,18 @@ export const FormularioFotos = props => {
 								</section>
 							)}
 						</Dropzone>
+						<button
+							type="button"
+							className="btn btn-danger form-control"
+							value="crear"
+							onClick={handleSubmit}>
+							<strong>Subir Archivos</strong>
+						</button>
 					</form>
-					<h4>Archivos a Subir</h4>
-					<ul>{acceptedFileItems}</ul>
+					{!mensaje ? <h4>subir imagenes</h4> : ""}
+					{!mensaje ? <ul>{acceptedFileItems}</ul> : ""}
+					{/* <h4>subir imagenes</h4>
+					<ul>{acceptedFileItems}</ul> */}
 				</div>
 			</div>
 		</div>

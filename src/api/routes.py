@@ -38,7 +38,7 @@ def login():
     body = request.get_json()
     email = body["email"]
     password = body["password"]
-
+    
     user = User.get_with_login_credentials(email, password)
 
     if user is None:
@@ -54,6 +54,22 @@ def profile():
     current_user_id = get_jwt_identity()
     user = User.get(current_user_id)
     return jsonify(user.serialize())
+
+@api.route("/upload-images", methods=["POST"])
+def upload_images():
+    files = request.files
+    print(files)
+    # for key in files:
+    #     file = files[key]
+        
+    #     user_id = 10
+    #     try:
+    #         new_filename ="{}-{}".format(user_id, file.filename)
+    #         url_image = upload_file_to_s3(file, os.environ.get('S3_BUCKET_NAME'))
+    #     except Exception as e:
+    #         raise APIException(e)
+
+    return jsonify("has subido las fotos"), 200
     
 @api.route("/forgot", methods=['POST'])
  
