@@ -9,9 +9,37 @@ export const Navigation = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
+
 	let responseOk = false;
+
 	function handleSubmit() {
 		console.log(values);
+
+		fetch(API_URL + "/api/propiedades", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				calle: values.calle,
+				numero: values.numero,
+				ciudad: values.ciudad,
+				codigo_postal: values.codigoPostal,
+				comunidad: values.comunidad,
+				dormitorios: values.dormitorios,
+				huespedes: values.huespedes,
+				camas: values.camas,
+				bathrooms: values.bathrooms,
+				descripcion: values.descripcion
+			})
+		}).then(response => {
+			responseOk = response.ok;
+			if (response.ok) {
+				console.log("ola");
+			}
+			return response.json();
+		});
+
 		const formData = new FormData();
 
 		for (var i = 0; i < values.fotos.length; i++) {

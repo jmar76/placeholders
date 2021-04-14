@@ -107,3 +107,22 @@ def forgot_password ():
     db.session.commit()
 
     return jsonify({}), 200
+
+@api.route('/propiedades', methods=['POST'])
+def propiedades():
+    body = request.get_json()
+    print(body)
+
+    try:
+        Propiedad.create_propiedad(body["calle"], body["numero"],
+                                    body["ciudad"], body["codigo_postal"],
+                                    body["comunidad"], body["dormitorios"],
+                                    body["huespedes"], body["camas"],
+                                    body["bathrooms"], body["descripcion"])
+    except:
+        raise APIException("Error")
+
+    return jsonify("se subio la informacion"), 200
+
+
+

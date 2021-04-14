@@ -6,15 +6,15 @@ db = SQLAlchemy()
 class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     calle = db.Column(db.String(120), unique=False, nullable=False)
-    numero = db.Column(db.Integer, unique=False, nullable=False)
+    numero = db.Column(db.String(120), unique=False, nullable=False)
     ciudad = db.Column(db.String(120), unique=False, nullable=False)
-    codigo_postal = db.Column(db.Integer, unique=False, nullable=False)
+    codigo_postal = db.Column(db.String(120), unique=False, nullable=False)
     comunidad = db.Column(db.String(120), unique=False, nullable=False)
-    dormitorios = db.Column(db.Integer, unique=False, nullable=False)
-    huespedes = db.Column(db.Integer, unique=False, nullable=False)
-    camas = db.Column(db.Integer, unique=False, nullable=False)
-    bathrooms = db.Column(db.Boolean(), unique=False, nullable=False)
-    descripcion = db.Column(db.String, unique=False, nullable=False)
+    dormitorios = db.Column(db.String(120), unique=False, nullable=False)
+    huespedes = db.Column(db.String(120), unique=False, nullable=False)
+    camas = db.Column(db.String(120), unique=False, nullable=False)
+    bathrooms = db.Column(db.String(120), unique=False, nullable=False)
+    descripcion = db.Column(db.String(120), unique=False, nullable=False)
 
     @classmethod
     def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion):
@@ -30,9 +30,21 @@ class Propiedad(db.Model):
         propiedad.bathrooms = bathrooms
         propiedad.descripcion = descripcion
         
-
         db.session.add(propiedad)
         db.session.commit()
+
+    def __repr__(self):
+        return '<Propiedad %r>' % self.propiedad
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "calle": self.calle,
+            "ciudad": self.ciudad,
+            "codigo_postal": self.codigo_postal
+            # do not serialize the password, its a security breach
+        }
+
         
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
