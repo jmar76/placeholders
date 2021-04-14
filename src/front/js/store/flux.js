@@ -12,7 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			camas: "",
 			bathrooms: "",
 			descripcion: "",
-			fotos: []
+			fotos: [],
+			aire: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -76,6 +77,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				setStore({ fotos: value });
 			},
+			setAire: value => {
+				let store = getStore();
+				setStore({ aire: value });
+			},
+
 			getFormValues: () => {
 				let store = getStore();
 				let respuestas = {};
@@ -90,6 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let bathrooms = store.bathrooms;
 				let descripcion = store.descripcion;
 				let fotos = store.fotos;
+				let aire = store.aire;
 				return (respuestas = {
 					calle,
 					numero,
@@ -101,7 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					camas,
 					bathrooms,
 					descripcion,
-					fotos
+					fotos,
+					aire
 				});
 			}
 		}

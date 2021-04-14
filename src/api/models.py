@@ -15,9 +15,10 @@ class Propiedad(db.Model):
     camas = db.Column(db.String(120), unique=False, nullable=False)
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
     descripcion = db.Column(db.String(120), unique=False, nullable=False)
+    aire = db.Column(db.Boolean(), unique=False, nullable=False)
 
     @classmethod
-    def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion):
+    def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion, aire):
         propiedad = cls()
         propiedad.calle = calle
         propiedad.numero = numero
@@ -29,21 +30,23 @@ class Propiedad(db.Model):
         propiedad.camas = camas
         propiedad.bathrooms = bathrooms
         propiedad.descripcion = descripcion
+        propiedad.aire = aire
+
         
         db.session.add(propiedad)
         db.session.commit()
 
-    def __repr__(self):
-        return '<Propiedad %r>' % self.propiedad
+    # def __repr__(self):
+    #     return '<Propiedad %r>' % self.propiedad
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "calle": self.calle,
-            "ciudad": self.ciudad,
-            "codigo_postal": self.codigo_postal
-            # do not serialize the password, its a security breach
-        }
+    # def serialize(self):
+    #     return {
+    #         "id": self.id,
+    #         "calle": self.calle,
+    #         "ciudad": self.ciudad,
+    #         "codigo_postal": self.codigo_postal
+    #         # do not serialize the password, its a security breach
+    #     }
 
         
 class User(db.Model):

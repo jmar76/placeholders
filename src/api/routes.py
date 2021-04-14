@@ -118,7 +118,7 @@ def propiedades():
                                     body["ciudad"], body["codigo_postal"],
                                     body["comunidad"], body["dormitorios"],
                                     body["huespedes"], body["camas"],
-                                    body["bathrooms"], body["descripcion"])
+                                    body["bathrooms"], body["descripcion"], body["aire"])
     except:
         raise APIException("Error")
 

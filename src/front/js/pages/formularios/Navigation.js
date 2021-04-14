@@ -30,12 +30,13 @@ export const Navigation = props => {
 				huespedes: values.huespedes,
 				camas: values.camas,
 				bathrooms: values.bathrooms,
-				descripcion: values.descripcion
+				descripcion: values.descripcion,
+				aire: values.aire
 			})
 		}).then(response => {
 			responseOk = response.ok;
 			if (response.ok) {
-				console.log("ola");
+				console.log("hola");
 			}
 			return response.json();
 		});

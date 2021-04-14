@@ -78,6 +78,9 @@ export const FormularioAmenidades = props => {
 										type="checkbox"
 										value=""
 										id="aireAcondicionado"
+										onChange={event => {
+											actions.setAire(event.target.checked);
+										}}
 									/>
 									<label className="form-check-label" htmlFor="aireAcondicionado">
 										Aire acondicionado
