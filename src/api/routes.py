@@ -22,7 +22,7 @@ def handle_hello():
 @api.route('/signup', methods=['POST'])
 def signup():
     body = request.get_json()
-
+    print(body)
     try:
         User.create_user(body["name"], body["lastname"],
                          body["email"], body["password"])
