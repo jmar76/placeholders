@@ -132,7 +132,7 @@ export const LogIn = () => {
 								</div>
 								<div className="col-12 d-inline text-center">
 									<p className="d-inline">¿Olvidaste tu contraseña?&nbsp; </p>
-									<Link to="/forgot-password" className="d-inline">
+									<Link to="/forgot" className="d-inline">
 										<p className="d-inline">Recuperar</p>
 									</Link>
 								</div>
