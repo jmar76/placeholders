@@ -36,16 +36,25 @@ def signup():
 def login():
     body = request.get_json()
     email = body["email"]
-    password = body["password"]
     
-    user = User.get_with_login_credentials(email, password)
+    user = User.get_with_login_credentials(email)
 
     if user is None:
         raise APIException("Datos incorrectos")
 
+    
+    return jsonify({"hash": user.password})
+
+@api.route("/login", methods=["PUT"])
+def return_access_token():
+    body = request.get_json()
+    email = body["email"]
+    
+    user = User.get_with_login_credentials(email)
+    if user is None:
+        raise APIException("Datos incorrectos")
     access_token = create_access_token(identity=user.id)
     return jsonify({"access_token": access_token})
-
 
 @api.route("/profile", methods=['GET'])
 @jwt_required()

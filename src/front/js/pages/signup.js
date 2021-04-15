@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 export const SignUp = () => {
 	const API_URL = process.env.BACKEND_URL;
+	var bcrypt = require("bcryptjs");
 	const [password, setPassword] = useState("");
 	const [confirmpass, setConfirmpass] = useState("");
 	const [error, setError] = useState("");
@@ -14,6 +15,7 @@ export const SignUp = () => {
 	const [lastname, setLastname] = useState("");
 
 	function crear() {
+		var hash = bcrypt.hashSync(password, 8);
 		setError("");
 		if (password != confirmpass) {
 			setError("Las contraseñas no coinciden, pruebe de nuevo!");
@@ -30,7 +32,7 @@ export const SignUp = () => {
 				name: name,
 				lastname: lastname,
 				email: email,
-				password: password
+				password: hash
 			})
 		})
 			.then(response => {

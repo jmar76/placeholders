@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export const LogIn = () => {
 	const API_URL = process.env.BACKEND_URL;
+	var bcrypt = require("bcryptjs");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export const LogIn = () => {
 	function login() {
 		setError("");
 		if (email == "") {
-			setError("Las contraseñas no coinciden");
+			setError("Introduce un email");
 			return;
 		}
 		let responseOk = false;
@@ -25,8 +26,7 @@ export const LogIn = () => {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-				email: email,
-				password: password
+				email: email
 			})
 		})
 			.then(response => {
@@ -35,10 +35,31 @@ export const LogIn = () => {
 			})
 			.then(responseJson => {
 				if (responseOk) {
-					actions.saveAccessToken(responseJson.access_token);
-					history.push("/profile");
-				} else {
-					setError(responseJson.message);
+					let responseOk = false;
+					let hash = responseJson.hash;
+					if (bcrypt.compareSync(password, hash)) {
+						fetch(API_URL + "/api/login", {
+							method: "PUT",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: JSON.stringify({
+								email: email
+							})
+						})
+							.then(response => {
+								responseOk = response.ok;
+								return response.json();
+							})
+							.then(responseJson => {
+								if (responseOk) {
+									actions.saveAccessToken(responseJson.access_token);
+									history.push("/profile");
+								}
+							});
+					} else {
+						setError("Password incorrecta");
+					}
 				}
 			})
 			.catch(error => {

@@ -13,7 +13,6 @@ export const Navigation = props => {
 	let responseOk = false;
 
 	function handleSubmit() {
-		console.log(values);
 		fetch(API_URL + "/api/amenidades", {
 			method: "POST",
 			headers: {
@@ -33,9 +32,6 @@ export const Navigation = props => {
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			if (response.ok) {
-				console.log("hola");
-			}
 			return response.json();
 		});
 
@@ -58,9 +54,6 @@ export const Navigation = props => {
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			if (response.ok) {
-				console.log("hola");
-			}
 			return response.json();
 		});
 

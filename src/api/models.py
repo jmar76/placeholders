@@ -98,8 +98,8 @@ class User(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_with_login_credentials(cls, email, password):
-        return cls.query.filter_by(email=email).filter_by(password=password).one_or_none()
+    def get_with_login_credentials(cls, email):
+        return cls.query.filter_by(email=email).one_or_none()
     
     @classmethod
     def get(cls, id):
