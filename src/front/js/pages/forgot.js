@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export const ForGot = () => {
-	const [ëmail, setEmail] = useState("");
-	const [ëmailError, setEmailError] = useState("");
+	const [email, setEmail] = useState("");
+	const [emailError, setEmailError] = useState("");
 
 	function requestForgotPassword(event) {
 		if (email.trim() == "") {
@@ -10,7 +10,7 @@ export const ForGot = () => {
 			return;
 		}
 
-		fetch("https://3001-coffee-parrot-7llnb4t6.ws-eu03.gitpod.io/api/forgot-password", {
+		fetch("https://3001-coffee-parrot-7llnb4t6.ws-eu03.gitpod.io/api/forgot", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"
@@ -21,9 +21,9 @@ export const ForGot = () => {
 		});
 	}
 
-	let emailError = "";
+	let emailErrorHTML = "";
 	if (emailError) {
-		emailError = (
+		emailErrorHTML = (
 			<div>
 				<div>Email obligatorio</div>
 			</div>
