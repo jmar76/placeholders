@@ -37,7 +37,7 @@ def login():
     body = request.get_json()
     email = body["email"]
     
-    user = User.get_with_login_credentials(email)
+    user = User.get_with_email(email)
 
     if user is None:
         raise APIException("Datos incorrectos")
