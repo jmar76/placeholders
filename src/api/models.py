@@ -3,6 +3,36 @@ from flask import Flask
 
 db = SQLAlchemy()
 
+class Amenidades(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    piscina = db.Column(db.Boolean(), unique=False, nullable=False)
+    cocina = db.Column(db.Boolean(), unique=False, nullable=False)
+    parking = db.Column(db.Boolean(), unique=False, nullable=False)
+    wifi = db.Column(db.Boolean(), unique=False, nullable=False)
+    tv = db.Column(db.Boolean(), unique=False, nullable=False)
+    aire_acondicionado = db.Column(db.Boolean(), unique=False, nullable=False)
+    calefaccion = db.Column(db.Boolean(), unique=False, nullable=False)
+    chimenea = db.Column(db.Boolean(), unique=False, nullable=False)
+    agua_caliente = db.Column(db.Boolean(), unique=False, nullable=False)
+    zona_trabajo = db.Column(db.Boolean(), unique=False, nullable=False)
+
+    @classmethod
+    def create_amenidades(cls, piscina, cocina, parking, wifi, tv, aire_acondicionado, calefaccion, chimenea, agua_caliente, zona_trabajo):
+        amenidades = cls()
+        amenidades.piscina = piscina
+        amenidades.cocina = cocina
+        amenidades.parking = parking
+        amenidades.wifi = wifi
+        amenidades.tv = tv
+        amenidades.aire_acondicionado = aire_acondicionado
+        amenidades.calefaccion = calefaccion
+        amenidades.chimenea = chimenea
+        amenidades.agua_caliente = agua_caliente
+        amenidades.zona_trabajo = zona_trabajo
+
+        db.session.add(amenidades)
+        db.session.commit()
+
 class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     calle = db.Column(db.String(120), unique=False, nullable=False)
@@ -15,10 +45,9 @@ class Propiedad(db.Model):
     camas = db.Column(db.String(120), unique=False, nullable=False)
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
     descripcion = db.Column(db.String(120), unique=False, nullable=False)
-    aire = db.Column(db.Boolean(), unique=False, nullable=False)
 
     @classmethod
-    def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion, aire):
+    def create_propiedad(cls, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion):
         propiedad = cls()
         propiedad.calle = calle
         propiedad.numero = numero
@@ -30,8 +59,6 @@ class Propiedad(db.Model):
         propiedad.camas = camas
         propiedad.bathrooms = bathrooms
         propiedad.descripcion = descripcion
-        propiedad.aire = aire
-
         
         db.session.add(propiedad)
         db.session.commit()

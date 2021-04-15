@@ -14,6 +14,30 @@ export const Navigation = props => {
 
 	function handleSubmit() {
 		console.log(values);
+		fetch(API_URL + "/api/amenidades", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				piscina: values.piscina,
+				cocina: values.cocina,
+				parking: values.parking,
+				wifi: values.wifi,
+				tv: values.tv,
+				aire_acondicionado: values.aire_acondicionado,
+				calefaccion: values.calefaccion,
+				chimenea: values.chimenea,
+				agua_caliente: values.agua_caliente,
+				zona_trabajo: values.zona_trabajo
+			})
+		}).then(response => {
+			responseOk = response.ok;
+			if (response.ok) {
+				console.log("hola");
+			}
+			return response.json();
+		});
 
 		fetch(API_URL + "/api/propiedades", {
 			method: "POST",
@@ -30,8 +54,7 @@ export const Navigation = props => {
 				huespedes: values.huespedes,
 				camas: values.camas,
 				bathrooms: values.bathrooms,
-				descripcion: values.descripcion,
-				aire: values.aire
+				descripcion: values.descripcion
 			})
 		}).then(response => {
 			responseOk = response.ok;

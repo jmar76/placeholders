@@ -13,7 +13,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			bathrooms: "",
 			descripcion: "",
 			fotos: [],
-			aire: []
+
+			piscina: [],
+			cocina: [],
+			parking: [],
+			wifi: [],
+			tv: [],
+			aire_acondicionado: [],
+			calefaccion: [],
+			chimenea: [],
+			agua_caliente: [],
+			zona_trabajo: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -77,9 +87,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				setStore({ fotos: value });
 			},
-			setAire: value => {
+
+			setPiscina: value => {
 				let store = getStore();
-				setStore({ aire: value });
+				setStore({ piscina: value });
+			},
+			setCocina: value => {
+				let store = getStore();
+				setStore({ cocina: value });
+			},
+			setParking: value => {
+				let store = getStore();
+				setStore({ parking: value });
+			},
+			setWifi: value => {
+				let store = getStore();
+				setStore({ wifi: value });
+			},
+			setTv: value => {
+				let store = getStore();
+				setStore({ tv: value });
+			},
+			setAire_acondicionado: value => {
+				let store = getStore();
+				setStore({ aire_acondicionado: value });
+			},
+			setCalefaccion: value => {
+				let store = getStore();
+				setStore({ calefaccion: value });
+			},
+			setChimenea: value => {
+				let store = getStore();
+				setStore({ chimenea: value });
+			},
+			setAgua_caliente: value => {
+				let store = getStore();
+				setStore({ agua_caliente: value });
+			},
+			setZona_trabajo: value => {
+				let store = getStore();
+				setStore({ zona_trabajo: value });
 			},
 
 			getFormValues: () => {
@@ -96,7 +143,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let bathrooms = store.bathrooms;
 				let descripcion = store.descripcion;
 				let fotos = store.fotos;
-				let aire = store.aire;
+
+				let piscina = store.piscina;
+				let cocina = store.cocina;
+				let parking = store.parking;
+				let wifi = store.wifi;
+				let tv = store.tv;
+				let aire_acondicionado = store.aire_acondicionado;
+				let calefaccion = store.calefaccion;
+				let chimenea = store.chimenea;
+				let agua_caliente = store.agua_caliente;
+				let zona_trabajo = store.zona_trabajo;
+
 				return (respuestas = {
 					calle,
 					numero,
@@ -109,7 +167,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					bathrooms,
 					descripcion,
 					fotos,
-					aire
+					piscina,
+					cocina,
+					parking,
+					wifi,
+					tv,
+					aire_acondicionado,
+					calefaccion,
+					chimenea,
+					agua_caliente,
+					zona_trabajo
 				});
 			}
 		}

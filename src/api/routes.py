@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Propiedad
+from api.models import db, User, Propiedad, Amenidades
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
@@ -25,9 +25,7 @@ def signup():
     try:
         User.create_user(body["name"], body["lastname"],
                          body["email"], body["password"])
-        
-    # except Exception as err:
-    #     print(err)
+           
     except:
         raise APIException("Error al introducir los datos, pruebe de nuevo!")
 
@@ -120,7 +118,24 @@ def propiedades():
                                     body["ciudad"], body["codigo_postal"],
                                     body["comunidad"], body["dormitorios"],
                                     body["huespedes"], body["camas"],
-                                    body["bathrooms"], body["descripcion"], body["aire"])
+                                    body["bathrooms"], body["descripcion"])
+
+    except:
+        raise APIException("Error")
+
+    return jsonify("se subio la informacion"), 200
+
+@api.route('/amenidades', methods=['POST'])
+def amenidades():
+    body = request.get_json()
+    print(body)
+
+    try:
+        Amenidades.create_amenidades(body["piscina"], body["cocina"],
+                                    body["parking"], body["wifi"],
+                                    body["tv"], body["aire_acondicionado"],
+                                    body["calefaccion"], body["chimenea"],
+                                    body["agua_caliente"], body["zona_trabajo"])
     except Exception as err:
         print(err)
 

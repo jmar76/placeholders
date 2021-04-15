@@ -41,31 +41,71 @@ export const FormularioAmenidades = props => {
 						<div className="form-row">
 							<div className="form-group col-md-6">
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="piscina" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="piscina"
+										onChange={event => {
+											actions.setPiscina(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="piscina">
 										Piscina
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="cocina" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="cocina"
+										onChange={event => {
+											actions.setCocina(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="cocina">
 										Cocina
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="parking" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="parking"
+										onChange={event => {
+											actions.setParking(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="parking">
 										Parking
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="wifi" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="wifi"
+										onChange={event => {
+											actions.setWifi(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="wifi">
 										Wifi
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="tv" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="tv"
+										onChange={event => {
+											actions.setTv(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="tv">
 										TV
 									</label>
@@ -79,7 +119,7 @@ export const FormularioAmenidades = props => {
 										value=""
 										id="aireAcondicionado"
 										onChange={event => {
-											actions.setAire(event.target.checked);
+											actions.setAire_acondicionado(event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="aireAcondicionado">
@@ -87,25 +127,57 @@ export const FormularioAmenidades = props => {
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="calefaccion" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="calefaccion"
+										onChange={event => {
+											actions.setCalefaccion(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="calefaccion">
 										Calefacción
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="chimenea" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="chimenea"
+										onChange={event => {
+											actions.setChimenea(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="chimenea">
 										Chimenea
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="aguaCaliente" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="aguaCaliente"
+										onChange={event => {
+											actions.setAgua_caliente(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="aguaCaliente">
 										Agua Caliente
 									</label>
 								</div>
 								<div className="form-check">
-									<input className="form-check-input" type="checkbox" value="" id="zonaDeTrabajo" />
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value=""
+										id="zonaDeTrabajo"
+										onChange={event => {
+											actions.setZona_trabajo(event.target.checked);
+										}}
+									/>
 									<label className="form-check-label" htmlFor="zonaDeTrabajo">
 										Zona para Trabajar
 									</label>
