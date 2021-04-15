@@ -83,7 +83,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light text-white">
 			<div className="collapse navbar-collapse">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1 text-white colorpuntocom">
+					<span className="navbar-brand mt-0 h1 text-white background">
 						Home
 						<span className="colorpuntocom">.com</span>
 					</span>
