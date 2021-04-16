@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 export const FormularioCapacidadAlojamiento = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	let dormitorios = actions.getDormitorios();
+	let huespedes = actions.getHuespedes();
+	let camas = actions.getCamas();
+	let bathrooms = actions.getBathrooms();
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -30,6 +34,7 @@ export const FormularioCapacidadAlojamiento = props => {
 								<label htmlFor="dormitorios">Dormitorios</label>
 								<input
 									type="number"
+									value={dormitorios}
 									className="form-control"
 									id="dormitorios"
 									onChange={event => {
@@ -41,6 +46,7 @@ export const FormularioCapacidadAlojamiento = props => {
 								<label htmlFor="huespedes">Huéspedes</label>
 								<input
 									type="number"
+									value={huespedes}
 									className="form-control"
 									id="huespedes"
 									onChange={event => {
@@ -54,6 +60,7 @@ export const FormularioCapacidadAlojamiento = props => {
 								<label htmlFor="camas">Camas</label>
 								<input
 									type="number"
+									value={camas}
 									className="form-control"
 									id="camas"
 									onChange={event => {
@@ -65,6 +72,7 @@ export const FormularioCapacidadAlojamiento = props => {
 								<label htmlFor="bathroom">Baños</label>
 								<input
 									type="number"
+									value={bathrooms}
 									className="form-control"
 									id="bathroom"
 									onChange={event => {

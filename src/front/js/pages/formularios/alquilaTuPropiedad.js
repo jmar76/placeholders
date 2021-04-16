@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 export const AlquilaTuPropiedad = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [comunidad, setComunidad] = useState("Andalucia");
+	const calle = actions.getCalle();
+	const numero = actions.getNumero();
+	const ciudad = actions.getCiudad();
+	const codigoPostal = actions.getCodigoPostal();
+	const comunidad = actions.getComunidad();
 
 	function handleComunidad(newComunidad) {
-		setComunidad(comunidad => newComunidad);
 		actions.setComunidad(newComunidad);
 	}
 
@@ -33,6 +36,7 @@ export const AlquilaTuPropiedad = props => {
 								<label htmlFor="calle">Calle</label>
 								<input
 									type="text"
+									value={calle}
 									className="form-control"
 									id="calle"
 									onChange={event => actions.setCalle(event.target.value)}
@@ -42,6 +46,7 @@ export const AlquilaTuPropiedad = props => {
 								<label htmlFor="numero">Número</label>
 								<input
 									type="number"
+									value={numero}
 									className="form-control"
 									id="numero"
 									min="0"
@@ -54,6 +59,7 @@ export const AlquilaTuPropiedad = props => {
 								<label htmlFor="ciudad">Ciudad</label>
 								<input
 									type="text"
+									value={ciudad}
 									className="form-control"
 									id="ciudad"
 									onChange={event => actions.setCiudad(event.target.value)}
@@ -63,6 +69,7 @@ export const AlquilaTuPropiedad = props => {
 								<label htmlFor="codigoPostal">Código Postal</label>
 								<input
 									type="number"
+									value={codigoPostal}
 									className="form-control"
 									id="codigoPostal"
 									min="0"
@@ -76,6 +83,7 @@ export const AlquilaTuPropiedad = props => {
 								<select
 									id="comunidad"
 									name="comunidad"
+									value={comunidad}
 									className="form-control"
 									onChange={event => handleComunidad(event.target.value)}>
 									<option>Andalucía</option>

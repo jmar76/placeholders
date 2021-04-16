@@ -6,6 +6,17 @@ import { Link } from "react-router-dom";
 export const FormularioAmenidades = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	const descripcion = actions.getDescripcion();
+	const piscina = actions.getPiscina();
+	const cocina = actions.getCocina();
+	const parking = actions.getParking();
+	const wifi = actions.getWifi();
+	const tv = actions.getTv();
+	const aire_acondicionado = actions.getAire_acondicionado();
+	const calefaccion = actions.getCalefaccion();
+	const chimenea = actions.getChimenea();
+	const agua_caliente = actions.getAguaCaliente();
+	const zona_trabajo = actions.getZona_trabajo();
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -28,6 +39,7 @@ export const FormularioAmenidades = props => {
 								<textarea
 									className="form-control"
 									id="descripcionAlojamiento"
+									value={descripcion}
 									rows="5"
 									onChange={event => {
 										actions.setDescripcion(event.target.value);
@@ -44,7 +56,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={piscina}
 										id="piscina"
 										onChange={event => {
 											actions.setPiscina(event.target.checked);
@@ -58,7 +70,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={cocina}
 										id="cocina"
 										onChange={event => {
 											actions.setCocina(event.target.checked);
@@ -72,7 +84,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={parking}
 										id="parking"
 										onChange={event => {
 											actions.setParking(event.target.checked);
@@ -86,7 +98,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={wifi}
 										id="wifi"
 										onChange={event => {
 											actions.setWifi(event.target.checked);
@@ -100,7 +112,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={tv}
 										id="tv"
 										onChange={event => {
 											actions.setTv(event.target.checked);
@@ -116,7 +128,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={aire_acondicionado}
 										id="aireAcondicionado"
 										onChange={event => {
 											actions.setAire_acondicionado(event.target.checked);
@@ -130,7 +142,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={calefaccion}
 										id="calefaccion"
 										onChange={event => {
 											actions.setCalefaccion(event.target.checked);
@@ -144,7 +156,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={chimenea}
 										id="chimenea"
 										onChange={event => {
 											actions.setChimenea(event.target.checked);
@@ -158,7 +170,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={agua_caliente}
 										id="aguaCaliente"
 										onChange={event => {
 											actions.setAgua_caliente(event.target.checked);
@@ -172,7 +184,7 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultChecked={zona_trabajo}
 										id="zonaDeTrabajo"
 										onChange={event => {
 											actions.setZona_trabajo(event.target.checked);

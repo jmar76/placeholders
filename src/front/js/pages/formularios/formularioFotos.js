@@ -9,7 +9,7 @@ export const FormularioFotos = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [files, setFiles] = useState([]);
+	const [files, setFiles] = useState(actions.getFotos);
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
 
@@ -73,7 +73,7 @@ export const FormularioFotos = props => {
 						</Dropzone>
 					</form>
 					{!mensaje ? <h4>Imágenes Seleccionadas</h4> : ""}
-					{!mensaje ? <ul>{acceptedFileItems}</ul> : ""}
+					{!mensaje ? <ul style={{ listStyleType: "none" }}>{acceptedFileItems}</ul> : ""}
 				</div>
 			</div>
 		</div>
