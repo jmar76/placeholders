@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Propiedad, Amenidades
+from api.models import db, User, Propiedad, Amenidades, Provincias, Localidades
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
@@ -152,5 +152,45 @@ def amenidades():
 
     return jsonify("se subio la informacion"), 200
 
+@api.route('/provincias', methods=['POST'])
+def provincias():
+    body = request.get_json()
+    print(body)
 
+    try:
+        Provincias.create_provincias(body["almeria"], body["cadiz"],
+                                    body["cordoba"], body["granada"],
+                                    body["huelva"], body["jaen"],
+                                    body["malaga"], body["sevilla"])
+                                    
+    except Exception as err:
+        print(err)
 
+    # except:
+    #     raise APIException("Error")
+
+    return jsonify("se subio la informacion"), 200
+
+@api.route('/localidades', methods=['POST'])
+def localidades():
+    body = request.get_json()
+    print(body)
+
+    try:
+        Localidades.create_provincias(body["abrucena"], body["agua_amarga"], body["berja"], body["las_negras"],body["lucainena_de_las_torres"], body["mojacar"],   body["malaga"], body["sevilla"], body["rodalquilar"], body["velez_blanco"],
+        body["arcos_de_la_frontera"], body["castellar_de_la_frontera"],body["chipiona"], body["grazalema"],   body["medina_sidonia"], body["olvera"],body["sanlucar_de_barrameda"], body["vejer_de_la_frontera"],
+        body["almodovar_del_rio"], body["baena"], body["espejo"], body["iznajar"],body["luque"], body["priego_de_cordoba"], body["zuheros"],
+        body["albañuelas"], body["castril"], body["guadix"], body["montefrio"], body["nigüelas"], body["nivar"], body["pampaneira"], body["salobreña"], body["trevelez"], 
+        body["alcala_la_real"], body["alcaudete"],body["baeza"], body["baños_de_la_encima"], body["cazorla"], body["hornos"],body["la_iruela"], body["ubeda"],
+        body["alajar"], body["almonaster_la_real"],body["ayamonte"], body["aracena"], body["el_rocio_almonte"], body["el_rompido"],body["jagubo"], body["moguer"],body["palos_de_frontera"],
+        body["antequera"],body["archidona"],body["casares"],body["frigiliana"],body["marbella"],body["mijas"],body["nerja"],body["ojen"],body["ronda"],
+        body["aznalcazar"],body["carmona"],body["cazalla_de_la_sierra"],body["constatina"],body["ecija"],body["estepa"],body["lebrija"],body["marchena"], body["osuna"],body["sanlucar_la_mayor"],body["santiponce"],body["utrera"])                            
+                                 
+                                    
+    except Exception as err:
+        print(err)
+
+    # except:
+    #     raise APIException("Error")
+
+    return jsonify("se subio la informacion"), 200
