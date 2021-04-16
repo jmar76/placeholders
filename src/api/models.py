@@ -170,6 +170,9 @@ class Localidades(db.Model):
         localidades.santiponce = santiponce
         localidades.utrera = utrera
 
+        db.session.add(localidades)
+        db.session.commit()
+
 class Provincias(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     almeria = db.Column(db.String(120),unique=False, nullable=False)
@@ -192,6 +195,9 @@ class Provincias(db.Model):
         provincias.jaen = jaen
         provincias.malaga = malaga
         provincias.sevilla = sevilla
+
+        db.session.add(provincias)
+        db.session.commit()
 
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
