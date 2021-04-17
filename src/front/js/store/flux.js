@@ -211,7 +211,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				return store.zona_trabajo;
 			},
+			clearFormValues: () => {
+				let store = getStore();
+				setStore({
+					calle: "",
+					numero: "",
+					ciudad: "",
+					codigoPostal: "",
+					comunidad: "andalucia",
+					dormitorios: "",
+					huespedes: "",
+					camas: "",
+					bathrooms: "",
+					descripcion: "",
+					fotos: [],
 
+					piscina: false,
+					cocina: false,
+					parking: false,
+					wifi: false,
+					tv: false,
+					aire_acondicionado: false,
+					calefaccion: false,
+					chimenea: false,
+					agua_caliente: false,
+					zona_trabajo: false
+				});
+			},
 			getFormValues: () => {
 				let store = getStore();
 				let respuestas = {};
