@@ -16,8 +16,8 @@ api = Blueprint('api', __name__)
 def signup():
     body = request.get_json()
     password = body["password"]
-    test = password.encode('utf-8')
-    hashed = bcrypt.hashpw(test, bcrypt.gensalt())
+    encoded_password = password.encode("UTF-8")
+    hashed = bcrypt.hashpw(encoded_password, bcrypt.gensalt(10))
 
     User.create_user(body["name"], body["lastname"],
                         body["email"], hashed)
@@ -30,29 +30,20 @@ def login():
     body = request.get_json()
     email = body["email"]
     password = body["password"]
+    test = password.encode('utf-8')
+    
     
     user = User.get_with_email(email)
-    hashed = user.password
+    hashed = user.password.encode('utf-8')
 
     if user is None:
         raise APIException("Datos incorrectos")
-    
-    if bcrypt.checkpw(password, hashed):
-        access_token = create_access_token(identity=user.id)
+    if bcrypt.checkpw(test, hashed):
+        access_token = create_access_token(identity = user.id)
         return jsonify({"access_token": access_token})
-    else: 
+    else:
         raise APIException("Datos incorrectos")
-
-@api.route("/login", methods=["PUT"])
-def return_access_token():
-    body = request.get_json()
-    email = body["email"]
     
-    user = User.get_with_email(email)
-    if user is None:
-        raise APIException("Datos incorrectos")
-    access_token = create_access_token(identity=user.id)
-    return jsonify({"access_token": access_token})
 
 @api.route("/profile", methods=['GET'])
 @jwt_required()

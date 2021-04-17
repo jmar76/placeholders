@@ -8,7 +8,7 @@ class User(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), unique=False, nullable=False)
+    password = db.Column(db.BINARY(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     token = db.Column(db.String(254), unique=True, nullable=True)
     propiedades = db.relationship('Propiedad', back_populates="user")
