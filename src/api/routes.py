@@ -8,7 +8,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 import random
-import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -16,8 +16,7 @@ api = Blueprint('api', __name__)
 def signup():
     body = request.get_json()
     password = body["password"]
-    encoded_password = password.encode("UTF-8")
-    hashed = bcrypt.hashpw(encoded_password, bcrypt.gensalt(10))
+    hashed = generate_password_hash(password, "sha256")
 
     User.create_user(body["name"], body["lastname"],
                         body["email"], hashed)
@@ -30,15 +29,11 @@ def login():
     body = request.get_json()
     email = body["email"]
     password = body["password"]
-    test = password.encode('utf-8')
-    
-    
     user = User.get_with_email(email)
-    hashed = user.password.encode('utf-8')
-
+    
     if user is None:
         raise APIException("Datos incorrectos")
-    if bcrypt.checkpw(test, hashed):
+    if check_password_hash(user.password, password):
         access_token = create_access_token(identity = user.id)
         return jsonify({"access_token": access_token})
     else:

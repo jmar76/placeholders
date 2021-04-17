@@ -32,10 +32,10 @@ export const FormularioFotos = props => {
 
 	const acceptedFileItems = files.map(file => (
 		<li key={file.path}>
-			{file.path} - {file.size} bytes
-			<span className="ml-5" onClick={() => borrarFotos(file.path)}>
+			<span className="pr-5" onClick={() => borrarFotos(file.path)}>
 				<FaTimesCircle />
 			</span>
+			{file.path} - {file.size} bytes
 		</li>
 	));
 	let responseOk = false;
