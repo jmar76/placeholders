@@ -19,6 +19,8 @@ cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
 boto3 = "*"
+bcrypt = "*"
+werkzeug = "*"
 
 [requires]
 python_version = "3.8"

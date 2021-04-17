@@ -38,7 +38,8 @@ export const Navigation = props => {
 		fetch(API_URL + "/api/propiedades", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + actions.getAccessToken()
 			},
 			body: JSON.stringify({
 				calle: values.calle,
@@ -54,6 +55,7 @@ export const Navigation = props => {
 			})
 		}).then(response => {
 			responseOk = response.ok;
+			actions.clearFormValues();
 			return response.json();
 		});
 

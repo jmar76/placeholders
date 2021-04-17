@@ -8,27 +8,19 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 import random
+from werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
-
-
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend"
-    }
 
 @api.route('/signup', methods=['POST'])
 def signup():
     body = request.get_json()
-    try:
-        User.create_user(body["name"], body["lastname"],
-                         body["email"], body["password"])
-           
-    except:
-        raise APIException("Error al introducir los datos, pruebe de nuevo!")
+    password = body["password"]
+    hashed = generate_password_hash(password, "sha256")
 
+    User.create_user(body["name"], body["lastname"],
+                        body["email"], hashed)
+        
     return jsonify({}), 200
 
 
@@ -36,25 +28,17 @@ def signup():
 def login():
     body = request.get_json()
     email = body["email"]
-    
+    password = body["password"]
     user = User.get_with_email(email)
-
+    
     if user is None:
         raise APIException("Datos incorrectos")
-
-    
-    return jsonify({"hash": user.password})
-
-@api.route("/login", methods=["PUT"])
-def return_access_token():
-    body = request.get_json()
-    email = body["email"]
-    
-    user = User.get_with_email(email)
-    if user is None:
+    if check_password_hash(user.password, password):
+        access_token = create_access_token(identity = user.id)
+        return jsonify({"access_token": access_token})
+    else:
         raise APIException("Datos incorrectos")
-    access_token = create_access_token(identity=user.id)
-    return jsonify({"access_token": access_token})
+    
 
 @api.route("/profile", methods=['GET'])
 @jwt_required()
@@ -117,19 +101,19 @@ def forgot_password ():
     return jsonify({}), 200
 
 @api.route('/propiedades', methods=['POST'])
+@jwt_required()
 def propiedades():
     body = request.get_json()
     print(body)
 
-    try:
-        Propiedad.create_propiedad(body["calle"], body["numero"],
-                                    body["ciudad"], body["codigo_postal"],
-                                    body["comunidad"], body["dormitorios"],
-                                    body["huespedes"], body["camas"],
-                                    body["bathrooms"], body["descripcion"])
+    user_id = get_jwt_identity()
+    
 
-    except:
-        raise APIException("Error")
+    Propiedad.create_propiedad(user_id, body["calle"], body["numero"],
+                                body["ciudad"], body["codigo_postal"],
+                                body["comunidad"], body["dormitorios"],
+                                body["huespedes"], body["camas"],
+                                body["bathrooms"], body["descripcion"])
 
     return jsonify("se subio la informacion"), 200
 
