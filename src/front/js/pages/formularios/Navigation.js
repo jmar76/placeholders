@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import { Steps, Step } from "react-step-builder";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export const Navigation = props => {
@@ -9,6 +10,7 @@ export const Navigation = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
+	const history = useHistory();
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -21,7 +23,7 @@ export const Navigation = props => {
 	let responseOk = false;
 
 	function handleSubmit() {
-		fetch(API_URL + "/api/provincias", {
+		/*fetch(API_URL + "/api/provincias", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -44,29 +46,7 @@ export const Navigation = props => {
 		}).then(response => {
 			responseOk = response.ok;
 			return response.json();
-		});
-
-		fetch(API_URL + "/api/amenidades", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				piscina: values.piscina,
-				cocina: values.cocina,
-				parking: values.parking,
-				wifi: values.wifi,
-				tv: values.tv,
-				aire_acondicionado: values.aire_acondicionado,
-				calefaccion: values.calefaccion,
-				chimenea: values.chimenea,
-				agua_caliente: values.agua_caliente,
-				zona_trabajo: values.zona_trabajo
-			})
-		}).then(response => {
-			responseOk = response.ok;
-			return response.json();
-		});
+		});*/
 
 		fetch(API_URL + "/api/propiedades", {
 			method: "POST",
@@ -84,11 +64,21 @@ export const Navigation = props => {
 				huespedes: values.huespedes,
 				camas: values.camas,
 				bathrooms: values.bathrooms,
-				descripcion: values.descripcion
+				descripcion: values.descripcion,
+				piscina: values.piscina,
+				cocina: values.cocina,
+				parking: values.parking,
+				wifi: values.wifi,
+				tv: values.tv,
+				aire_acondicionado: values.aire_acondicionado,
+				calefaccion: values.calefaccion,
+				chimenea: values.chimenea,
+				agua_caliente: values.agua_caliente,
+				zona_trabajo: values.zona_trabajo
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			actions.clearFormValues();
+			//actions.clearFormValues();
 			return response.json();
 		});
 
