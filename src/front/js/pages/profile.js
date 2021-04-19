@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
 	const API_URL = process.env.BACKEND_URL;
@@ -28,9 +29,7 @@ const Profile = () => {
 
 	return (
 		<div className="jumbotron">
-			<div>
-				<strong>Correo electrónico:</strong> {email}
-			</div>
+			<div>Usuario: {email}</div>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import { Steps, Step } from "react-step-builder";
 import PropTypes from "prop-types";
@@ -10,9 +10,42 @@ export const Navigation = props => {
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
 
+	useEffect(() => {
+		let accesstoken = actions.getAccessToken();
+		if (!accesstoken) {
+			history.push("/login");
+			return;
+		}
+	}, []);
+
 	let responseOk = false;
 
 	function handleSubmit() {
+		fetch(API_URL + "/api/provincias", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				comunidad: values.comunidad
+			})
+		}).then(response => {
+			responseOk = response.ok;
+			return response.json();
+		});
+		fetch(API_URL + "/api/localidad", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				ciudad: values.ciudad
+			})
+		}).then(response => {
+			responseOk = response.ok;
+			return response.json();
+		});
+
 		fetch(API_URL + "/api/amenidades", {
 			method: "POST",
 			headers: {

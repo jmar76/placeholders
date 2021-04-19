@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			numero: "",
 			ciudad: "",
 			codigoPostal: "",
-			comunidad: "andalucia",
+			comunidad: "",
 			dormitorios: "",
 			huespedes: "",
 			camas: "",

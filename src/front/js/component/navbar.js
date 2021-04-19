@@ -93,6 +93,7 @@ export const Navbar = () => {
 				{!accesstoken ? barraSignup : ""}
 				{!accesstoken ? barraLogin : ""}
 				{!accesstoken ? barraPropiedad : ""}
+
 				{accesstoken ? profile : ""}
 				{accesstoken ? dropdown : ""}
 			</div>
