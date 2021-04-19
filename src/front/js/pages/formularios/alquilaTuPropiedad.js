@@ -6,15 +6,11 @@ import { Link } from "react-router-dom";
 export const AlquilaTuPropiedad = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const calle = actions.getCalle();
-	const numero = actions.getNumero();
-	const ciudad = actions.getCiudad();
-	const codigoPostal = actions.getCodigoPostal();
-	const comunidad = actions.getComunidad();
-
-	function handleComunidad(newComunidad) {
-		actions.setComunidad(newComunidad);
-	}
+	const calle = actions.getFormValue("calle");
+	const numero = actions.getFormValue("numero");
+	const ciudad = actions.getFormValue("ciudad");
+	const codigoPostal = actions.getFormValue("codigoPostal");
+	const provincia = actions.getFormValue("provincia");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -37,9 +33,10 @@ export const AlquilaTuPropiedad = props => {
 								<input
 									type="text"
 									value={calle}
+									name="calle"
 									className="form-control"
 									id="calle"
-									onChange={event => actions.setCalle(event.target.value)}
+									onChange={event => actions.setFormValue(event.target.id, event.target.value)}
 								/>
 							</div>
 							<div className="form-group col-md-2">
@@ -50,20 +47,20 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="numero"
 									min="0"
-									onChange={event => actions.setNumero(event.target.value)}
+									onChange={event => actions.setFormValue(event.target.id, event.target.value)}
 								/>
 							</div>
 						</div>
 
 						<div className="form-row">
 							<div className="form-group col-md-12">
-								<label htmlFor="comunidad">Provincia</label>
+								<label htmlFor="provincia">Provincia</label>
 								<select
-									id="comunidad"
-									name="comunidad"
-									value={comunidad}
+									id="provincia"
+									name="provincia"
+									value={provincia}
 									className="form-control"
-									onChange={event => handleComunidad(event.target.value)}>
+									onChange={event => actions.setFormValue("provincia", event.target.value)}>
 									<option>Selecciona Provincia</option>
 									<option>Almeria</option>
 									<option>Cadiz</option>
@@ -80,13 +77,13 @@ export const AlquilaTuPropiedad = props => {
 						<div className="form-row">
 							<div className="form-group col-md-8">
 								<label htmlFor="ciudad">Localidad</label>
-								{comunidad == "Almeria" ? (
+								{provincia == "Almeria" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Abrucena</option>
 										<option>Agua Amarga</option>
@@ -101,13 +98,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Cadiz" ? (
+								{provincia == "Cadiz" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Arcos de la Frontera</option>
 										<option>Castellar de la Frontera</option>
@@ -122,13 +119,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Cordoba" ? (
+								{provincia == "Cordoba" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Almodovar del Rio</option>
 										<option>Baena</option>
@@ -143,13 +140,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Granada" ? (
+								{provincia == "Granada" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Albañuelas</option>
 										<option>Castril</option>
@@ -165,13 +162,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Jaen" ? (
+								{provincia == "Jaen" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Alcala la Real</option>
 										<option>Alcaudete</option>
@@ -186,13 +183,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Huelva" ? (
+								{provincia == "Huelva" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Alajar</option>
 										<option>Almonaster La Real</option>
@@ -208,13 +205,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Malaga" ? (
+								{provincia == "Malaga" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Antequera</option>
 										<option>Archidona</option>
@@ -230,13 +227,13 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Sevilla" ? (
+								{provincia == "Sevilla" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
 										value={ciudad}
 										className="form-control"
-										onChange={event => actions.setCiudad(event.target.value)}>
+										onChange={event => actions.setFormValue("ciudad", event.target.value)}>
 										<option>Selecciona Localidad</option>
 										<option>Aznalcazar</option>
 										<option>Carmona</option>
@@ -263,7 +260,7 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									id="codigoPostal"
 									min="0"
-									onChange={event => actions.setCodigoPostal(event.target.value)}
+									onChange={event => actions.setFormValue(event.target.id, event.target.value)}
 								/>
 							</div>
 						</div>
