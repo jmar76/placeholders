@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			numero: "",
 			ciudad: "",
 			codigoPostal: "",
-			comunidad: "",
+			provincia: "",
 			dormitorios: "",
 			huespedes: "",
 			camas: "",
@@ -75,13 +75,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				return store.codigoPostal;
 			},
-			setComunidad: value => {
+			setProvincia: value => {
 				let store = getStore();
-				setStore({ comunidad: value });
+				setStore({ provincia: value });
 			},
-			getComunidad: () => {
+			getProvincia: () => {
 				let store = getStore();
-				return store.comunidad;
+				return store.provincia;
 			},
 			setDormitorios: value => {
 				let store = getStore();
@@ -218,7 +218,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					numero: "",
 					ciudad: "",
 					codigoPostal: "",
-					comunidad: "andalucia",
+					provincia: "",
 					dormitorios: "",
 					huespedes: "",
 					camas: "",
@@ -245,7 +245,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let numero = store.numero;
 				let ciudad = store.ciudad;
 				let codigoPostal = store.codigoPostal;
-				let comunidad = store.comunidad;
+				let provincia = store.provincia;
 				let dormitorios = store.dormitorios;
 				let huespedes = store.huespedes;
 				let camas = store.camas;
@@ -269,7 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					numero,
 					ciudad,
 					codigoPostal,
-					comunidad,
+					provincia,
 					dormitorios,
 					huespedes,
 					camas,

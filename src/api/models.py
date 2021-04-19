@@ -54,7 +54,7 @@ class Propiedad(db.Model):
     numero = db.Column(db.String(120), unique=False, nullable=False)
     ciudad = db.Column(db.String(120), unique=False, nullable=False)
     codigo_postal = db.Column(db.String(120), unique=False, nullable=False)
-    comunidad = db.Column(db.String(120), unique=False, nullable=False)
+    provincia = db.Column(db.String(120), unique=False, nullable=False)
     dormitorios = db.Column(db.String(120), unique=False, nullable=False)
     huespedes = db.Column(db.String(120), unique=False, nullable=False)
     camas = db.Column(db.String(120), unique=False, nullable=False)
@@ -63,14 +63,14 @@ class Propiedad(db.Model):
     amenidades = db.relationship('Amenidades', back_populates="propiedad")
 
     @classmethod
-    def create_propiedad(cls, user_id, calle, numero, ciudad, codigo_postal, comunidad, dormitorios, huespedes, camas, bathrooms, descripcion):
+    def create_propiedad(cls, user_id, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, descripcion):
         propiedad = cls()
         propiedad.user_id = user_id
         propiedad.calle = calle
         propiedad.numero = numero
         propiedad.ciudad = ciudad
         propiedad.codigo_postal = codigo_postal
-        propiedad.comunidad = comunidad
+        propiedad.provincia = provincia
         propiedad.dormitorios = dormitorios
         propiedad.huespedes = huespedes
         propiedad.camas = camas
@@ -89,8 +89,8 @@ class Propiedad(db.Model):
     def get(cls, id):
         return cls.query.get(id)
 
-    def __repr__(self):
-        return self.id
+    def __str__(self):
+        return str(self.id)
 
 class Provincias(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -142,4 +142,4 @@ class Amenidades(db.Model):
         db.session.commit()
 
     def __str__(self):
-        return str(self.id)
+        return str(self.id) or ""

@@ -59,7 +59,7 @@ export const Navigation = props => {
 				numero: values.numero,
 				ciudad: values.ciudad,
 				codigo_postal: values.codigoPostal,
-				comunidad: values.comunidad,
+				provincia: values.provincia,
 				dormitorios: values.dormitorios,
 				huespedes: values.huespedes,
 				camas: values.camas,

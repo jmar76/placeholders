@@ -10,10 +10,10 @@ export const AlquilaTuPropiedad = props => {
 	const numero = actions.getNumero();
 	const ciudad = actions.getCiudad();
 	const codigoPostal = actions.getCodigoPostal();
-	const comunidad = actions.getComunidad();
+	const provincia = actions.getProvincia();
 
 	function handleComunidad(newComunidad) {
-		actions.setComunidad(newComunidad);
+		actions.setProvincia(newComunidad);
 	}
 
 	useEffect(() => {
@@ -61,7 +61,7 @@ export const AlquilaTuPropiedad = props => {
 								<select
 									id="comunidad"
 									name="comunidad"
-									value={comunidad}
+									value={provincia}
 									className="form-control"
 									onChange={event => handleComunidad(event.target.value)}>
 									<option>Selecciona Provincia</option>
@@ -80,7 +80,7 @@ export const AlquilaTuPropiedad = props => {
 						<div className="form-row">
 							<div className="form-group col-md-8">
 								<label htmlFor="ciudad">Localidad</label>
-								{comunidad == "Almeria" ? (
+								{provincia == "Almeria" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -101,7 +101,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Cadiz" ? (
+								{provincia == "Cadiz" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -122,7 +122,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Cordoba" ? (
+								{provincia == "Cordoba" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -143,7 +143,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Granada" ? (
+								{provincia == "Granada" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -165,7 +165,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Jaen" ? (
+								{provincia == "Jaen" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -186,7 +186,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Huelva" ? (
+								{provincia == "Huelva" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -208,7 +208,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Malaga" ? (
+								{provincia == "Malaga" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
@@ -230,7 +230,7 @@ export const AlquilaTuPropiedad = props => {
 									""
 								)}
 
-								{comunidad == "Sevilla" ? (
+								{provincia == "Sevilla" ? (
 									<select
 										id="Ciudad"
 										name="Ciudad"
