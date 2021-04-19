@@ -9,7 +9,7 @@ export const FormularioFotos = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const [files, setFiles] = useState(actions.getFotos);
+	const [files, setFiles] = useState(actions.getFormValue("fotos"));
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
 
@@ -22,7 +22,7 @@ export const FormularioFotos = props => {
 	}, []);
 
 	useEffect(() => {
-		actions.setFotos(files);
+		actions.setFormValue("fotos", files);
 	}, [files]);
 
 	const borrarFotos = key => {

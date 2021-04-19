@@ -23,31 +23,6 @@ export const Navigation = props => {
 	let responseOk = false;
 
 	function handleSubmit() {
-		/*fetch(API_URL + "/api/provincias", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				comunidad: values.comunidad
-			})
-		}).then(response => {
-			responseOk = response.ok;
-			return response.json();
-		});
-		fetch(API_URL + "/api/localidad", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				ciudad: values.ciudad
-			})
-		}).then(response => {
-			responseOk = response.ok;
-			return response.json();
-		});*/
-
 		fetch(API_URL + "/api/propiedades", {
 			method: "POST",
 			headers: {
@@ -78,7 +53,7 @@ export const Navigation = props => {
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			//actions.clearFormValues();
+			actions.clearFormValues();
 			return response.json();
 		});
 

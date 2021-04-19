@@ -45,7 +45,6 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-
 class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -91,19 +90,6 @@ class Propiedad(db.Model):
 
     def __str__(self):
         return str(self.id)
-
-class Provincias(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    provincia = db.Column(db.String(120), unique=False, nullable=False)
-
-    @classmethod
-    def create_provincias(cls, provincia):
-        provincias = cls()
-        provincias.provincia = provincia
-
-        db.session.add(provincias)
-        db.session.commit()
-
 
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)

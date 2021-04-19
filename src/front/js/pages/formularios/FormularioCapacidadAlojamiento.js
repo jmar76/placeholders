@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 export const FormularioCapacidadAlojamiento = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	let dormitorios = actions.getDormitorios();
-	let huespedes = actions.getHuespedes();
-	let camas = actions.getCamas();
-	let bathrooms = actions.getBathrooms();
+	let dormitorios = actions.getFormValue("dormitorios");
+	let huespedes = actions.getFormValue("huespedes");
+	let camas = actions.getFormValue("camas");
+	let bathrooms = actions.getFormValue("bathrooms");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -38,7 +38,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="dormitorios"
 									onChange={event => {
-										actions.setDormitorios(event.target.value);
+										actions.setFormValue(event.target.id, event.target.value);
 									}}
 								/>
 							</div>
@@ -50,7 +50,7 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="huespedes"
 									onChange={event => {
-										actions.setHuespedes(event.target.value);
+										actions.setFormValue(event.target.id, event.target.value);
 									}}
 								/>
 							</div>
@@ -64,19 +64,19 @@ export const FormularioCapacidadAlojamiento = props => {
 									className="form-control"
 									id="camas"
 									onChange={event => {
-										actions.setCamas(event.target.value);
+										actions.setFormValue(event.target.id, event.target.value);
 									}}
 								/>
 							</div>
 							<div className="form-group col-md-6">
-								<label htmlFor="bathroom">Baños</label>
+								<label htmlFor="bathrooms">Baños</label>
 								<input
 									type="number"
 									value={bathrooms}
 									className="form-control"
-									id="bathroom"
+									id="bathrooms"
 									onChange={event => {
-										actions.setBathrooms(event.target.value);
+										actions.setFormValue(event.target.id, event.target.value);
 									}}
 								/>
 							</div>

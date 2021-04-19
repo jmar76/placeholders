@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 export const FormularioAmenidades = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
-	const descripcion = actions.getDescripcion();
-	const piscina = actions.getPiscina();
-	const cocina = actions.getCocina();
-	const parking = actions.getParking();
-	const wifi = actions.getWifi();
-	const tv = actions.getTv();
-	const aire_acondicionado = actions.getAire_acondicionado();
-	const calefaccion = actions.getCalefaccion();
-	const chimenea = actions.getChimenea();
-	const agua_caliente = actions.getAguaCaliente();
-	const zona_trabajo = actions.getZona_trabajo();
+	const descripcion = actions.getFormValue("descripcion");
+	const piscina = actions.getFormValue("piscina");
+	const cocina = actions.getFormValue("cocina");
+	const parking = actions.getFormValue("parking");
+	const wifi = actions.getFormValue("wifi");
+	const tv = actions.getFormValue("tv");
+	const aire_acondicionado = actions.getFormValue("aire_acondicionado");
+	const calefaccion = actions.getFormValue("calefaccion");
+	const chimenea = actions.getFormValue("chimenea");
+	const agua_caliente = actions.getFormValue("agua_caliente");
+	const zona_trabajo = actions.getFormValue("zona_trabajo");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -33,16 +33,16 @@ export const FormularioAmenidades = props => {
 					<form>
 						<div className="form-row">
 							<div className="form-group col-md-12">
-								<label htmlFor="descripcionAlojamiento">
+								<label htmlFor="descripcion">
 									<h4>Describe tu alojamiento</h4>
 								</label>
 								<textarea
 									className="form-control"
-									id="descripcionAlojamiento"
+									id="descripcion"
 									value={descripcion}
 									rows="5"
 									onChange={event => {
-										actions.setDescripcion(event.target.value);
+										actions.setFormValue(event.target.id, event.target.value);
 									}}
 								/>
 							</div>
@@ -59,7 +59,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={piscina}
 										id="piscina"
 										onChange={event => {
-											actions.setPiscina(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="piscina">
@@ -73,7 +73,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={cocina}
 										id="cocina"
 										onChange={event => {
-											actions.setCocina(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="cocina">
@@ -87,7 +87,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={parking}
 										id="parking"
 										onChange={event => {
-											actions.setParking(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="parking">
@@ -101,7 +101,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={wifi}
 										id="wifi"
 										onChange={event => {
-											actions.setWifi(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="wifi">
@@ -115,7 +115,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={tv}
 										id="tv"
 										onChange={event => {
-											actions.setTv(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="tv">
@@ -129,12 +129,12 @@ export const FormularioAmenidades = props => {
 										className="form-check-input"
 										type="checkbox"
 										defaultChecked={aire_acondicionado}
-										id="aireAcondicionado"
+										id="aire_acondicionado"
 										onChange={event => {
-											actions.setAire_acondicionado(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
-									<label className="form-check-label" htmlFor="aireAcondicionado">
+									<label className="form-check-label" htmlFor="aire_acondicionado">
 										Aire acondicionado
 									</label>
 								</div>
@@ -145,7 +145,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={calefaccion}
 										id="calefaccion"
 										onChange={event => {
-											actions.setCalefaccion(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="calefaccion">
@@ -159,7 +159,7 @@ export const FormularioAmenidades = props => {
 										defaultChecked={chimenea}
 										id="chimenea"
 										onChange={event => {
-											actions.setChimenea(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="chimenea">
@@ -171,9 +171,9 @@ export const FormularioAmenidades = props => {
 										className="form-check-input"
 										type="checkbox"
 										defaultChecked={agua_caliente}
-										id="aguaCaliente"
+										id="agua_caliente"
 										onChange={event => {
-											actions.setAgua_caliente(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
 									<label className="form-check-label" htmlFor="aguaCaliente">
@@ -185,12 +185,12 @@ export const FormularioAmenidades = props => {
 										className="form-check-input"
 										type="checkbox"
 										defaultChecked={zona_trabajo}
-										id="zonaDeTrabajo"
+										id="zona_trabajo"
 										onChange={event => {
-											actions.setZona_trabajo(event.target.checked);
+											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
-									<label className="form-check-label" htmlFor="zonaDeTrabajo">
+									<label className="form-check-label" htmlFor="zona_trabajo">
 										Zona para Trabajar
 									</label>
 								</div>

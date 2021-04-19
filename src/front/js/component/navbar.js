@@ -23,6 +23,7 @@ export const Navbar = () => {
 
 	function logout() {
 		localStorage.removeItem("access_token");
+		actions.clearFormValues();
 		actions.deleteAccessToken();
 	}
 	let usuario = <i className="fas fa-user navbar-brand mb-0 h1 text-warning" />;
