@@ -3,6 +3,11 @@ from flask import Flask
 
 db = SQLAlchemy()
 
+association_table = db.Table('association',
+    db.Column('propiedad_id', db.Integer, db.ForeignKey('propiedad.id')),
+    db.Column('right_id', db.Integer, db.ForeignKey('amenidades.id'))
+)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
@@ -59,7 +64,7 @@ class Propiedad(db.Model):
     camas = db.Column(db.String(120), unique=False, nullable=False)
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
     descripcion = db.Column(db.String(120), unique=False, nullable=False)
-    amenidades = db.relationship('Amenidades', back_populates="propiedad")
+    amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedad")
 
     @classmethod
     def create_propiedad(cls, user_id, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, descripcion):
@@ -93,39 +98,13 @@ class Propiedad(db.Model):
 
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    propiedad_id = db.Column(db.Integer, db.ForeignKey('propiedad.id'))
-    propiedad = db.relationship("Propiedad", back_populates="amenidades")
-    piscina = db.Column(db.Boolean(), unique=False, nullable=False)
-    cocina = db.Column(db.Boolean(), unique=False, nullable=False)
-    parking = db.Column(db.Boolean(), unique=False, nullable=False)
-    wifi = db.Column(db.Boolean(), unique=False, nullable=False)
-    tv = db.Column(db.Boolean(), unique=False, nullable=False)
-    aire_acondicionado = db.Column(db.Boolean(), unique=False, nullable=False)
-    calefaccion = db.Column(db.Boolean(), unique=False, nullable=False)
-    chimenea = db.Column(db.Boolean(), unique=False, nullable=False)
-    agua_caliente = db.Column(db.Boolean(), unique=False, nullable=False)
-    zona_trabajo = db.Column(db.Boolean(), unique=False, nullable=False)
+    propiedad = db.relationship("Propiedad", secondary=association_table, back_populates="amenidades")
+    amenity = db.Column(db.String(120), unique=False, nullable=False)
 
-    @classmethod
-    def create_amenidades(cls, propiedad_id, piscina, cocina, parking, wifi, tv, aire_acondicionado, calefaccion, chimenea, agua_caliente, zona_trabajo):
-        amenidades = cls()
-        amenidades.propiedad_id = propiedad_id
-        amenidades.piscina = piscina
-        amenidades.cocina = cocina
-        amenidades.parking = parking
-        amenidades.wifi = wifi
-        amenidades.tv = tv
-        amenidades.aire_acondicionado = aire_acondicionado
-        amenidades.calefaccion = calefaccion
-        amenidades.chimenea = chimenea
-        amenidades.agua_caliente = agua_caliente
-        amenidades.zona_trabajo = zona_trabajo
-
-        propiedad = Propiedad.get(propiedad_id)
-        propiedad.amenidades.append(amenidades)
-
-        db.session.add(amenidades)
-        db.session.commit()
+    
 
     def __str__(self):
         return str(self.id) or ""
+
+                #propiedad = Propiedad.get(propiedad_id)
+        #propiedad.amenidades.append(amenidades)
