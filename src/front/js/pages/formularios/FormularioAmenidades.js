@@ -176,7 +176,7 @@ export const FormularioAmenidades = props => {
 											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
-									<label className="form-check-label" htmlFor="aguaCaliente">
+									<label className="form-check-label" htmlFor="agua_caliente">
 										Agua Caliente
 									</label>
 								</div>

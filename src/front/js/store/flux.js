@@ -90,25 +90,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let bathrooms = store.bathrooms;
 				let descripcion = store.descripcion;
 				let fotos = store.fotos;
-				let amenidades = [
-					store.piscina,
-					store.cocina,
-					store.parking,
-					store.wifi,
-					store.tv,
-					store.aire_acondicionado,
-					store.calefaccion,
-					store.chimenea,
-					store.agua_caliente,
-					store.zona_trabajo
-				];
+				let amenidades = {
+					piscina: store.piscina,
+					cocina: store.cocina,
+					parking: store.parking,
+					wifi: store.wifi,
+					tv: store.tv,
+					aire_acondicionado: store.aire_acondicionado,
+					calefaccion: store.calefaccion,
+					chimenea: store.chimenea,
+					agua_caliente: store.agua_caliente,
+					zona_trabajo: store.zona_trabajo
+				};
 
-				console.log(amenidades);
-
-				amenidades.forEach(amenidad => {
-					if (amenidad === true) {
-						console.log(amenidad);
-					}
+				let identifiers = Object.keys(amenidades);
+				let activeAmenities = identifiers.filter(function(id) {
+					return amenidades[id];
 				});
 
 				return (respuestas = {
@@ -122,7 +119,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					camas,
 					bathrooms,
 					descripcion,
-					fotos
+					fotos,
+					activeAmenities
 				});
 			}
 		}

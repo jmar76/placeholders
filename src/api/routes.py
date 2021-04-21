@@ -104,47 +104,25 @@ def forgot_password ():
 def propiedades():
     body = request.get_json()
     user_id = get_jwt_identity()    
-    print(body)
     propiedad_id = Propiedad.create_propiedad(user_id, body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
                                 body["provincia"], body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["descripcion"])
-    print(propiedad_id)
-    Amenidades.create_amenidades(propiedad_id, body["piscina"], body["cocina"],
-                                body["parking"], body["wifi"],
-                                body["tv"], body["aire_acondicionado"],
-                                body["calefaccion"], body["chimenea"],
-                                body["agua_caliente"], body["zona_trabajo"])
+    propiedad = Propiedad.get(propiedad_id)
+    
+    newAmenities = []
 
+    for amenidad in body["amenidades"]:
+        if (Amenidades.get(amenidad) != None):
+            existing = Amenidades.get(amenidad)
+            return propiedad.amenidades.append(existing)
+        if(Amenidades.get(amenidad) == None):
+            return newAmenities.append(amenidad)
+    
+    for amenidad in newAmenities:
+        Amenidades.create_amenity(amenidad, propiedad)
+    
     return jsonify("se subio la informacion"), 200
 
-@api.route('/localidades', methods=['POST'])
-def localidades():
-    body = request.get_json()
-    print(body)
 
-    return jsonify("se subio la informacion"), 200
-
-@api.route('/provincias', methods=['POST'])
-def provincias():
-    body = request.get_json()
-    print(body)
-
-    try:
-        Provincias.create_provincias(body["comunidad"])
-    except Exception as err:
-        print(err)
-
-    # except:
-    #     raise APIException("Error")
-
-    return jsonify("se subio la informacion"), 200
-@api.route('/localidad', methods=['POST'])
-def localidad():
-    body = request.get_json()
-    print(body)
-    # except:
-    #     raise APIException("Error")
-
-    return jsonify("se subio la informacion"), 200

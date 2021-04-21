@@ -40,20 +40,11 @@ export const Navigation = props => {
 				camas: values.camas,
 				bathrooms: values.bathrooms,
 				descripcion: values.descripcion,
-				piscina: values.piscina,
-				cocina: values.cocina,
-				parking: values.parking,
-				wifi: values.wifi,
-				tv: values.tv,
-				aire_acondicionado: values.aire_acondicionado,
-				calefaccion: values.calefaccion,
-				chimenea: values.chimenea,
-				agua_caliente: values.agua_caliente,
-				zona_trabajo: values.zona_trabajo
+				amenidades: values.activeAmenities
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			actions.clearFormValues();
+			//actions.clearFormValues();
 			return response.json();
 		});
 
