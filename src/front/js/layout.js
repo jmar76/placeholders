@@ -19,6 +19,7 @@ import { FormularioCapacidadAlojamiento } from "./pages/formularios/FormularioCa
 import { FormularioAmenidades } from "./pages/formularios/FormularioAmenidades";
 import { FormularioFotos } from "./pages/formularios/formularioFotos";
 import { ForGot } from "./pages/forgot";
+import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 
 const Layout = () => {
 	const config = {
@@ -46,6 +47,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup">
 							<SignUp />
+						</Route>
+						<Route exact path="/vistaAgregarPropiedades">
+							<VistaAgregarPropiedades />
 						</Route>
 						<Route exact path="/login">
 							<LogIn />

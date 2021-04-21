@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/signup.scss";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 export const SignUp = () => {
 	const API_URL = process.env.BACKEND_URL;
 	const [password, setPassword] = useState("");
@@ -51,9 +52,12 @@ export const SignUp = () => {
 	}
 	return (
 		<div className="container">
-			<div className="row mt-5 pt-5">
+			<div className="row mt-0 pt-5">
 				<div className="col-8 offset-md-2 bg-white px-5 pt-5 pb-3 esquinasRedondas">
 					<form>
+						<div className="form-group row">
+							<h5 className="alineacion">Regístrate</h5>
+						</div>
 						<div className="form-group">
 							{error ? (
 								<div className="alert alert-danger text-center" role="alert">
@@ -147,11 +151,11 @@ export const SignUp = () => {
 									/>
 								</div>
 							</div>
-							<div className="form-group row">
-								<div className="col-sm-12">
+							<div className="form-group colorBotonCrearCuenta row ml-1 mr-1">
+								<div className="col-sm-12 ">
 									<button
 										type="button"
-										className="btn btn-danger form-control"
+										className="btn form-control colortexto"
 										value="crear"
 										onClick={crear}>
 										<strong>Crear Cuenta</strong>

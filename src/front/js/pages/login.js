@@ -51,6 +51,9 @@ export const LogIn = () => {
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondas">
 					<form>
+						<div className="form-group row">
+							<h5 className="alineacionIniciaSesion">Inicia Sesión</h5>
+						</div>
 						<div className="form-group">
 							{error ? (
 								<div className="alert alert-danger text-center" role="alert">
@@ -95,7 +98,7 @@ export const LogIn = () => {
 								<div className="col-sm-12">
 									<button
 										type="button"
-										className="btn btn-danger form-control"
+										className="btn colorBotonIniciarSesion form-control colortexto"
 										value="crear"
 										onClick={login}>
 										<strong>Iniciar Sesión</strong>
