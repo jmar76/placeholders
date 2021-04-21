@@ -49,7 +49,7 @@ export const LogIn = () => {
 	return (
 		<div className="container">
 			<div className="row mt-5 pt-5">
-				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondas">
+				<div className="col-6 offset-md-3 bg-white px-5 pt-3 pb-3 esquinasRedondas">
 					<form>
 						<div className="form-group row">
 							<h5 className="alineacionIniciaSesion">Inicia Sesión</h5>

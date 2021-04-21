@@ -53,7 +53,7 @@ export const SignUp = () => {
 	return (
 		<div className="container">
 			<div className="row mt-0 pt-5">
-				<div className="col-8 offset-md-2 bg-white px-5 pt-5 pb-3 esquinasRedondas">
+				<div className="col-8 offset-md-2 bg-white px-5 pt-3 pb-3 esquinasRedondas">
 					<form>
 						<div className="form-group row">
 							<h5 className="alineacion">Regístrate</h5>
@@ -151,11 +151,11 @@ export const SignUp = () => {
 									/>
 								</div>
 							</div>
-							<div className="form-group colorBotonCrearCuenta row ml-1 mr-1">
+							<div className="form-group row ">
 								<div className="col-sm-12 ">
 									<button
 										type="button"
-										className="btn form-control colortexto"
+										className="btn form-control colortexto colorBotonCrearCuenta"
 										value="crear"
 										onClick={crear}>
 										<strong>Crear Cuenta</strong>

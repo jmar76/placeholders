@@ -10,7 +10,7 @@ export const VistaAgregarPropiedades = () => {
 					<div className="col-12  bg-white px-5 pt-5 pb-3 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorPromocionInternacional">
-								<h4>Promocion Internacional</h4>
+								<h4>Promoción Internacional</h4>
 								<p>
 									Mayor visibilidad de su alojamiento a viajeros de toda Europa. Más del 95% de
 									nuestros clientes son extranjeros con estancias superiores a una semana.
