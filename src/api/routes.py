@@ -110,18 +110,15 @@ def propiedades():
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["descripcion"])
     propiedad = Propiedad.get(propiedad_id)
-    
-    newAmenities = []
-
+        
     for amenidad in body["amenidades"]:
         if (Amenidades.get(amenidad) != None):
-            existing = Amenidades.get(amenidad)
-            return propiedad.amenidades.append(existing)
-        if(Amenidades.get(amenidad) == None):
-            return newAmenities.append(amenidad)
-    
-    for amenidad in newAmenities:
-        Amenidades.create_amenity(amenidad, propiedad)
+            existing_amenity = Amenidades.get(amenidad)
+            propiedad.amenidades.append(existing_amenity)
+            db.session.add(existing_amenity)
+            db.session.commit()
+        else:
+            Amenidades.create_amenity(amenidad, propiedad)
     
     return jsonify("se subio la informacion"), 200
 

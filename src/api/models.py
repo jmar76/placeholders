@@ -115,5 +115,10 @@ class Amenidades(db.Model):
     def get(cls, amenity):
         return cls.query.filter_by(amenity=amenity).one_or_none()
 
+    @classmethod
+    def existing_amenity(cls, amenity, propiedad):
+        test = cls.query.filter_by(amenity=amenity).one_or_none()
+        propiedad.amenidades.append(test)
+
     def __str__(self):
-        return str(self.id)
+        return str(self.amenity)
