@@ -90,16 +90,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let bathrooms = store.bathrooms;
 				let descripcion = store.descripcion;
 				let fotos = store.fotos;
-				let piscina = store.piscina;
-				let cocina = store.cocina;
-				let parking = store.parking;
-				let wifi = store.wifi;
-				let tv = store.tv;
-				let aire_acondicionado = store.aire_acondicionado;
-				let calefaccion = store.calefaccion;
-				let chimenea = store.chimenea;
-				let agua_caliente = store.agua_caliente;
-				let zona_trabajo = store.zona_trabajo;
+				let amenidades = {
+					piscina: store.piscina,
+					cocina: store.cocina,
+					parking: store.parking,
+					wifi: store.wifi,
+					tv: store.tv,
+					aire_acondicionado: store.aire_acondicionado,
+					calefaccion: store.calefaccion,
+					chimenea: store.chimenea,
+					agua_caliente: store.agua_caliente,
+					zona_trabajo: store.zona_trabajo
+				};
+
+				let identifiers = Object.keys(amenidades);
+				let activeAmenities = identifiers.filter(function(id) {
+					return amenidades[id];
+				});
 
 				return (respuestas = {
 					calle,
@@ -113,16 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					bathrooms,
 					descripcion,
 					fotos,
-					piscina,
-					cocina,
-					parking,
-					wifi,
-					tv,
-					aire_acondicionado,
-					calefaccion,
-					chimenea,
-					agua_caliente,
-					zona_trabajo
+					activeAmenities
 				});
 			}
 		}
