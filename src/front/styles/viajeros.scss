@@ -14,7 +14,7 @@ color: black;
     text-align: center;  
 }
 .contenedorReservaYa{
-    margin-left: 319px;
+    margin-left: 349px;
     height: 100px;
     text-align: center;
     background-color: rgb(10, 31, 77);
@@ -24,14 +24,9 @@ color: black;
 .posicionamiento{
    justify-content: space-between;
 }
-.colorBotonDardeAlta1{
-     color: white;
-     padding-right: 101px;
-     padding-left: 101px;
-}
-.size
+.sizeCarrito
 {font-size: 29px;
-padding-left: 79px;
+padding-left: 49px;
 padding-top: 11px;
 }
 .colorBotonReservarYa{
@@ -39,4 +34,16 @@ padding-top: 11px;
      color: white;
      padding-right: 129px;
      padding-left: 129px;
+}
+.sizeLupa{
+    font-size: 23px;
+    padding-left: 95px;
+}
+.sizecalendar{
+    font-size: 25px;
+    padding-left: 95px;
+}
+.sizeViaja{
+    font-size: 25px;
+    padding-left: 95px;
 }

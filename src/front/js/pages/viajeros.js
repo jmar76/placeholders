@@ -26,36 +26,45 @@ export const Viajeros = () => {
 
 						<div className="form-group row posicionamiento">
 							<div className="contenedorBuscaReservaViaja">
-								<h4>
-									<strong>Busca</strong>
-								</h4>
+								<div className="row">
+									<i className="fas fa-search sizeLupa pt-1"></i>
+									<h4 className="pl-2">
+										<strong>Busca</strong>
+									</h4>
+								</div>
 								<p>
 									Selecciona las fechas, el número de personas y tus preferencias. Descubrirás la
 									mejor selección entre más de 2000 alojamientos en Andalucía.
 								</p>
 							</div>
 							<div className="contenedorBuscaReservaViaja">
-								<h4>
-									<strong>Reserva</strong>
-								</h4>
+								<div className="row">
+									<i className="far fa-calendar-alt sizecalendar pt-1"></i>
+									<h4 className="pl-2">
+										<strong>Reserva</strong>
+									</h4>
+								</div>
 								<p>
 									Encuentra la casa ideal para tus próximas vacaciones y reserva al instante. Sólo
 									tendrás que pagar el anticipo.
 								</p>
 							</div>
 							<div className="contenedorBuscaReservaViaja">
-								<h4>
-									<strong>Viaja</strong>
-								</h4>
+								<div className="row">
+									<i className="fas fa-route sizeViaja pt-1"></i>
+									<h4 className="pl-2">
+										<strong>Viaja</strong>
+									</h4>
+								</div>
 								<p>
 									¡Prepárate para vivir unas vacaciones de ensueño! Disfruta de tu casa de vacaciones,
 									la piscina, las vistas, el entorno, y descansa como nunca antes lo habías hecho.
 								</p>
 							</div>
 							<div className="form-group row ">
-								<div className="col-md-8 contenedorReservaYa">
+								<div className="col-md-7 contenedorReservaYa">
 									<div className="row">
-										<i className="fas fa-luggage-cart text-success size"></i>
+										<i className="fas fa-luggage-cart text-success sizeCarrito"></i>
 										<h2 className="pl-3 pt-1">Haz tu Reserva ya!</h2>
 									</div>
 
