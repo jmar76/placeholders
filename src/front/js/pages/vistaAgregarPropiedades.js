@@ -10,21 +10,31 @@ export const VistaAgregarPropiedades = () => {
 					<div className="col-12  bg-white px-5 pt-5 pb-3 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorPromocionInternacional">
-								<h4>Promoción Internacional</h4>
+								<div className="row">
+									<i className="fas fa-globe-africa sizePlaneta "></i>
+									<h4 className="pl-2">Promoción Internacional</h4>
+								</div>
 								<p>
 									Mayor visibilidad de su alojamiento a viajeros de toda Europa. Más del 95% de
 									nuestros clientes son extranjeros con estancias superiores a una semana.
 								</p>
 							</div>
 							<div className="contenedorColaboracionFlexible">
-								<h4>Colaboración Flexible</h4>
+								<div className="row">
+									<i className="far fa-handshake sizeFlexible"></i>
+									<h4 className="pl-2">Colaboración Flexible</h4>
+								</div>
 								<p>
 									Nos adaptamos a su forma de trabajar, política de cancelaciones, anticipo, etc. Si
 									no queda satisfecho, puede darse de baja en cualquier momento.
 								</p>
 							</div>
 							<div className="contenedorSinExclusividad">
-								<h4>Sin Exclusividad</h4>
+								<div className="row">
+									<i className="fas fa-globe sizeSinExclusividad"></i>
+
+									<h4 className="pl-2">Sin Exclusividad</h4>
+								</div>
 								<p>
 									No exigimos exclusividad. Simplemente somos otro canal de venta para conseguir más
 									reservas.
@@ -34,14 +44,22 @@ export const VistaAgregarPropiedades = () => {
 
 						<div className="form-group row posicionamiento">
 							<div className="contenedorPromocionInternacional">
-								<h4>Atención Personalizada</h4>
+								<div className="row">
+									<i className="fas fa-headset sizePersonalizada"></i>
+
+									<h4 className="pl-2">Atención Personalizada</h4>
+								</div>
 								<p>
 									Gestionamos las reservas, las incidencias y estamos presentes en todo momento. Le
 									asesoramos para ofrecer un mejor servicio al cliente.
 								</p>
 							</div>
 							<div className="contenedorColaboracionFlexible">
-								<h4>Tu Tranquilidad es Nuestra Prioridad</h4>
+								<div className="row">
+									<i className="far fa-grin-beam sizeTranquilidad"></i>
+
+									<h4 className="pl-2">Para Tu Tranquilidad </h4>
+								</div>
 								<p>
 									Establece unas normas de la casa que los clientes tengan que aceptar antes de
 									alojarse. Informa de la conducta inadecuada de un cliente si algo sale mal. Recibe
