@@ -1,19 +1,18 @@
 .contenedorPromocionInternacional{
     width: 300px;
-    height: 200px;
+    height: 180px;
     // background-color: red;
     text-align: center;
 }
 .contenedorColaboracionFlexible{
     width: 300px;
-    height: 200px;
+    height: 180px;
     // background-color: green;
     text-align: center;
 }
 .contenedorSinExclusividad{
      width: 300px;
-    height: 200px;
-    // background-color: yellow;
+    height: 180px;
     text-align: center;
 }
 .posicionamiento{
@@ -22,7 +21,15 @@
 .colorBotonDardeAlta{
      background-color: rgba(241, 28, 92, 0.918);
      color: white;
-     padding-right: 101px;
-     padding-left: 101px;
-
+     padding-right: 109px;
+     padding-left: 109px;
+}
+.contenedorDarDeAlta{
+    width: 330px;
+    height: 218px;
+    background-color: rgb(10, 31, 77);
+    border-radius: 11px;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
 }
