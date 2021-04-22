@@ -1,11 +1,21 @@
 
-   body{
-    
+body{
         background: url(https://www.eleconomista.com.mx/__export/1583744261715/sites/eleconomista/img/2020/03/09/turistas_barcelona.jpg_1093282975.jpg) no-repeat center center fixed;
         background-size: cover;
         -moz-background-size: cover;
         -webkit-background-size: cover;
         -o-background-size: cover;
         height: 550px;
+}
+.posicionlema{
+    margin-left: 880px;
+    margin-top: 190px;
+    width: 450px;
+    height: 300px;
+    background-color: rgb(10, 31, 77);
+    color: white;
+    border-radius: 11px;
+    text-align: center;
+    
 }
 

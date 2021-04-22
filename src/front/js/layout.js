@@ -20,6 +20,7 @@ import { FormularioAmenidades } from "./pages/formularios/FormularioAmenidades";
 import { FormularioFotos } from "./pages/formularios/formularioFotos";
 import { ForGot } from "./pages/forgot";
 import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
+import { Viajeros } from "./pages/viajeros";
 
 const Layout = () => {
 	const config = {
@@ -50,6 +51,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/vistaAgregarPropiedades">
 							<VistaAgregarPropiedades />
+						</Route>
+						<Route exact path="/viajeros">
+							<Viajeros />
 						</Route>
 						<Route exact path="/login">
 							<LogIn />

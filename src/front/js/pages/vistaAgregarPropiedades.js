@@ -48,11 +48,21 @@ export const VistaAgregarPropiedades = () => {
 									ayuda 24 horas, todos los días.
 								</p>
 							</div>
-							<div className="contenedorSinExclusividad">
+							<div className="contenedorDarDeAlta ">
 								<h4>Da de Alta tu Alojamiento</h4>
-								<p>Darse de alta es gratis.</p>
-								<p>Asistencia 24 horas por teléfono o e-mail. </p>
-								<p>Darse de alta son solo 15 minutos</p>
+								<div className="row">
+									<i className="fas fa-check text-success pl-5"></i>
+									<p className="pl-2">Darse de alta es gratis.</p>
+								</div>
+								<div className="row">
+									<i className="fas fa-check text-success pl-5"></i>
+									<p className="pl-2">Asistencia 24 horas, 7 días</p>
+								</div>
+								<div className="row">
+									<i className="fas fa-check text-success pl-5"></i>
+									<p className="pl-2">Darse de alta son solo 15 minutos</p>
+								</div>
+
 								<Link to="/signup">
 									<button type="button" className="btn colorBotonDardeAlta " value="crear">
 										<strong>Empezar</strong>
