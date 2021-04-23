@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export const VistaAgregarPropiedades = () => {
 	return (
 		<Fragment>
-			<div className="container">
-				<div className="row mt-0 pt-5">
+			<div className="container g">
+				<div className="row pt-5">
 					<div className="col-12  bg-white px-5 pt-5 pb-3 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorPromocionInternacional">

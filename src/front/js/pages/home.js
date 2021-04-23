@@ -5,10 +5,10 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	return (
-		<div className="container-fluid background">
-			<div className="row mt-0 pt-5 fondo">
+		<div className="container background">
+			{/* <div className="row fondo">
 				<h1 className="posicionlema">Descubre Andalucía</h1>
-			</div>
+			</div> */}
 		</div>
 	);
 };

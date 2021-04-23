@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "../../styles/viajeros.scss";
 import { Link } from "react-router-dom";
-
+import mijas from "../../img/mijas.jpg";
 export const Viajeros = () => {
 	return (
 		<Fragment>

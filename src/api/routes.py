@@ -1,9 +1,11 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Propiedad, Amenidades
 from api.utils import generate_sitemap, APIException
+from aws import upload_file_to_s3
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
@@ -19,8 +21,8 @@ def signup():
     hashed = generate_password_hash(password, "sha256")
 
     User.create_user(body["name"], body["lastname"],
-                        body["email"], hashed)
-        
+                        body["email"], hashed) 
+
     return jsonify({}), 200
 
 @api.route("/login", methods=["POST"])
@@ -48,19 +50,21 @@ def profile():
 
 @api.route("/upload-images", methods=["POST"])
 def upload_images():
+    url_image= ''
     files = request.files
     print(files)
-    # for key in files:
-    #     file = files[key]
-        
-    #     user_id = 10
-    #     try:
-    #         new_filename ="{}-{}".format(user_id, file.filename)
-    #         url_image = upload_file_to_s3(file, os.environ.get('S3_BUCKET_NAME'))
-    #     except Exception as e:
-    #         raise APIException(e)
+    for key in files:
+        file = files[key]
+        print(file)
+        # user_id = 10
+        try:
+            # new_filename ="{}-{}".format(user_id, file.filename)
+            url_image = upload_file_to_s3(file, os.environ.get('S3_BUCKET_NAME'))
+        except Exception as e:
+            print(e)
+            raise APIException(e)
 
-    return jsonify("has subido las fotos"), 200
+    return jsonify({"url":url_image}), 200
     
 @api.route("/forgot", methods=['POST'])
 def forgot():

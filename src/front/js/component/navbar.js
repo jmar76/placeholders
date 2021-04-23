@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/navbar.scss";
+import andalucia from "../../img/andalucia.png";
 
 export const Navbar = () => {
 	const API_URL = process.env.BACKEND_URL;
@@ -99,10 +100,13 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light fondonavbar text-white">
 			<div className="collapse navbar-collapse">
 				<Link to="/">
-					<span className="navbar-brand mt-0 h1 text-white ">
+					<span className="navbar-brand h1 text-white ">
 						<h2>dturist.com</h2>
 					</span>
 				</Link>
+				<div className="ml-5 pl-5">
+					<img src="andalucia.png" width="239px" height="81px" />
+				</div>
 			</div>
 			<div className="navbar-nav mr-auto text-white ">
 				{!accesstoken ? barradPueblos : ""}
