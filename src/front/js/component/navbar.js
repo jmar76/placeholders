@@ -55,7 +55,7 @@ export const Navbar = () => {
 		</Link>
 	);
 	let barraPropiedad = (
-		<Link to="/vistaAgregarPropiedades">
+		<Link to="/agregarPropiedades">
 			<span className="navbar-brand my-2 my-lg-0 text-warning fontsize">Alquila tu Propiedad</span>
 		</Link>
 	);
@@ -86,6 +86,9 @@ export const Navbar = () => {
 				</Link>
 				<Link className="dropdown-item" to="#">
 					Favoritos
+				</Link>
+				<Link className="dropdown-item" to="/misPropiedades">
+					Mis Propiedaes
 				</Link>
 				<Link className="dropdown-item" to="#">
 					Reservas

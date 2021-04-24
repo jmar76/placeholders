@@ -2,6 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import click
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -10,6 +11,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+from api.models import Amenidades
 
 from flask_jwt_extended import JWTManager
 #from models import Person
@@ -67,3 +69,12 @@ def serve_any_other_file(path):
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
+
+@app.cli.command("create-amenities")
+def create_amenities():
+    amenities = ["cocina","calefaccion","piscina","parking","wifi","tv","aire_acondicionado","chimenea","mascotas","zona_trabajo"]
+    for amenidad in amenities:
+        new_amenity = Amenidades()
+        new_amenity.amenity = amenidad
+        db.session.add(new_amenity)
+        db.session.commit()

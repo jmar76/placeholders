@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export const AlquilaTuPropiedad = props => {
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	const titulo = actions.getFormValue("titulo");
 	const calle = actions.getFormValue("calle");
 	const numero = actions.getFormValue("numero");
 	const ciudad = actions.getFormValue("ciudad");
@@ -24,6 +25,22 @@ export const AlquilaTuPropiedad = props => {
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
+						<div className="form-row">
+							<h4>¿Cómo se llama tu Alojamiento?</h4>
+						</div>
+						<div className="form-row">
+							<div className="form-group col-md-12">
+								<label htmlFor="titulo">Nombre de tu Alojamiento</label>
+								<input
+									type="text"
+									value={titulo}
+									name="titulo"
+									className="form-control"
+									id="titulo"
+									onChange={event => actions.setFormValue(event.target.id, event.target.value)}
+								/>
+							</div>
+						</div>
 						<div className="form-row">
 							<h4>¿Dónde se ubica?</h4>
 						</div>

@@ -30,6 +30,7 @@ export const Navigation = props => {
 				Authorization: "Bearer " + actions.getAccessToken()
 			},
 			body: JSON.stringify({
+				titulo: values.titulo,
 				calle: values.calle,
 				numero: values.numero,
 				ciudad: values.ciudad,

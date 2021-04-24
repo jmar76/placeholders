@@ -15,7 +15,7 @@ export const FormularioAmenidades = props => {
 	const aire_acondicionado = actions.getFormValue("aire_acondicionado");
 	const calefaccion = actions.getFormValue("calefaccion");
 	const chimenea = actions.getFormValue("chimenea");
-	const agua_caliente = actions.getFormValue("agua_caliente");
+	const mascotas = actions.getFormValue("mascotas");
 	const zona_trabajo = actions.getFormValue("zona_trabajo");
 
 	useEffect(() => {
@@ -170,14 +170,14 @@ export const FormularioAmenidades = props => {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										defaultChecked={agua_caliente}
-										id="agua_caliente"
+										defaultChecked={mascotas}
+										id="mascotas"
 										onChange={event => {
 											actions.setFormValue(event.target.id, event.target.checked);
 										}}
 									/>
-									<label className="form-check-label" htmlFor="agua_caliente">
-										Agua Caliente
+									<label className="form-check-label" htmlFor="mascotas">
+										Admite Mascotas
 									</label>
 								</div>
 								<div className="form-check">

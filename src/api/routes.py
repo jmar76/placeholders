@@ -108,7 +108,7 @@ def forgot_password ():
 def propiedades():
     body = request.get_json()
     user_id = get_jwt_identity()    
-    propiedad_id = Propiedad.create_propiedad(user_id, body["calle"], body["numero"],
+    propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
                                 body["provincia"], body["dormitorios"],
                                 body["huespedes"], body["camas"],
@@ -121,9 +121,18 @@ def propiedades():
             propiedad.amenidades.append(existing_amenity)
             db.session.add(existing_amenity)
             db.session.commit()
-        else:
-            Amenidades.create_amenity(amenidad, propiedad)
+        else: 
+            raise APIException("Amenidad no existente")
     
     return jsonify("se subio la informacion"), 200
 
+@api.route("/misPropiedades", methods=['GET'])
+@jwt_required()
+def mis_propiedades():
+    current_user_id = get_jwt_identity()
+    user = User.get(current_user_id)
+    propiedades = []
+    for propiedad in user.propiedades:
+        propiedades.append(propiedad.serialize())
 
+    return jsonify(propiedades)

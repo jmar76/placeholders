@@ -11,6 +11,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { MisPropiedades } from "./pages/misPropiedades";
 import { SignUp } from "./pages/signup";
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
@@ -49,7 +50,10 @@ const Layout = () => {
 						<Route exact path="/signup">
 							<SignUp />
 						</Route>
-						<Route exact path="/vistaAgregarPropiedades">
+						<Route exact path="/misPropiedades">
+							<MisPropiedades />
+						</Route>
+						<Route exact path="/agregarPropiedades">
 							<VistaAgregarPropiedades />
 						</Route>
 						<Route exact path="/viajeros">

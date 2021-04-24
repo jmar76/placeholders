@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			accessToken: "",
+			titulo: "",
 			calle: "",
 			numero: "",
 			ciudad: "",
@@ -21,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			aire_acondicionado: false,
 			calefaccion: false,
 			chimenea: false,
-			agua_caliente: false,
+			mascotas: false,
 			zona_trabajo: false
 		},
 		actions: {
@@ -54,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				setStore({
 					calle: "",
+					titulo: "",
 					numero: "",
 					ciudad: "",
 					codigoPostal: "",
@@ -72,13 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					aire_acondicionado: false,
 					calefaccion: false,
 					chimenea: false,
-					agua_caliente: false,
+					mascotas: false,
 					zona_trabajo: false
 				});
 			},
 			getFormValues: () => {
 				let store = getStore();
 				let respuestas = {};
+				let titulo = store.titulo;
 				let calle = store.calle;
 				let numero = store.numero;
 				let ciudad = store.ciudad;
@@ -99,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					aire_acondicionado: store.aire_acondicionado,
 					calefaccion: store.calefaccion,
 					chimenea: store.chimenea,
-					agua_caliente: store.agua_caliente,
+					mascotas: store.mascotas,
 					zona_trabajo: store.zona_trabajo
 				};
 
@@ -109,6 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				return (respuestas = {
+					titulo,
 					calle,
 					numero,
 					ciudad,

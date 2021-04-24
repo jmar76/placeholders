@@ -54,6 +54,7 @@ class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship("User", back_populates="propiedades")
+    titulo = db.Column(db.String(120), unique=False, nullable=False)
     calle = db.Column(db.String(120), unique=False, nullable=False)
     numero = db.Column(db.String(120), unique=False, nullable=False)
     ciudad = db.Column(db.String(120), unique=False, nullable=False)
@@ -67,9 +68,10 @@ class Propiedad(db.Model):
     amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
-    def create_propiedad(cls, user_id, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, descripcion):
+    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, descripcion):
         propiedad = cls()
         propiedad.user_id = user_id
+        propiedad.titulo = titulo
         propiedad.calle = calle
         propiedad.numero = numero
         propiedad.ciudad = ciudad
@@ -96,6 +98,17 @@ class Propiedad(db.Model):
     def __str__(self):
         return str(self.id)
 
+    def serialize(self):
+
+        return {
+            "titulo": self.titulo,
+            "huespedes": self.huespedes,
+            "dormitorios" : self.dormitorios,
+            "bathrooms" : self.bathrooms,
+            "ciudad" : self.ciudad,
+            "provincia" : self.provincia
+        }
+
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     propiedades = db.relationship("Propiedad", secondary=association_table, back_populates="amenidades")
@@ -114,11 +127,6 @@ class Amenidades(db.Model):
     @classmethod
     def get(cls, amenity):
         return cls.query.filter_by(amenity=amenity).one_or_none()
-
-    @classmethod
-    def existing_amenity(cls, amenity, propiedad):
-        test = cls.query.filter_by(amenity=amenity).one_or_none()
-        propiedad.amenidades.append(test)
 
     def __str__(self):
         return str(self.amenity)
