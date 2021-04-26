@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+import json
 
 db = SQLAlchemy()
 
@@ -99,7 +100,8 @@ class Propiedad(db.Model):
         return str(self.id)
 
     def serialize(self):
-
+        test1 = json.dumps(self.amenidades)
+        print(test1)
         return {
             "titulo": self.titulo,
             "huespedes": self.huespedes,
@@ -108,7 +110,8 @@ class Propiedad(db.Model):
             "ciudad" : self.ciudad,
             "provincia" : self.provincia,
             "descripcion": self.descripcion,
-            "id": self.id
+            "id": self.id,
+            "amenidades": test1
         }
 
 class Amenidades(db.Model):
