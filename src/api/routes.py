@@ -136,3 +136,5 @@ def mis_propiedades():
         propiedades.append(propiedad.serialize())
 
     return jsonify(propiedades)
+
+

@@ -22,6 +22,7 @@ import { FormularioFotos } from "./pages/formularios/formularioFotos";
 import { ForGot } from "./pages/forgot";
 import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 import { Viajeros } from "./pages/viajeros";
+import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
 
 const Layout = () => {
 	const config = {
@@ -52,6 +53,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/misPropiedades">
 							<MisPropiedades />
+						</Route>
+						<Route exact path="/descripcionMisPropiedades/:id">
+							<DescripcionPropiedades />
 						</Route>
 						<Route exact path="/agregarPropiedades">
 							<VistaAgregarPropiedades />

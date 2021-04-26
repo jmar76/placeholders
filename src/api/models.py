@@ -64,7 +64,7 @@ class Propiedad(db.Model):
     huespedes = db.Column(db.String(120), unique=False, nullable=False)
     camas = db.Column(db.String(120), unique=False, nullable=False)
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
-    descripcion = db.Column(db.String(120), unique=False, nullable=False)
+    descripcion = db.Column(db.String(1200), unique=False, nullable=False)
     amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
@@ -85,12 +85,12 @@ class Propiedad(db.Model):
 
         user = User.get(user_id)
         user.propiedades.append(propiedad)
-
+       
         db.session.add(propiedad)
         db.session.commit()
 
         return propiedad.id
-    
+
     @classmethod
     def get(cls, id):
         return cls.query.get(id)
@@ -106,7 +106,9 @@ class Propiedad(db.Model):
             "dormitorios" : self.dormitorios,
             "bathrooms" : self.bathrooms,
             "ciudad" : self.ciudad,
-            "provincia" : self.provincia
+            "provincia" : self.provincia,
+            "descripcion": self.descripcion,
+            "id": self.id
         }
 
 class Amenidades(db.Model):
@@ -130,3 +132,5 @@ class Amenidades(db.Model):
 
     def __str__(self):
         return str(self.amenity)
+    
+  

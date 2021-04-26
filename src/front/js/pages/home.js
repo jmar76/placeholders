@@ -5,10 +5,8 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	return (
-		<div className="container background">
-			{/* <div className="row fondo">
-				<h1 className="posicionlema">Descubre Andalucía</h1>
-			</div> */}
+		<div className="">
+			<div className="">{/* <h1 className="posicionlema">Descubre Andalucía</h1> */}</div>
 		</div>
 	);
 };

@@ -100,7 +100,7 @@ export const Navbar = () => {
 		</div>
 	);
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light fondonavbar text-white">
+		<nav className="navbar navbar-expand-lg navbar-light fondonavbar  text-white">
 			<div className="collapse navbar-collapse">
 				<Link to="/">
 					<span className="navbar-brand h1 text-white ">
