@@ -100,8 +100,9 @@ class Propiedad(db.Model):
         return str(self.id)
 
     def serialize(self):
-        test1 = json.dumps(self.amenidades)
-        print(test1)
+        amenidades = []
+        for amenidad in self.amenidades:
+            amenidades.append(str(amenidad))
         return {
             "titulo": self.titulo,
             "huespedes": self.huespedes,
@@ -111,7 +112,7 @@ class Propiedad(db.Model):
             "provincia" : self.provincia,
             "descripcion": self.descripcion,
             "id": self.id,
-            "amenidades": test1
+            "amenidades": amenidades
         }
 
 class Amenidades(db.Model):

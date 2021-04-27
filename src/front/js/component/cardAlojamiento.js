@@ -23,7 +23,7 @@ export const CardAlojamiento = props => {
 				<p className="card-text">Baños: {props.bathrooms}</p>
 
 				<Link to={"/descripcionMisPropiedades/" + props.id} className="btn btn-primary">
-					Go somewhere
+					Más información
 				</Link>
 			</div>
 		</div>
