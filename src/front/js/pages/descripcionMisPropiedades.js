@@ -16,7 +16,6 @@ export const DescripcionPropiedades = props => {
 			info = misPropiedades[i];
 		}
 	}
-	console.log(info);
 
 	useEffect(() => {
 		fetch(API_URL + "/api/misPropiedades", {
