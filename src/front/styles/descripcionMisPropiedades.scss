@@ -2,10 +2,10 @@
     font-size: 21px;
 }
 .contenedorNombreAlojamiento{
-    height: 160px;
+    height: 41px;
     text-align: center;
-    //    background-color: rgba(77, 76, 10, 0.096);
-    border-radius: 17px;
+    margin: auto;
+    background-color: rgba(77, 76, 10, 0.027);
 }
 .sizeUbicacion{
   font-size: 19px;
@@ -16,23 +16,37 @@
     flex-direction: row;
     justify-content: space-between;
     margin:auto;
+    background-color: rgba(77, 76, 10, 0.027);
+    text-align: center;
 }
 .items{
-    width:100px ;
+    width: 100px ;
     height: 50px;
 }
 .center{
     margin: auto;
 }
-.p{
+.centraje{
     margin: auto;
 }
 .contenedorServicios{
     height: 150px;
-    // background-color: rgba(77, 76, 10, 0.096);
-    border-radius: 17px;
+    background-color:rgba(77, 76, 10, 0.027);
+    text-align: center;
 }
 .contenedorDescripcion{
-// background-color: rgba(77, 76, 10, 0.096);
-    border-radius: 17px
+    background-color: rgba(77, 76, 10, 0.027);
 }
+.justify{
+    justify-content: space-between;
+}
+.botonReservaAhora{
+    background-color: rgba(241, 28, 92, 0.918);
+     color: white;
+     padding-right: 69px;
+     padding-left: 69px;
+}
+.color{
+   color: rgb(10, 31, 77);
+}
+

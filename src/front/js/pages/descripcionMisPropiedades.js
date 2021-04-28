@@ -36,7 +36,7 @@ export const DescripcionPropiedades = () => {
 		<Fragment>
 			<div className="container bg-white">
 				<div className="row pt-5">
-					<div className="col-8  bg-white p px-5 pt-5 pb-3 esquinasRedondas">
+					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
 						<div className="form-group row ">
 							<div className="col-md-12 ">
 								<div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
@@ -89,59 +89,63 @@ export const DescripcionPropiedades = () => {
 											</div>
 										</div>
 									</div>
-									<a
-										className="carousel-control-prev"
-										href="#carouselExampleCaptions"
-										role="button"
-										data-slide="prev">
-										<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span className="sr-only">Previous</span>
-									</a>
-									<a
-										className="carousel-control-next"
-										href="#carouselExampleCaptions"
-										role="button"
-										data-slide="next">
-										<span className="carousel-control-next-icon" aria-hidden="true"></span>
-										<span className="sr-only">Next</span>
-									</a>
 								</div>
-							</div>
-							<div className="col-md-12 mt-3 contenedorNombreAlojamiento">
-								<div className="row">
-									<i className="fas fa-home mt-2 ml-3 pl-1  sizeCasa "></i>
-									<h4 className="pl-2">{info.titulo}</h4>{" "}
-								</div>
-								<div className="row">
-									<i className="fas fa-map-marker-alt ml-3 pl-2  sizeUbicacion"></i>
-									<h5 className="pl-3">
-										{info.ciudad}, {info.provincia}, (España)
-									</h5>
-								</div>
-								<hr></hr>
-								<div className="row justificado">
-									<div className="contenedor items">
-										<i className="fas fa-bath  sizeCasa"></i>
-										<p className="#"> {info.bathrooms} Baños</p>
-									</div>
-									<div className="contenedor items">
-										<i className="fas fa-users sizeCasa"></i>
-										<p className="#"> {info.huespedes} Personas</p>
-									</div>
-									<div className="contenedor items">
-										<i className="fas fa-bed sizeCasa"></i>
-										<p className="#">{info.dormitorios} Dormitorios</p>
-									</div>
-									<div className="contenedor items">
-										<i className="fas fa-paw sizeCasa"></i>
-										<p className="#"> Mascotas</p>
-									</div>
-								</div>
+								<a
+									className="carousel-control-prev"
+									href="#carouselExampleCaptions"
+									role="button"
+									data-slide="prev">
+									<span className="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span className="sr-only">Previous</span>
+								</a>
+								<a
+									className="carousel-control-next"
+									href="#carouselExampleCaptions"
+									role="button"
+									data-slide="next">
+									<span className="carousel-control-next-icon" aria-hidden="true"></span>
+									<span className="sr-only">Next</span>
+								</a>
 							</div>
 						</div>
-
-						<div className="form-group row ">
-							<div className="col-md-12 mt-3  ">
+						<div className=" row ">
+							<div className="col-md-12 mt-2 row contenedorNombreAlojamiento">
+								<i className="fas fa-home mt-2 color sizeCasa "></i>
+								<h4 className="ml-2 mt-1">{info.titulo}</h4>{" "}
+							</div>
+							<div className="col-md-6 mt-2 row contenedorNombreAlojamiento">
+								<i className="fas fa-map-marker-alt pt-2 ml-1 color sizeUbicacion"></i>
+								<h5 className="pt-1 ml-3">
+									{info.ciudad}, {info.provincia} (España)
+								</h5>
+							</div>
+							<div className="col-md-6 mt-2 contenedorNombreAlojamiento">
+								<button type="button" className="btn botonReservaAhora " value="crear">
+									<strong>Reserva ahora</strong>
+								</button>
+							</div>
+						</div>
+						<hr></hr>
+						<div className="row justificado color ">
+							<div className="items">
+								<i className="fas fa-bath color sizeCasa"></i>
+								<p className="#"> {info.bathrooms} Baños</p>
+							</div>
+							<div className="items">
+								<i className="fas fa-users color sizeCasa"></i>
+								<p className="#"> {info.huespedes} Personas</p>
+							</div>
+							<div className="items">
+								<i className="fas fa-bed color sizeCasa"></i>
+								<p className="#">{info.dormitorios} Dormitorios</p>
+							</div>
+							<div className="items">
+								<i className="fas fa-paw color sizeCasa"></i>
+								<p className="#"> Mascotas</p>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-md-12 mt-3">
 								<div className="row contenedorServicios pr-5">
 									<h6 className="#">
 										<strong>Servicios</strong>
@@ -160,10 +164,21 @@ export const DescripcionPropiedades = () => {
 							</div>
 						</div>
 						<div className="form-group row ">
-							<div className="col-md-12 mt-3 mb-3contenedorDescripcion">
+							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
 								<div className="row">
 									<h6 className="#">
 										<strong>Descripción</strong>
+									</h6>
+								</div>
+								<hr></hr>
+								<p>{info.descripcion}</p>
+							</div>
+						</div>
+						<div className="form-group row ">
+							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
+								<div className="row">
+									<h6 className="#">
+										<strong>3 Motivos por los que elegir {info.titulo}</strong>
 									</h6>
 								</div>
 								<hr></hr>
