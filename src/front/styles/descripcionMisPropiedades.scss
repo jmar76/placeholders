@@ -1,16 +1,14 @@
 .sizeCasa{
-    font-size: 27px;
+    font-size: 21px;
 }
 .contenedorNombreAlojamiento{
-    // width: 499px;
-    height: 200px;
-    // background-color: red;
+    height: 160px;
     text-align: center;
-    background-color: rgba(77, 76, 10, 0.096);
+    //    background-color: rgba(77, 76, 10, 0.096);
     border-radius: 17px;
 }
 .sizeUbicacion{
-  font-size: 27px;
+  font-size: 19px;
 }
 .justificado{
     width: 500px;
@@ -25,4 +23,16 @@
 }
 .center{
     margin: auto;
+}
+.p{
+    margin: auto;
+}
+.contenedorServicios{
+    height: 150px;
+    // background-color: rgba(77, 76, 10, 0.096);
+    border-radius: 17px;
+}
+.contenedorDescripcion{
+// background-color: rgba(77, 76, 10, 0.096);
+    border-radius: 17px
 }
