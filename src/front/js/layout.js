@@ -13,6 +13,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { MisPropiedades } from "./pages/misPropiedades";
 import { SignUp } from "./pages/signup";
+import { SubirDatos } from "./pages/SubirDatos";
+
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
 import { AlquilaTuPropiedad } from "./pages/formularios/alquilaTuPropiedad";
@@ -47,6 +49,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/SubirDatos">
+							<SubirDatos />
 						</Route>
 						<Route exact path="/signup">
 							<SignUp />

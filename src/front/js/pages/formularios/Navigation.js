@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import { Steps, Step } from "react-step-builder";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export const Navigation = props => {
 	const { actions } = useContext(Context);
@@ -87,9 +88,11 @@ export const Navigation = props => {
 						</button>
 					)}
 					{props.current === 4 ? (
-						<button className="btn btn-success ml-5" onClick={handleSubmit}>
-							Enviar
-						</button>
+						<Link to="/SubirDatos">
+							<button className="btn btn-success ml-5" onClick={handleSubmit}>
+								Enviar
+							</button>
+						</Link>
 					) : (
 						<button
 							onClick={props.next}
