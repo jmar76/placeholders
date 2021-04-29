@@ -112,6 +112,9 @@ class Propiedad(db.Model):
             "provincia" : self.provincia,
             "descripcion": self.descripcion,
             "id": self.id,
+            "calle": self.calle,
+            "numero" : self.numero,
+            "codigo_postal" : self.codigo_postal,
             "amenidades": amenidades
         }
 

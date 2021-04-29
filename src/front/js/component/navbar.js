@@ -108,7 +108,7 @@ export const Navbar = () => {
 					</span>
 				</Link>
 				<div className="ml-5 pl-5">
-					<img src="andalucia.png" width="239px" height="81px" />
+					<img src={andalucia} width="239px" height="81px" />
 				</div>
 			</div>
 			<div className="navbar-nav mr-auto text-white ">

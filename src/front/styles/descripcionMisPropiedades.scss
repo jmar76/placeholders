@@ -2,10 +2,18 @@
     font-size: 21px;
 }
 .contenedorNombreAlojamiento{
-    height: 41px;
-    text-align: center;
     margin: auto;
     background-color: rgba(77, 76, 10, 0.027);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.contenedorNombreProvincia{
+    height: 39px;
+    margin: auto;
+    background-color: rgba(77, 76, 10, 0.027);
+    display: flex;
+    flex-direction: row;
 }
 .sizeUbicacion{
   font-size: 19px;
@@ -48,5 +56,35 @@
 }
 .color{
    color: rgb(10, 31, 77);
+}
+.contenedorLikes{
+    width: 100px;
+    height: 30px;
+}
+.contenedorTitulo{
+    width: 540px;
+    height: 38px;
+}
+.contenedorElegir{
+    width: 660px;
+    height: 90px;
+}
+.posicioPrimeraFila{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.unionText{
+    width: 250px;
+    height: 30px;
+}
+.sizeText{
+    font-size: 13px;
+}
+.sizeTextCiudad{
+    font-size: 17px;
+}
+.sizeItems{
+    font-size: 15px;
 }
 

@@ -1,16 +1,15 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
 import { Context } from "../store/appContext";
-import { CardDescripcion } from "../component/cardDescripcion";
 import { Link, useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import "../../styles/descripcionMisPropiedades.scss";
+import ratings from "../../img/ratings.jpg";
 
 export const DescripcionPropiedades = () => {
 	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const params = useParams();
 	const [misPropiedades, setMisPropiedades] = useState([]);
-
+	console.log(misPropiedades);
 	let info = {};
 	for (let i = 0; i < misPropiedades.length; i++) {
 		if (params.id == misPropiedades[i].id) {
@@ -35,10 +34,36 @@ export const DescripcionPropiedades = () => {
 	return (
 		<Fragment>
 			<div className="container bg-white">
-				<div className="row pt-5">
+				<div className="row pt-2">
 					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
 						<div className="form-group row ">
-							<div className="col-md-12 ">
+							<div className=" row ">
+								<div className="col-md-12 row contenedorNombreAlojamiento">
+									<div className="contenedorTitulo row ">
+										<i className="fas fa-home mt-2 ml-2 pl-1 color sizeCasa "></i>
+										<h4 className="pt-1 pl-1">{info.titulo}</h4>
+										<img src={ratings} width="121px" height="31px" className="pl-3 pt-2 " />
+									</div>
+									<div className="contenedorLikes mt-2">
+										<i className="far fa-thumbs-up pt-2 pl-1 color sizeCasa"></i>
+										<i className="far fa-heart pt-2  pl-3 color sizeCasa"></i>
+										<i className="fas fa-share-alt pt-2  pl-3 color sizeCasa"></i>
+									</div>
+								</div>
+								<div className="col-md-6 mt-2 row contenedorNombreProvincia">
+									<i className="fas fa-map-marker-alt pt-2 color sizeUbicacion"></i>
+									<p className="pt-1 ml-3 sizeTextCiudad">
+										{info.ciudad}, {info.provincia} (España)
+									</p>
+								</div>
+								<div className="col-md-6 mt-2 contenedorNombreProvincia">
+									<button type="button" className="btn botonReservaAhora " value="crear">
+										<strong>Reserva ahora</strong>
+									</button>
+								</div>
+							</div>
+
+							<div className="col-md-12 mt-3">
 								<div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
 									<ol className="carousel-indicators">
 										<li
@@ -108,23 +133,20 @@ export const DescripcionPropiedades = () => {
 								</a>
 							</div>
 						</div>
-						<div className=" row ">
-							<div className="col-md-12 mt-2 row contenedorNombreAlojamiento">
-								<i className="fas fa-home mt-2 color sizeCasa "></i>
-								<h4 className="ml-2 mt-1">{info.titulo}</h4>{" "}
-							</div>
-							<div className="col-md-6 mt-2 row contenedorNombreAlojamiento">
-								<i className="fas fa-map-marker-alt pt-2 ml-1 color sizeUbicacion"></i>
-								<h5 className="pt-1 ml-3">
-									{info.ciudad}, {info.provincia} (España)
-								</h5>
-							</div>
-							<div className="col-md-6 mt-2 contenedorNombreAlojamiento">
-								<button type="button" className="btn botonReservaAhora " value="crear">
-									<strong>Reserva ahora</strong>
-								</button>
-							</div>
+						<div className="row">
+							<i className="fas fa-map-marker-alt ml-3 pt-1 text-primary  "></i>
+							<p className=" pl-2 sizeText">
+								Calle {info.calle} número {info.numero}, {info.codigo_postal}, {info.ciudad}{" "}
+								{info.provincia}
+							</p>
+							<p className="text-primary pl-2 sizeText">
+								<strong>-Excelente Ubicación</strong>
+							</p>
+							<p className="text-primary sizeText">
+								<strong>-ver mapa</strong>
+							</p>
 						</div>
+
 						<hr></hr>
 						<div className="row justificado color ">
 							<div className="items">
@@ -150,11 +172,14 @@ export const DescripcionPropiedades = () => {
 									<h6 className="#">
 										<strong>Servicios</strong>
 									</h6>
-									<ul className="text">
+									<ul className="#">
 										<hr></hr>
 										{newArray.map((amenidades, index) => {
 											return (
-												<i key={index} className="fas fa-check pl-5">
+												<i
+													key={index}
+													className="column far fa-check-circle color sizeItems pt-1 pl-5">
+													{" "}
 													{amenidades}
 												</i>
 											);
@@ -174,15 +199,59 @@ export const DescripcionPropiedades = () => {
 								<p>{info.descripcion}</p>
 							</div>
 						</div>
+
 						<div className="form-group row ">
-							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
+							<div className="col-md-12 mt-3 mb-3">
+								<p>
+									4 motivos para elegir <strong>{info.titulo}</strong>
+								</p>
+								<div className="contenedorElegir column sizeItems color">
+									<div className="posicioPrimeraFila row">
+										<div className="unionText row">
+											<i className="far fa-check-circle pt-1"></i>
+											<p className="pl-1">¡Precios imbatibles!</p>
+										</div>
+										<div className="unionText row">
+											<i className="far fa-check-circle pt-1"></i>
+											<p className="pl-1">Gestiona tus reservas online</p>
+										</div>
+									</div>
+
+									<div className="posicioPrimeraFila row">
+										<div className="unionText row">
+											<i className="far fa-check-circle pt-1"></i>
+											<p className="pl-1">Hablan 3 idiomas</p>
+										</div>
+										<div className="unionText row">
+											<i className="far fa-check-circle pt-1"></i>
+											<p className="pl-1">Una reserva segura</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="form-group row ">
+							<div className="col-md-12 mb-3 contenedorDescripcion">
 								<div className="row">
 									<h6 className="#">
-										<strong>3 Motivos por los que elegir {info.titulo}</strong>
+										<strong>Info importante</strong>
 									</h6>
 								</div>
 								<hr></hr>
-								<p>{info.descripcion}</p>
+								<p>
+									Según las indicaciones del Gobierno para minimizar el contagio del coronavirus
+									(COVID-19), es posible que este alojamiento solicite documentación adicional a los
+									clientes para comprobar su identidad, itinerario de viaje y otros datos relevantes
+									mientras sigan vigentes dichas indicaciones. En respuesta al coronavirus (COVID-19),
+									el alojamiento aplica medidas sanitarias y de seguridad adicionales en estos
+									momentos. Los servicios de comida y bebida de este alojamiento pueden verse
+									limitados o no estar disponibles a causa del coronavirus (COVID-19). A causa del
+									coronavirus (COVID-19), este alojamiento está tomando medidas para garantizar la
+									seguridad de los clientes y el personal. Por este motivo, algunos servicios e
+									instalaciones pueden verse limitados o no estar disponibles. Debido al coronavirus
+									(COVID-19), es obligatorio llevar mascarilla en todas las zonas comunes interiores.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -190,15 +259,4 @@ export const DescripcionPropiedades = () => {
 			</div>
 		</Fragment>
 	);
-};
-
-DescripcionPropiedades.propTypes = {
-	title: PropTypes.string,
-	huespedes: PropTypes.string,
-	dormitorios: PropTypes.string,
-	bathrooms: PropTypes.string,
-	ciudad: PropTypes.string,
-	provincia: PropTypes.string,
-	descripcion: PropTypes.string,
-	id: PropTypes.string
 };

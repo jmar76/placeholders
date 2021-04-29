@@ -37,6 +37,9 @@ export const MisPropiedades = () => {
 								dormitorios={propiedad.dormitorios}
 								bathrooms={propiedad.bathrooms}
 								id={propiedad.id}
+								calle={propiedad.calle}
+								numero={propiedad.numero}
+								codigo_postal={propiedad.codigo_postal}
 							/>
 						</div>
 					);
