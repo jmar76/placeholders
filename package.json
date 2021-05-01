@@ -80,6 +80,7 @@
 		"bcryptjs": "^2.4.3",
 		"bootstrap": "^4.6.0",
 		"date-fns": "^2.21.1",
+		"heroku": "^7.53.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
