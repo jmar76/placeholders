@@ -51,7 +51,7 @@ export const SignUp = () => {
 			});
 	}
 	return (
-		<div className="container">
+		<div className="container marginCrearCuenta">
 			<div className="row mt-0 pt-5">
 				<div className="col-8 offset-md-2 bg-white px-5 pt-3 pb-3 esquinasRedondas">
 					<form>

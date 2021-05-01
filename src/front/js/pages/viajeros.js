@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export const Viajeros = () => {
 	return (
 		<Fragment>
-			<div className="container">
+			<div className="container text-white marginViajeros">
 				<div className="row mt-2 pt-3">
-					<div className="col-12  bg-white px-5 pt-3 pb-0 esquinasRedondas">
+					<div className="col-12 colorFondoViajeros  px-5 pt-3 pb-0 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorBienvenidosViajeros">
 								<h1>Bienvenidos Viajeros!</h1>
-								<p className="colorParrafoContenedorBienvenidosViajeros">
+								<p className="#">
 									<strong>Andalucía</strong> reúne todo lo que estabas buscando. Un destino accesible,
 									con excelentes conexiones y precios muy económicos. Aquí encontrarás el mejor clima
 									de Europa, ciudades llenas de historia, populares monumentos reconocidos en todo el
@@ -26,7 +26,7 @@ export const Viajeros = () => {
 						<div className="form-group row posicionamiento">
 							<div className="contenedorBuscaReservaViaja">
 								<div className="row">
-									<i className="fas fa-search sizeLupa pt-1"></i>
+									<i className="fas fa-search sizeLupa text-success pt-1"></i>
 									<h4 className="pl-2">
 										<strong>Busca</strong>
 									</h4>
@@ -38,7 +38,7 @@ export const Viajeros = () => {
 							</div>
 							<div className="contenedorBuscaReservaViaja">
 								<div className="row">
-									<i className="far fa-calendar-alt sizecalendar pt-1"></i>
+									<i className="far fa-calendar-alt sizecalendar text-success pt-1"></i>
 									<h4 className="pl-2">
 										<strong>Reserva</strong>
 									</h4>
@@ -50,7 +50,7 @@ export const Viajeros = () => {
 							</div>
 							<div className="contenedorBuscaReservaViaja">
 								<div className="row">
-									<i className="fas fa-route sizeViaja pt-1"></i>
+									<i className="fas fa-route sizeViaja text-success pt-1"></i>
 									<h4 className="pl-2">
 										<strong>Viaja</strong>
 									</h4>

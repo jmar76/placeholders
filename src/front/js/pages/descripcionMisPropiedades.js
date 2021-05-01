@@ -33,7 +33,7 @@ export const DescripcionPropiedades = () => {
 
 	return (
 		<Fragment>
-			<div className="container bg-white">
+			<div className="container marginDescripcion bg-white">
 				<div className="row pt-2">
 					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
 						<div className="form-group row ">

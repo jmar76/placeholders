@@ -5,13 +5,15 @@ import { Link } from "react-router-dom";
 export const VistaAgregarPropiedades = () => {
 	return (
 		<Fragment>
-			<div className="container g">
-				<div className="row pt-5">
-					<div className="col-12  bg-white px-5 pt-5 pb-3 esquinasRedondas">
-						<div className="form-group row posicionamiento">
+			<div className="container text-white marginAgregar">
+				<div className="row pt-5 ">
+					<div className="col-12  colorFondo px-5 pt-5 pb-3 esquinasRedondas">
+						<div className="form-group row  posicionamiento">
 							<div className="contenedorPromocionInternacional">
 								<div className="row">
-									<i className="fas fa-globe-africa sizePlaneta "></i>
+									<i
+										className="fas fa-globe-africa text-success 
+                                    sizePlaneta "></i>
 									<h4 className="pl-2">Promoción Internacional</h4>
 								</div>
 								<p>
@@ -21,7 +23,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorColaboracionFlexible">
 								<div className="row">
-									<i className="far fa-handshake sizeFlexible"></i>
+									<i className="far fa-handshake sizeFlexible text-success "></i>
 									<h4 className="pl-2">Colaboración Flexible</h4>
 								</div>
 								<p>
@@ -31,7 +33,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorSinExclusividad">
 								<div className="row">
-									<i className="fas fa-globe sizeSinExclusividad"></i>
+									<i className="fas fa-globe sizeSinExclusividad text-success "></i>
 
 									<h4 className="pl-2">Sin Exclusividad</h4>
 								</div>
@@ -42,10 +44,10 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 						</div>
 
-						<div className="form-group row posicionamiento">
+						<div className="form-group text-white row posicionamiento">
 							<div className="contenedorPromocionInternacional">
 								<div className="row">
-									<i className="fas fa-headset sizePersonalizada"></i>
+									<i className="fas fa-headset text-success sizePersonalizada"></i>
 
 									<h4 className="pl-2">Atención Personalizada</h4>
 								</div>
@@ -56,7 +58,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorColaboracionFlexible">
 								<div className="row">
-									<i className="far fa-grin-beam sizeTranquilidad"></i>
+									<i className="far fa-grin-beam text-success sizeTranquilidad"></i>
 
 									<h4 className="pl-2">Para Tu Tranquilidad </h4>
 								</div>
