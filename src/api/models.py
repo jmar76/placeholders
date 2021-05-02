@@ -99,6 +99,10 @@ class Propiedad(db.Model):
     def __str__(self):
         return str(self.id)
 
+    @classmethod
+    def getByLocation(cls, ciudad):
+        return cls.query.filter_by(ciudad = ciudad).all()
+
     def serialize(self):
         amenidades = []
         for amenidad in self.amenidades:
