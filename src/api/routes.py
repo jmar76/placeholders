@@ -17,13 +17,13 @@ api = Blueprint('api', __name__)
 @api.route('/', methods=['POST'])
 def search():
     body = request.get_json()
-    test = []
+    availableProperties = []
     propiedades1 = Propiedad.getByLocation(body["location"])
     
     for propiedad in propiedades1:
-        test.append(propiedad.serialize())
+        availableProperties.append(propiedad.serialize())
 
-    return jsonify(test)
+    return jsonify(availableProperties)
 
 
 @api.route('/signup', methods=['POST'])
