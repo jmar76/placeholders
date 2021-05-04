@@ -3,6 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 import click
+import datetime
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -12,6 +13,7 @@ from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.models import Amenidades
+from datetime import timedelta
 
 from flask_jwt_extended import JWTManager
 #from models import Person
@@ -23,6 +25,7 @@ app.url_map.strict_slashes = False
 
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = "bvhshdbvhb36fbfdgndfdhbvhhv5d4bv5ef4v5fbvdf5@"  # Change this!
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(minutes = 30)
 jwt = JWTManager(app)
 
 # database condiguration

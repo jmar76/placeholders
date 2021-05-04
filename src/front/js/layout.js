@@ -59,9 +59,7 @@ const Layout = () => {
 						<Route exact path="/misPropiedades">
 							<MisPropiedades />
 						</Route>
-						<Route exact path="/descripcionMisPropiedades/:id">
-							<DescripcionPropiedades />
-						</Route>
+						<Route exact path="/descripcionMisPropiedades/:id" component={DescripcionPropiedades}></Route>
 						<Route exact path="/agregarPropiedades">
 							<VistaAgregarPropiedades />
 						</Route>

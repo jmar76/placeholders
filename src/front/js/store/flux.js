@@ -24,7 +24,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			calefaccion: false,
 			chimenea: false,
 			mascotas: false,
-			zona_trabajo: false
+			zona_trabajo: false,
+			resultadosBusqueda: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

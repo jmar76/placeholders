@@ -22,7 +22,12 @@ export const CardAlojamiento = props => {
 				<p className="card-text">Dormitorios: {props.dormitorios}</p>
 				<p className="card-text">Baños: {props.bathrooms}</p>
 
-				<Link to={"/descripcionMisPropiedades/" + props.id} className="btn btn-primary">
+				<Link
+					to={{
+						pathname: "/descripcionMisPropiedades/" + props.id,
+						state: props
+					}}
+					className="btn btn-primary">
 					Más información
 				</Link>
 			</div>
@@ -38,5 +43,6 @@ CardAlojamiento.propTypes = {
 	ciudad: PropTypes.string,
 	provincia: PropTypes.string,
 	descripcion: PropTypes.string,
-	id: PropTypes.string
+	amenidades: PropTypes.array,
+	id: PropTypes.number
 };

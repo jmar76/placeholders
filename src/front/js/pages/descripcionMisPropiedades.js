@@ -1,34 +1,18 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
+import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import "../../styles/descripcionMisPropiedades.scss";
 import ratings from "../../img/ratings.jpg";
+import { MisPropiedades } from "./misPropiedades";
 
-export const DescripcionPropiedades = () => {
+export const DescripcionPropiedades = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
+	const location = useLocation();
 	const params = useParams();
-	const [misPropiedades, setMisPropiedades] = useState([]);
-	let info = {};
-	for (let i = 0; i < misPropiedades.length; i++) {
-		if (params.id == misPropiedades[i].id) {
-			info = misPropiedades[i];
-		}
-	}
+	const [propiedad, setPropiedad] = useState(props.location.state);
 	let arrayAmenidades = [];
-	let newArray = arrayAmenidades.concat(info.amenidades);
-
-	useEffect(() => {
-		fetch(API_URL + "/api/misPropiedades", {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + actions.getAccessToken()
-			}
-		})
-			.then(response => response.json())
-			.then(responseJson => setMisPropiedades(responseJson));
-	}, []);
 
 	return (
 		<Fragment>
@@ -40,7 +24,7 @@ export const DescripcionPropiedades = () => {
 								<div className="col-md-12 row contenedorNombreAlojamiento">
 									<div className="contenedorTitulo row ">
 										<i className="fas fa-home mt-2 ml-2 pl-1 color sizeCasa "></i>
-										<h4 className="pt-1 pl-1">{info.titulo}</h4>
+										<h4 className="pt-1 pl-1">{propiedad.title}</h4>
 										<img src={ratings} width="121px" height="31px" className="pl-3 pt-2 " />
 									</div>
 									<div className="contenedorLikes mt-2">
@@ -52,7 +36,7 @@ export const DescripcionPropiedades = () => {
 								<div className="col-md-6 mt-2 row contenedorNombreProvincia">
 									<i className="fas fa-map-marker-alt pt-2 color sizeUbicacion"></i>
 									<p className="pt-1 ml-3 sizeTextCiudad">
-										{info.ciudad}, {info.provincia} (España)
+										{propiedad.ciudad}, {propiedad.provincia} (España)
 									</p>
 								</div>
 								<div className="col-md-6 mt-2 contenedorNombreProvincia">
@@ -135,8 +119,8 @@ export const DescripcionPropiedades = () => {
 						<div className="row">
 							<i className="fas fa-map-marker-alt ml-3 pt-1 text-primary  "></i>
 							<p className=" pl-2 sizeText">
-								Calle {info.calle} número {info.numero}, {info.codigo_postal}, {info.ciudad}{" "}
-								{info.provincia}
+								Calle {propiedad.calle} número {propiedad.numero}, {propiedad.codigo_postal},{" "}
+								{propiedad.ciudad} {propiedad.provincia}
 							</p>
 							<p className="text-primary pl-2 sizeText">
 								<strong>-Excelente Ubicación</strong>
@@ -150,15 +134,15 @@ export const DescripcionPropiedades = () => {
 						<div className="row justificado color ">
 							<div className="items">
 								<i className="fas fa-bath color sizeCasa"></i>
-								<p className="#"> {info.bathrooms} Baños</p>
+								<p className="#"> {propiedad.bathrooms} Baños</p>
 							</div>
 							<div className="items">
 								<i className="fas fa-users color sizeCasa"></i>
-								<p className="#"> {info.huespedes} Personas</p>
+								<p className="#"> {propiedad.huespedes} Personas</p>
 							</div>
 							<div className="items">
 								<i className="fas fa-bed color sizeCasa"></i>
-								<p className="#">{info.dormitorios} Dormitorios</p>
+								<p className="#">{propiedad.dormitorios} Dormitorios</p>
 							</div>
 							<div className="items">
 								<i className="fas fa-paw color sizeCasa"></i>
@@ -173,7 +157,7 @@ export const DescripcionPropiedades = () => {
 									</h6>
 									<ul className="#">
 										<hr></hr>
-										{newArray.map((amenidades, index) => {
+										{propiedad.amenidades.map((amenidades, index) => {
 											return (
 												<i
 													key={index}
@@ -195,14 +179,14 @@ export const DescripcionPropiedades = () => {
 									</h6>
 								</div>
 								<hr></hr>
-								<p>{info.descripcion}</p>
+								<p>{propiedad.descripcion}</p>
 							</div>
 						</div>
 
 						<div className="form-group row ">
 							<div className="col-md-12 mt-3 mb-3">
 								<p>
-									4 motivos para elegir <strong>{info.titulo}</strong>
+									4 motivos para elegir <strong>{propiedad.titulo}</strong>
 								</p>
 								<div className="contenedorElegir column sizeItems color">
 									<div className="posicioPrimeraFila row">
@@ -258,4 +242,11 @@ export const DescripcionPropiedades = () => {
 			</div>
 		</Fragment>
 	);
+};
+
+DescripcionPropiedades.propTypes = {
+	location: PropTypes.shape({
+		pathname: PropTypes.string.isRequired,
+		state: PropTypes.object
+	}).isRequired
 };

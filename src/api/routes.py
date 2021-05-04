@@ -18,7 +18,7 @@ api = Blueprint('api', __name__)
 def search():
     body = request.get_json()
     availableProperties = []
-    propiedades1 = Propiedad.getByLocation(body["location"])
+    propiedades1 = Propiedad.getByLocation(body["location"], body["capacidad"])
     
     for propiedad in propiedades1:
         availableProperties.append(propiedad.serialize())

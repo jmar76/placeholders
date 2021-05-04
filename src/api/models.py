@@ -102,8 +102,8 @@ class Propiedad(db.Model):
         return str(self.id)
 
     @classmethod
-    def getByLocation(cls, ciudad):
-        return cls.query.filter_by(ciudad = ciudad).all()
+    def getByLocation(cls, ciudad, huespedes):
+        return cls.query.filter_by(ciudad = ciudad).filter(cls.huespedes >= huespedes).all()
 
     def serialize(self):
         amenidades = []

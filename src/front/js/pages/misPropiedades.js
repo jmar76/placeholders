@@ -28,9 +28,9 @@ export const MisPropiedades = () => {
 			<div className="row mt-5  ml-5">
 				{misPropiedades.map(propiedad => {
 					return (
-						<div className="col-4 marginMisPropiedades pb-3" key={propiedad.index}>
+						<div className="col-4 marginMisPropiedades pb-3" key={propiedad.id}>
 							<CardAlojamiento
-								key={propiedad.title}
+								key={propiedad.id}
 								title={propiedad.titulo}
 								huespedes={propiedad.huespedes}
 								ciudad={propiedad.ciudad}
@@ -41,6 +41,7 @@ export const MisPropiedades = () => {
 								calle={propiedad.calle}
 								numero={propiedad.numero}
 								codigo_postal={propiedad.codigo_postal}
+								amenidades={propiedad.amenidades}
 							/>
 						</div>
 					);
