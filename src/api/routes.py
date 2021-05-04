@@ -124,7 +124,7 @@ def propiedades():
                                 body["ciudad"], body["codigo_postal"],
                                 body["provincia"], body["dormitorios"],
                                 body["huespedes"], body["camas"],
-                                body["bathrooms"], body["descripcion"])
+                                body["bathrooms"], body["precio"], body["descripcion"])
     propiedad = Propiedad.get(propiedad_id)
         
     for amenidad in body["amenidades"]:
