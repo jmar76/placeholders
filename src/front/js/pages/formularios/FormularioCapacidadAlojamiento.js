@@ -10,6 +10,7 @@ export const FormularioCapacidadAlojamiento = props => {
 	let huespedes = actions.getFormValue("huespedes");
 	let camas = actions.getFormValue("camas");
 	let bathrooms = actions.getFormValue("bathrooms");
+	let precio = actions.getFormValue("precio");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -75,6 +76,20 @@ export const FormularioCapacidadAlojamiento = props => {
 									value={bathrooms}
 									className="form-control"
 									id="bathrooms"
+									onChange={event => {
+										actions.setFormValue(event.target.id, event.target.value);
+									}}
+								/>
+							</div>
+						</div>
+						<div className="form-row">
+							<div className="form-group col-md-12">
+								<label htmlFor="precio">Indicanos el precio por noche de tu alojamiento</label>
+								<input
+									type="number"
+									value={precio}
+									className="form-control"
+									id="precio"
 									onChange={event => {
 										actions.setFormValue(event.target.id, event.target.value);
 									}}

@@ -41,6 +41,7 @@ export const Navigation = props => {
 				huespedes: values.huespedes,
 				camas: values.camas,
 				bathrooms: values.bathrooms,
+				precio: values.precio,
 				descripcion: values.descripcion,
 				amenidades: values.activeAmenities
 			})

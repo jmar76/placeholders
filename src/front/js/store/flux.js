@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			huespedes: "",
 			camas: "",
 			bathrooms: "",
+			precio: "",
 			descripcion: "",
 			fotos: [],
 			piscina: false,
@@ -64,6 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					huespedes: "",
 					camas: "",
 					bathrooms: "",
+					precio: "",
 					descripcion: "",
 					fotos: [],
 					piscina: false,
@@ -91,6 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let huespedes = store.huespedes;
 				let camas = store.camas;
 				let bathrooms = store.bathrooms;
+				let precio = store.precio;
 				let descripcion = store.descripcion;
 				let fotos = store.fotos;
 				let amenidades = {
@@ -122,6 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					huespedes,
 					camas,
 					bathrooms,
+					precio,
 					descripcion,
 					fotos,
 					activeAmenities

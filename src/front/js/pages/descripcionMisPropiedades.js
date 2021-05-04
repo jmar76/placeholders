@@ -9,7 +9,6 @@ export const DescripcionPropiedades = () => {
 	const { actions } = useContext(Context);
 	const params = useParams();
 	const [misPropiedades, setMisPropiedades] = useState([]);
-	console.log(misPropiedades);
 	let info = {};
 	for (let i = 0; i < misPropiedades.length; i++) {
 		if (params.id == misPropiedades[i].id) {
@@ -33,7 +32,7 @@ export const DescripcionPropiedades = () => {
 
 	return (
 		<Fragment>
-			<div className="container marginDescripcion bg-white">
+			<div className="container marginDescripcion bg-white esquinasRedondas">
 				<div className="row pt-2">
 					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
 						<div className="form-group row ">

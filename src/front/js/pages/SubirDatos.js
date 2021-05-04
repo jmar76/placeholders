@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export const SubirDatos = () => {
 	return (
 		<Fragment>
-			<div className="container mt-5">
-				<div className="row bg-light contenedor mt-5">
+			<div className="container">
+				<div className="row justify-content-center bg-light contenedor mt-5">
 					<div className="col-md-12 ">
 						<div className="alert alert-success mt-4" role="alert">
 							Los datos se han guardado correctamente!

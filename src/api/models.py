@@ -65,11 +65,12 @@ class Propiedad(db.Model):
     huespedes = db.Column(db.String(120), unique=False, nullable=False)
     camas = db.Column(db.String(120), unique=False, nullable=False)
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
+    precio = db.Column(db.String(120), unique=False, nullable=False)
     descripcion = db.Column(db.String(1200), unique=False, nullable=False)
     amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
-    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, descripcion):
+    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
         propiedad = cls()
         propiedad.user_id = user_id
         propiedad.titulo = titulo
@@ -82,6 +83,7 @@ class Propiedad(db.Model):
         propiedad.huespedes = huespedes
         propiedad.camas = camas
         propiedad.bathrooms = bathrooms
+        propiedad.precio = precio
         propiedad.descripcion = descripcion
 
         user = User.get(user_id)
@@ -99,6 +101,10 @@ class Propiedad(db.Model):
     def __str__(self):
         return str(self.id)
 
+    @classmethod
+    def getByLocation(cls, ciudad):
+        return cls.query.filter_by(ciudad = ciudad).all()
+
     def serialize(self):
         amenidades = []
         for amenidad in self.amenidades:
@@ -108,6 +114,7 @@ class Propiedad(db.Model):
             "huespedes": self.huespedes,
             "dormitorios" : self.dormitorios,
             "bathrooms" : self.bathrooms,
+            "precio" : self.precio,
             "ciudad" : self.ciudad,
             "provincia" : self.provincia,
             "descripcion": self.descripcion,

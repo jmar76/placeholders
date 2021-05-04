@@ -14,6 +14,18 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
 
+@api.route('/', methods=['POST'])
+def search():
+    body = request.get_json()
+    availableProperties = []
+    propiedades1 = Propiedad.getByLocation(body["location"])
+    
+    for propiedad in propiedades1:
+        availableProperties.append(propiedad.serialize())
+
+    return jsonify(availableProperties)
+
+
 @api.route('/signup', methods=['POST'])
 def signup():
     body = request.get_json()

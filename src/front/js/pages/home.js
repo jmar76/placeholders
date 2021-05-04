@@ -6,8 +6,26 @@ import { es } from "date-fns/locale";
 import "react-nice-dates/build/style.css";
 
 export const Home = () => {
+	const API_URL = process.env.BACKEND_URL;
 	const [startDate, setStartDate] = useState();
 	const [endDate, setEndDate] = useState();
+	const [ubicacion, setUbicacion] = useState("");
+	const [huespedes, setHuespedes] = useState("");
+
+	function handleSearch() {
+		fetch(API_URL + "/api/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				location: ubicacion
+			})
+		})
+			.then(response => response.json())
+			.then(responseJson => console.log(responseJson));
+	}
+
 	return (
 		<Fragment>
 			<div className="row text-white margin">
@@ -21,6 +39,7 @@ export const Home = () => {
 									className="form-control"
 									placeholder="¿A donde viajas?"
 									id="ubicacion"
+									onChange={event => setUbicacion(event.target.value)}
 								/>
 							</div>
 							<div className="col-5">
@@ -31,7 +50,7 @@ export const Home = () => {
 									onEndDateChange={setEndDate}
 									minimumDate={new Date()}
 									minimumLength={1}
-									format="dd/MM/aaaa"
+									format="dd/MM/yyyy"
 									locale={es}>
 									{({ startDateInputProps, endDateInputProps, focus }) => (
 										<div className="date-range">
@@ -64,10 +83,16 @@ export const Home = () => {
 							</div>
 							<div className="col-2">
 								<label htmlFor="huespedes">Huéspedes</label>
-								<input type="number" className="form-control" placeholder="¿Cuantos?" id="huespedes" />
+								<input
+									onChange={event => setHuespedes(event.target.value)}
+									type="number"
+									className="form-control"
+									placeholder="¿Cuantos?"
+									id="huespedes"
+								/>
 							</div>
 							<div className="col-2 mt-2">
-								<button type="button" className="btn btn-danger btn-block mt-4">
+								<button type="button" className="btn btn-danger btn-block mt-4" onClick={handleSearch}>
 									Buscar
 								</button>
 							</div>
