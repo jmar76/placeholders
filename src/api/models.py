@@ -68,9 +68,8 @@ class Propiedad(db.Model):
     dormitorios = db.Column(db.String(120), unique=False, nullable=False)
     huespedes = db.Column(db.String(120), unique=False, nullable=False)
     camas = db.Column(db.String(120), unique=False, nullable=False)
-    precio = db.Column(db.String(120), unique=False, nullable=True)
-
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
+    precio = db.Column(db.String(120), unique=False, nullable=False)
     descripcion = db.Column(db.String(1200), unique=False, nullable=False)
     amenidades = db.relationship(
         'Amenidades', secondary=association_table, back_populates="propiedades")
