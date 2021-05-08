@@ -265,6 +265,7 @@ export const Home = () => {
 													id="llegada"
 													{...startDateInputProps}
 													placeholder="dd/mm/aaaa"
+													autoComplete="off"
 												/>
 											</div>
 											<span className="date-range_arrow d-inline" />
@@ -277,6 +278,7 @@ export const Home = () => {
 													id="salida"
 													{...endDateInputProps}
 													placeholder="dd/mm/aaaa"
+													autoComplete="off"
 												/>
 											</div>
 										</div>
@@ -316,12 +318,14 @@ export const Home = () => {
 								ciudad={propiedad.ciudad}
 								provincia={propiedad.provincia}
 								dormitorios={propiedad.dormitorios}
+								descripcion={propiedad.descripcion}
 								bathrooms={propiedad.bathrooms}
 								id={propiedad.id}
 								calle={propiedad.calle}
 								numero={propiedad.numero}
 								codigo_postal={propiedad.codigo_postal}
 								amenidades={propiedad.amenidades}
+								precio={propiedad.precio}
 							/>
 						</div>
 					);

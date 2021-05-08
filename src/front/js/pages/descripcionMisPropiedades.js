@@ -5,9 +5,14 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import "../../styles/descripcionMisPropiedades.scss";
 import ratings from "../../img/ratings.jpg";
 import { MisPropiedades } from "./misPropiedades";
+import { DateRangePicker, START_DATE, END_DATE } from "react-nice-dates";
+import { es } from "date-fns/locale";
+import "react-nice-dates/build/style.css";
 
 export const DescripcionPropiedades = props => {
 	const API_URL = process.env.BACKEND_URL;
+	const [startDate, setStartDate] = useState();
+	const [endDate, setEndDate] = useState();
 	const { actions } = useContext(Context);
 	const location = useLocation();
 	const params = useParams();
@@ -180,6 +185,60 @@ export const DescripcionPropiedades = props => {
 								</div>
 								<hr></hr>
 								<p>{propiedad.descripcion}</p>
+							</div>
+						</div>
+						<div className="form-group row ">
+							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
+								<div className="row">
+									<h6 className="#">
+										<strong>Precios</strong>
+									</h6>
+								</div>
+								<hr></hr>
+								<p>{propiedad.precio}</p>
+								<div className="col-4">
+									<DateRangePicker
+										startDate={startDate}
+										endDate={endDate}
+										onStartDateChange={setStartDate}
+										onEndDateChange={setEndDate}
+										minimumDate={new Date()}
+										minimumLength={1}
+										format="dd/MM/yyyy"
+										locale={es}>
+										{({ startDateInputProps, endDateInputProps, focus }) => (
+											<div className="date-range">
+												<div className="col-6 d-inline-block pl-0 pr-1">
+													<label htmlFor="llegada">Llegada</label>
+													<input
+														className={
+															"form-control input" +
+															(focus === START_DATE ? " -focused" : "")
+														}
+														id="llegada"
+														{...startDateInputProps}
+														placeholder="dd/mm/aaaa"
+														autoComplete="off"
+													/>
+												</div>
+												<span className="date-range_arrow d-inline" />
+												<div className="col-6 d-inline-block pr-0 pl-1">
+													<label htmlFor="salida">Salida</label>
+													<input
+														className={
+															" form-control input" +
+															(focus === END_DATE ? " -focused" : "")
+														}
+														id="salida"
+														{...endDateInputProps}
+														placeholder="dd/mm/aaaa"
+														autoComplete="off"
+													/>
+												</div>
+											</div>
+										)}
+									</DateRangePicker>
+								</div>
 							</div>
 						</div>
 

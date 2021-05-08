@@ -34,6 +34,7 @@ export const MisPropiedades = () => {
 								title={propiedad.titulo}
 								huespedes={propiedad.huespedes}
 								ciudad={propiedad.ciudad}
+								descripcion={propiedad.descripcion}
 								provincia={propiedad.provincia}
 								dormitorios={propiedad.dormitorios}
 								bathrooms={propiedad.bathrooms}

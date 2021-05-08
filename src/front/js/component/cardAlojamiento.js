@@ -50,5 +50,6 @@ CardAlojamiento.propTypes = {
 	provincia: PropTypes.string,
 	descripcion: PropTypes.string,
 	amenidades: PropTypes.array,
-	id: PropTypes.number
+	id: PropTypes.number,
+	precio: PropTypes.number
 };
