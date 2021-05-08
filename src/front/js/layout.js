@@ -14,6 +14,7 @@ import { Footer } from "./component/footer";
 import { MisPropiedades } from "./pages/misPropiedades";
 import { SignUp } from "./pages/signup";
 import { SubirDatos } from "./pages/SubirDatos";
+import { reservaPagos } from "./pages/reservaPago";
 
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
@@ -57,6 +58,9 @@ const Layout = () => {
 							<SignUp />
 						</Route>
 						<Route exact path="/misPropiedades">
+							<MisPropiedades />
+						</Route>
+						<Route exact path="/reservaPago">
 							<MisPropiedades />
 						</Route>
 						<Route exact path="/descripcionMisPropiedades/:id" component={DescripcionPropiedades}></Route>

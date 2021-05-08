@@ -12,6 +12,11 @@ from flask_jwt_extended import get_jwt_identity
 import random
 from werkzeug.security import generate_password_hash, check_password_hash
 
+import stripe
+# This is your real test secret API key.
+stripe.api_key = 'pk_test_51InoiJDKwicxTU51Yb2iXOAobK6fsMNPOKLLpXpfs9o2epiwDUW9HcrhHbC90yRrVmy6DFp7KmlQtSYU3Fpme3kO00V0r29ECt'
+
+ 
 api = Blueprint('api', __name__)
 
 @api.route('/', methods=['POST'])
@@ -150,3 +155,34 @@ def mis_propiedades():
     return jsonify(propiedades)
 
 
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='.')
+YOUR_DOMAIN = 'https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/'
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price_data': {
+                        'currency': '€',
+                        'unit_amount': 2000,
+                        'product_data': {
+                            'name': 'Paga tu reserva',
+                            'images': ['https://i.imgur.com/EHyR2nP.png'],
+                        },
+                    },
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url='https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/' + '?success=true',
+            cancel_url='https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/' + '?canceled=true',
+        )
+        return jsonify({'id': checkout_session.id})
+    except Exception as e:
+        return jsonify(error=str(e)), 403
+if __name__ == '__main__':
+    app.run(port=4242)

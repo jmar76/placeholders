@@ -21,6 +21,7 @@ flask-jwt-extended = "*"
 boto3 = "*"
 bcrypt = "*"
 werkzeug = "*"
+stripe = "*"
 
 [requires]
 python_version = "3.8"
