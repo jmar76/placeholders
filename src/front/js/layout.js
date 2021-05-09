@@ -24,7 +24,6 @@ import { ForGot } from "./pages/forgot";
 import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 import { Viajeros } from "./pages/viajeros";
 import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
-import { VistaCard } from "./pages/vistaCards";
 
 const Layout = () => {
 	const config = {
@@ -53,10 +52,6 @@ const Layout = () => {
 						<Route exact path="/signup">
 							<SignUp />
 						</Route>
-						<Route exact path="/vistaCards">
-							<VistaCard />
-						</Route>
-
 						<Route exact path="/misPropiedades">
 							<MisPropiedades />
 						</Route>
