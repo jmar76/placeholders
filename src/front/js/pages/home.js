@@ -17,35 +17,6 @@ export const Home = () => {
 	const [ciudad, setCiudad] = useState("");
 	const [resultados, setResultados] = useState([]);
 
-	let CardRender = (
-		<div className="container">
-			<div className="row ml-5">
-				{resultados.map(propiedad => {
-					return (
-						<div className="col-4 marginMisPropiedades pb-3" key={propiedad.id}>
-							<CardAlojamiento
-								key={propiedad.id}
-								title={propiedad.titulo}
-								huespedes={propiedad.huespedes}
-								ciudad={propiedad.ciudad}
-								provincia={propiedad.provincia}
-								dormitorios={propiedad.dormitorios}
-								descripcion={propiedad.descripcion}
-								bathrooms={propiedad.bathrooms}
-								id={propiedad.id}
-								calle={propiedad.calle}
-								numero={propiedad.numero}
-								codigo_postal={propiedad.codigo_postal}
-								amenidades={propiedad.amenidades}
-								precio={propiedad.precio}
-							/>
-						</div>
-					);
-				})}
-			</div>
-		</div>
-	);
-	let ok = true;
 	function handleSearch() {
 		fetch(API_URL + "/api/", {
 			method: "POST",
@@ -347,7 +318,32 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-			{CardRender}
+			<div className="container">
+				<div className="row ml-5">
+					{resultados.map(propiedad => {
+						return (
+							<div className="col-4 marginMisPropiedades pb-3" key={propiedad.id}>
+								<CardAlojamiento
+									key={propiedad.id}
+									title={propiedad.titulo}
+									huespedes={propiedad.huespedes}
+									ciudad={propiedad.ciudad}
+									provincia={propiedad.provincia}
+									dormitorios={propiedad.dormitorios}
+									descripcion={propiedad.descripcion}
+									bathrooms={propiedad.bathrooms}
+									id={propiedad.id}
+									calle={propiedad.calle}
+									numero={propiedad.numero}
+									codigo_postal={propiedad.codigo_postal}
+									amenidades={propiedad.amenidades}
+									precio={propiedad.precio}
+								/>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 			<div className="container-fluid">
 				<div className="contenedorTextoRealidad mt-5 pt-5">
 					<p>
