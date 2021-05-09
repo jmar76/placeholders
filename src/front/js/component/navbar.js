@@ -27,18 +27,10 @@ export const Navbar = () => {
 		actions.clearFormValues();
 		actions.deleteAccessToken();
 	}
-	let usuario = <i className="fas fa-user navbar-brand mb-0 h1 text-warning" />;
+	let usuario = <i className="fas fa-user navbar-brand mb-0 h1 text-dark" />;
 
-	let barradPueblos = (
-		<Link to="/">
-			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dPueblos</span>
-		</Link>
-	);
-	let barradNaturaleza = (
-		<Link to="/">
-			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dNaturaleza</span>
-		</Link>
-	);
+	let barradPueblos = <span className="navbar-brand my-2 my-lg-0 text-white fontsize">dPueblos</span>;
+	let barradNaturaleza = <span className="navbar-brand my-2 my-lg-0 text-white fontsize">dNaturaleza</span>;
 	let barraViajeros = (
 		<Link to="/viajeros">
 			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dViajeros</span>
@@ -46,12 +38,12 @@ export const Navbar = () => {
 	);
 	let barraSignup = (
 		<Link to="/signup">
-			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">Crea una Cuenta</span>
+			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">Regístrate</span>
 		</Link>
 	);
 	let barraLogin = (
 		<Link to="/login">
-			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">Inicia Sesión</span>
+			<span className="navbar-brand my-2 my-lg-0 text-primary fontsize">Inicia Sesión</span>
 		</Link>
 	);
 	let barraPropiedad = (
@@ -67,7 +59,7 @@ export const Navbar = () => {
 	let dropdown = (
 		<div className="dropdown ">
 			<button
-				className="btn btn-primary"
+				className="btn btn-light"
 				type="button"
 				id="dropdownMenuButton"
 				data-toggle="dropdown"
@@ -77,7 +69,7 @@ export const Navbar = () => {
 				<i className="fas fa-arrow-circle-down">
 					{" "}
 					{accesstoken ? usuario : ""}
-					{accesstoken ? <span className="navbar-brand mb-0 h text-warning font"> {name}</span> : ""}
+					{accesstoken ? <span className="navbar-brand mb-0  text-dark font">{name}</span> : ""}
 				</i>
 			</button>
 			<div className="dropdown-menu dropdown-menu-right " aria-labelledby="dropdownMenuButton">
@@ -103,15 +95,15 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light fondonavbar  fixed-top text-white">
 			<div className="collapse navbar-collapse">
 				<Link to="/">
-					<span className="navbar-brand h1 text-white ">
+					<span className="navbar-brand h1 text-white">
 						<h2>dturist.com</h2>
 					</span>
 				</Link>
-				<div className="ml-5 pl-5">
+				{/* <div className="ml-5 pl-5">
 					<img src={andalucia} width="239px" height="81px" />
-				</div>
+				</div> */}
 			</div>
-			<div className="navbar-nav mr-auto text-white ">
+			<div className="navbar-nav mr-auto ">
 				{!accesstoken ? barradPueblos : ""}
 				{!accesstoken ? barradNaturaleza : ""}
 				{!accesstoken ? barraViajeros : ""}

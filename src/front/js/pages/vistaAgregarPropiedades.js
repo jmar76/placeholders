@@ -5,14 +5,32 @@ import { Link } from "react-router-dom";
 export const VistaAgregarPropiedades = () => {
 	return (
 		<Fragment>
-			<div className="container text-white marginAgregar">
+			<div className="container-fluid mb-5 fondoDePantallaDos">
+				<div className="contenedorTexto">
+					<h1 className="text pl-3">Empieza tu aventura como anfitrión</h1>
+					<hr></hr>
+					<Link to="/signup">
+						<button type="button" className="btn text-white estilosBoton " value="crear">
+							Empieza ahora
+						</button>
+					</Link>
+				</div>
+			</div>
+			<div className="container mt-5 ">
+				<div className="contenedorTextoRealidad marginAgregar">
+					<p>
+						<strong>Haz realidad tu próxima aventura. Todo es posible como anfitrión.</strong>
+					</p>
+				</div>
+			</div>
+			<div className="container marginAgrega">
 				<div className="row pt-5 ">
 					<div className="col-12  colorFondo px-5 pt-5 pb-3 esquinasRedondas">
 						<div className="form-group row  posicionamiento">
 							<div className="contenedorPromocionInternacional">
 								<div className="row">
 									<i
-										className="fas fa-globe-africa text-success 
+										className="fas fa-globe-africa 
                                     sizePlaneta "></i>
 									<h4 className="pl-2">Promoción Internacional</h4>
 								</div>
@@ -23,7 +41,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorColaboracionFlexible">
 								<div className="row">
-									<i className="far fa-handshake sizeFlexible text-success "></i>
+									<i className="far fa-handshake sizeFlexible "></i>
 									<h4 className="pl-2">Colaboración Flexible</h4>
 								</div>
 								<p>
@@ -33,7 +51,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorSinExclusividad">
 								<div className="row">
-									<i className="fas fa-globe sizeSinExclusividad text-success "></i>
+									<i className="fas fa-globe sizeSinExclusividad "></i>
 
 									<h4 className="pl-2">Sin Exclusividad</h4>
 								</div>
@@ -44,10 +62,10 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 						</div>
 
-						<div className="form-group text-white row posicionamiento">
+						<div className="form-group row posicionamiento">
 							<div className="contenedorPromocionInternacional">
 								<div className="row">
-									<i className="fas fa-headset text-success sizePersonalizada"></i>
+									<i className="fas fa-headset sizePersonalizada"></i>
 
 									<h4 className="pl-2">Atención Personalizada</h4>
 								</div>
@@ -58,7 +76,7 @@ export const VistaAgregarPropiedades = () => {
 							</div>
 							<div className="contenedorColaboracionFlexible">
 								<div className="row">
-									<i className="far fa-grin-beam text-success sizeTranquilidad"></i>
+									<i className="far fa-grin-beam sizeTranquilidad"></i>
 
 									<h4 className="pl-2">Para Tu Tranquilidad </h4>
 								</div>
@@ -71,15 +89,15 @@ export const VistaAgregarPropiedades = () => {
 							<div className="contenedorDarDeAlta ">
 								<h4>Da de Alta tu Alojamiento</h4>
 								<div className="row">
-									<i className="fas fa-check text-success pl-5"></i>
+									<i className="fas fa-check pl-5"></i>
 									<p className="pl-2">Darse de alta es gratis.</p>
 								</div>
 								<div className="row">
-									<i className="fas fa-check text-success pl-5"></i>
+									<i className="fas fa-check pl-5"></i>
 									<p className="pl-2">Asistencia 24 horas, 7 días</p>
 								</div>
 								<div className="row">
-									<i className="fas fa-check text-success pl-5"></i>
+									<i className="fas fa-check pl-5"></i>
 									<p className="pl-2">Darse de alta son solo 15 minutos</p>
 								</div>
 

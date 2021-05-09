@@ -68,7 +68,6 @@ export const Navigation = props => {
 				}
 				if (responseOk) {
 					history.push("/misPropiedades");
-					console.log(response);
 					return;
 				}
 				return response.json();

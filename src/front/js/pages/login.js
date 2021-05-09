@@ -112,7 +112,7 @@ export const LogIn = () => {
 										<p className="d-inline">Crea una cuenta</p>
 									</Link>
 								</div>
-								<div className="col-12 d-inline text-center">
+								<div className="col-12 d-inline mb-5 text-center">
 									<p className="d-inline">¿Olvidaste tu contraseña?&nbsp; </p>
 									<Link to="/forgot" className="d-inline">
 										<p className="d-inline">Recuperar</p>
