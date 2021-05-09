@@ -9,14 +9,14 @@
     width: 300px;
     height: 160px;
     text-align: center;  
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .contenedorReservaYa{
     margin-left: 349px;
     height: 100px;
     text-align: center;
-    background-color: rgb(10, 31, 77);
     border-radius: 11px;
-    color: white;
 }
 .posicionamiento{
    justify-content: space-between;
@@ -47,7 +47,15 @@ padding-top: 11px;
 .marginViajeros{
     margin-top: 110px;
 }
-.colorFondoViajeros{
-        background-color: rgba(10, 31, 77, 0.884);
-
+.fondoDePantallaviajero{
+        background: url(https://negociosyconvenciones.com/wp-content/uploads/2019/02/iStock_000026015779_Large.jpg) no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 750px;
 }
+.fondoDePantallaviajero{
+    font-size: 33px;
+}
+
