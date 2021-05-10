@@ -1,15 +1,122 @@
+.fondoDePantallaProfile{
+        background: url(https://cloudfront-eu-central-1.images.arcpublishing.com/larazon/G5ZZMMXZAVECPPUVGFS6SBXTXQ.jpg) no-repeat center center fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 750px;
+}
+.fondoDePantallaDown{
+        background: url(https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/09/06175536/Felicidad02.jpg) no-repeat center center;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 750px;
+        border-radius: 17px;
+}
+.contenedorText{
+    width: 600px;
+    height: 650px;
+    // background-color: rgba(14, 13, 13, 0.301);
+}
+.contenedorTexto{
+    width: 600px;
+    height: 650px;
+    float: right;
+    text-align: center;
+    color: black;
+}
+.borderCentrado{
+    margin: auto;
+}
+.borderRadio{
+    border-radius: 17px;
+}
 .sizePlanet{
-    color: rgb(0, 119, 255);
+    color: black;
     font-size: 27px;
     padding-left: 30px;
 }
 .colorNombre{
-    color: rgb(0, 119, 255);
-}
-.marginProfile{
-    margin-top: 100px;
+    color: black;
 }
 .colorFondoProfile{
-        background-color: rgba(10, 31, 77, 0.884);
-
+        background-color: rgba(12, 12, 14, 0.021);
     }
+.colorBotonProfile{
+    background-color: rgb(241, 14, 90);
+     color: white;
+     padding-right: 109px;
+     padding-left: 109px;
+}
+.contenedorProfile{
+    width: 330px;
+    height: 218px;
+    background-color: rgba(13, 13, 14, 0.877);
+    border-radius: 11px;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+}
+.contenedorConImagen{
+    width: 659px;
+    height: 490px;
+    border-radius: 11px;
+}
+.contenedorFlexible{
+    width: 365px;
+    height: 525px;
+    color: black;
+}
+.contenedorParrafoUno{
+    width: 365px;
+    height: 265px;
+}
+.contenedorParrafoDos{
+    width: 365px;
+    height: 265px;
+}
+.contenedorOpinion{
+    width: 650px;
+    height: 180px;
+    text-align: center;
+    border-radius: 11px;
+        color: black;
+}
+.posicionamiento{
+   justify-content: space-between;
+}
+.texto{
+    font-size: 66px;
+   padding-top: 156px;
+}
+.text{
+    font-size: 66px;
+   padding-top: 106px;
+}
+.fuenteText{
+    font-size: 27px;
+}
+.estilosBoton{
+    padding-left: 27px;
+    padding-top: 13px;
+    padding-right: 27px;
+    padding-bottom: 13px;
+    border-radius: 9px;
+    margin-left: 59px;
+    margin-top: 39px;
+    font-size: 19px;
+    background-color: rgb(241, 14, 90);
+}
+.contenedorTextoRealidad{
+    width: 651px;
+    margin: auto;
+    font-size: 46px;
+    text-align: center;
+}
+
+
+
+
+

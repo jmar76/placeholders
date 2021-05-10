@@ -158,7 +158,8 @@ def mis_propiedades():
 app = Flask(__name__,
             static_url_path='',
             static_folder='.')
-YOUR_DOMAIN = 'https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/'
+
+YOUR_DOMAIN = 'https://3000-peach-tiglon-d07e06w2.ws-eu04.gitpod.io/'
 @app.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     try:
@@ -178,8 +179,8 @@ def create_checkout_session():
                 },
             ],
             mode='payment',
-            success_url='https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/' + '?success=true',
-            cancel_url='https://3000-ivory-wasp-1fosk9zg.ws-eu03.gitpod.io/' + '?canceled=true',
+            success_url='https://3000-peach-tiglon-d07e06w2.ws-eu04.gitpod.io/' + '?success=true',
+            cancel_url='https://3000-peach-tiglon-d07e06w2.ws-eu04.gitpod.io/' + '?canceled=true',
         )
         return jsonify({'id': checkout_session.id})
     except Exception as e:

@@ -9,7 +9,7 @@ export const CardAlojamiento = props => {
 	const { actions } = useContext(Context);
 
 	return (
-		<div className="card" style={{ width: 540 + "px" }}>
+		<div className="card">
 			<div className="row no-gutters">
 				<div className="col-md-6 ">
 					<img

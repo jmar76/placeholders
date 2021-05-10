@@ -66,6 +66,10 @@ export const Navigation = props => {
 				if (response.ok) {
 					setMensaje("Se subieron correctamente");
 				}
+				if (responseOk) {
+					history.push("/misPropiedades");
+					return;
+				}
 				return response.json();
 			})
 			.then(responseJson => {
@@ -89,11 +93,9 @@ export const Navigation = props => {
 						</button>
 					)}
 					{props.current === 4 ? (
-						<Link to="/SubirDatos">
-							<button className="btn btn-success ml-5" onClick={handleSubmit}>
-								Enviar
-							</button>
-						</Link>
+						<button className="btn btn-success ml-5" onClick={handleSubmit}>
+							Enviar
+						</button>
 					) : (
 						<button
 							onClick={props.next}

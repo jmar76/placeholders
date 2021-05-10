@@ -52,7 +52,7 @@ export const SignUp = () => {
 	}
 	return (
 		<div className="container marginCrearCuenta">
-			<div className="row mt-0 pt-5">
+			<div className="row mt-5 mb-5 pt-5">
 				<div className="col-8 offset-md-2 bg-white px-5 pt-3 pb-3 esquinasRedondas">
 					<form>
 						<div className="form-group row">
@@ -162,7 +162,7 @@ export const SignUp = () => {
 									</button>
 								</div>
 							</div>
-							<div className="row mt-3">
+							<div className="row mt-3 mb-5">
 								<div className="col-12 d-inline text-center">
 									<p className="d-inline">¿Ya tienes una cuenta?&nbsp; </p>
 									<Link to="/login" className="d-inline">

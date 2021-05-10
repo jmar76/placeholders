@@ -11,13 +11,16 @@ import "react-nice-dates/build/style.css";
 
 export const DescripcionPropiedades = props => {
 	const API_URL = process.env.BACKEND_URL;
-	const [startDate, setStartDate] = useState();
-	const [endDate, setEndDate] = useState();
+	const [startDate, setStartDate] = useState(0);
+	const [endDate, setEndDate] = useState(0);
 	const { actions } = useContext(Context);
 	const location = useLocation();
 	const params = useParams();
 	const [propiedad, setPropiedad] = useState(props.location.state);
 	let arrayAmenidades = [];
+	const oneDay = 24 * 60 * 60 * 1000;
+	const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+	let precioFinal = diffDays * propiedad.precio;
 
 	return (
 		<Fragment>
@@ -43,11 +46,6 @@ export const DescripcionPropiedades = props => {
 									<p className="pt-1 ml-3 sizeTextCiudad">
 										{propiedad.ciudad}, {propiedad.provincia} (España)
 									</p>
-								</div>
-								<div className="col-md-6 mt-2 contenedorNombreProvincia">
-									<button type="button" className="btn botonReservaAhora " value="crear">
-										<strong>Reserva ahora</strong>
-									</button>
 								</div>
 							</div>
 
@@ -134,7 +132,6 @@ export const DescripcionPropiedades = props => {
 								<strong>-ver mapa</strong>
 							</p>
 						</div>
-
 						<hr></hr>
 						<div className="row justificado color ">
 							<div className="items">
@@ -195,49 +192,79 @@ export const DescripcionPropiedades = props => {
 									</h6>
 								</div>
 								<hr></hr>
-								<p>{propiedad.precio}</p>
-								<div className="col-4">
-									<DateRangePicker
-										startDate={startDate}
-										endDate={endDate}
-										onStartDateChange={setStartDate}
-										onEndDateChange={setEndDate}
-										minimumDate={new Date()}
-										minimumLength={1}
-										format="dd/MM/yyyy"
-										locale={es}>
-										{({ startDateInputProps, endDateInputProps, focus }) => (
-											<div className="date-range">
-												<div className="col-6 d-inline-block pl-0 pr-1">
-													<label htmlFor="llegada">Llegada</label>
-													<input
-														className={
-															"form-control input" +
-															(focus === START_DATE ? " -focused" : "")
-														}
-														id="llegada"
-														{...startDateInputProps}
-														placeholder="dd/mm/aaaa"
-														autoComplete="off"
-													/>
-												</div>
-												<span className="date-range_arrow d-inline" />
-												<div className="col-6 d-inline-block pr-0 pl-1">
-													<label htmlFor="salida">Salida</label>
-													<input
-														className={
-															" form-control input" +
-															(focus === END_DATE ? " -focused" : "")
-														}
-														id="salida"
-														{...endDateInputProps}
-														placeholder="dd/mm/aaaa"
-														autoComplete="off"
-													/>
-												</div>
-											</div>
+								<div className="row pl-3">
+									<div className="col-6">
+										<p>{propiedad.precio}€ la noche</p>
+										{startDate === 0 || startDate === null ? (
+											<p>0 noches seleccionadas</p>
+										) : endDate === 0 || endDate === null ? (
+											<p>0 noches seleccionadas</p>
+										) : (
+											<p>{diffDays} noches seleccionadas</p>
 										)}
-									</DateRangePicker>
+										<p className="d-inline-block">
+											<strong>Total: </strong>
+										</p>
+										{startDate === 0 || startDate === null ? (
+											<p className="d-inline-block">&nbsp;0€</p>
+										) : endDate === 0 || endDate === null ? (
+											<p className="d-inline-block">&nbsp;0€</p>
+										) : (
+											<p className="d-inline-block">&nbsp;{precioFinal}€</p>
+										)}
+									</div>
+									<div className="col-6">
+										<Link to="/reservaPago">
+											<button type="button" className="btn botonReservaAhora " value="crear">
+												<strong>Reserva ahora</strong>
+											</button>
+										</Link>
+									</div>
+								</div>
+								<div className="row mt-3">
+									<div className="col-12">
+										<DateRangePicker
+											startDate={startDate}
+											endDate={endDate}
+											onStartDateChange={setStartDate}
+											onEndDateChange={setEndDate}
+											minimumDate={new Date()}
+											minimumLength={1}
+											format="dd/MM/yyyy"
+											locale={es}>
+											{({ startDateInputProps, endDateInputProps, focus }) => (
+												<div className="date-range">
+													<div className="col-6 d-inline-block">
+														<label htmlFor="llegada">Llegada</label>
+														<input
+															className={
+																"form-control input" +
+																(focus === START_DATE ? " -focused" : "")
+															}
+															id="llegada"
+															{...startDateInputProps}
+															placeholder="dd/mm/aaaa"
+															autoComplete="off"
+														/>
+													</div>
+
+													<div className="col-6 d-inline-block">
+														<label htmlFor="salida">Salida</label>
+														<input
+															className={
+																" form-control input" +
+																(focus === END_DATE ? " -focused" : "")
+															}
+															id="salida"
+															{...endDateInputProps}
+															placeholder="dd/mm/aaaa"
+															autoComplete="off"
+														/>
+													</div>
+												</div>
+											)}
+										</DateRangePicker>
+									</div>
 								</div>
 							</div>
 						</div>

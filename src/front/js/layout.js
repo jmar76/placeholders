@@ -13,8 +13,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { MisPropiedades } from "./pages/misPropiedades";
 import { SignUp } from "./pages/signup";
-import { SubirDatos } from "./pages/SubirDatos";
-import { reservaPagos } from "./pages/reservaPago";
+import { App } from "./pages/reservaPago";
 
 import { LogIn } from "./pages/login";
 import Profile from "./pages/profile";
@@ -51,9 +50,6 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/SubirDatos">
-							<SubirDatos />
-						</Route>
 						<Route exact path="/signup">
 							<SignUp />
 						</Route>
@@ -61,7 +57,7 @@ const Layout = () => {
 							<MisPropiedades />
 						</Route>
 						<Route exact path="/reservaPago">
-							<MisPropiedades />
+							<App />
 						</Route>
 						<Route exact path="/descripcionMisPropiedades/:id" component={DescripcionPropiedades}></Route>
 						<Route exact path="/agregarPropiedades">

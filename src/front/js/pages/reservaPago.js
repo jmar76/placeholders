@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import "./App.css";
+import "../../styles/pagoonline.scss";
+import PropTypes from "prop-types";
+
 // Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
+// recreating the `Stripe` object on every render.{}
+
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const ProductDisplay = ({ handleClick }) => (
@@ -11,11 +14,11 @@ const ProductDisplay = ({ handleClick }) => (
 			<img src="https://i.imgur.com/EHyR2nP.png" alt="Paga tu reserva" />
 			<div className="description">
 				<h3>Stubborn Attachments</h3>
-				<h5>$20.00</h5>
+				<h5>precioFinal</h5>
 			</div>
 		</div>
 		<button type="button" id="checkout-button" role="link" onClick={handleClick}>
-			Checkout
+			Paga ahora
 		</button>
 	</section>
 );
@@ -26,7 +29,7 @@ const Message = ({ message }) => (
 	</section>
 );
 
-export default function App() {
+export function App() {
 	const [message, setMessage] = useState("");
 
 	useEffect(() => {
@@ -65,3 +68,11 @@ export default function App() {
 
 	return message ? <Message message={message} /> : <ProductDisplay handleClick={handleClick} />;
 }
+
+ProductDisplay.propTypes = {
+	handleClick: PropTypes.func
+};
+
+Message.propTypes = {
+	message: PropTypes.func
+};
