@@ -22,6 +22,7 @@ import { FormularioCapacidadAlojamiento } from "./pages/formularios/FormularioCa
 import { FormularioAmenidades } from "./pages/formularios/FormularioAmenidades";
 import { FormularioFotos } from "./pages/formularios/formularioFotos";
 import { ForGot } from "./pages/forgot";
+import { NewPassword } from "./pages/newPassword";
 import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 import { Viajeros } from "./pages/viajeros";
 import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
@@ -82,6 +83,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/forgot">
 							<ForGot />
+						</Route>
+						<Route exact path="/newPassword/:token">
+							<NewPassword />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />

@@ -83,39 +83,43 @@ def upload_images():
 
     return jsonify({"url":url_image}), 200
     
-@api.route("/forgot", methods=['POST'])
-def forgot():
+@api.route('/forgot-password', methods=['POST'])
+def forgot_password():
     request_json = request.get_json()
- 
-    email=request_json ["email"]
-
+    print(request_json)
+    email = request_json["email"]
+    
     if email is None:
-        raise APIException("Correo Electronico Requerido")
-
-    n = random.randint(100000000, 122939393939)
-    print(n)
-
-    user = User.get_with_email(email)
-    user.token = token
+        raise APIException("Email required")
+    
+    token = random.randint(100000000,199990000)
+    user = User.get_user_email(email)
+    if user is None:
+        raise APIException("user no encontrado")
+    user.token = str(token)
 
     db.session.commit()
 
-    forgot_password_email = ForgotPasswordEmail(email, token)
-    forgot_password_email.send()
+    forgot_password = ForgotPasswordEmail(email, token)
+    # forgot_password.send()      
+    url= forgot_password.send()
 
-    return jsonify({}), 200
+    # return jsonify({}), 200
+    return jsonify({"url": url, "token": token }), 200
+   
 
-@api.route('/reset-password' , methods=['POST'])
-def forgot_password ():
-
+@api.route('/newPassword', methods=['POST'])
+def reset_password():
     request_json = request.get_json()
+    print(type(request_json["token"]))
+    # email = request_json["email"]
+    token = str(request_json["token"])
+    password = request_json["password"]
 
-    email = request_json["email"]
-    token = request_json["token"]
-
-    user = User.get_for_forgot(email, token)
-    user.password = password 
+    user = User.get_for_forgot( token)
+    user.password = password
     user.token = None
+
     db.session.commit()
 
     return jsonify({}), 200

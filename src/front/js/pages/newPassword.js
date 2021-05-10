@@ -36,7 +36,7 @@ export const ForGot = () => {
 			.then(responseJson => {
 				if (responseOk) {
 					actions.saveForgotPasswordToken(responseJson.token);
-					setMessage("ve a tu correo para reestablecer la contraseña!");
+					setMessage("ves a tu correo para reestablecer la contraseña!");
 					history.push("/newPassword/" + responseJson.token);
 				} else {
 					setError(responseJson.message);

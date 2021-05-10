@@ -144,7 +144,23 @@ class Amenidades(db.Model):
     def get(cls, amenity):
         return cls.query.filter_by(amenity=amenity).one_or_none()
 
+        
+
     def __str__(self):
         return str(self.amenity)
-    
+    @classmethod
+    def get_by_user(cls, user_id):
+        return cls.query.filter_by(user_id = user_id).all()
+
+
+class ForgotPasswordEmail():
+    def __init__(self, email, token):
+        super().__init__()
+        self.email = email
+        self.token = tokens
+
+    def send (self):
+        url = os.getenv("FRONTEND_URL") + "/newPassword/" + str(self.token)
+        # return True
+        return url
   

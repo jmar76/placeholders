@@ -13,8 +13,8 @@ const ProductDisplay = ({ handleClick }) => (
 		<div className="product">
 			<img src="https://i.imgur.com/EHyR2nP.png" alt="Paga tu reserva" />
 			<div className="description">
-				<h3>Stubborn Attachments</h3>
-				<h5>precioFinal</h5>
+				<h3>Casa increible</h3>
+				<h5>20</h5>
 			</div>
 		</div>
 		<button type="button" id="checkout-button" role="link" onClick={handleClick}>
