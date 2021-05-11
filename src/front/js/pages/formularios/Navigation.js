@@ -47,7 +47,7 @@ export const Navigation = props => {
 			})
 		}).then(response => {
 			responseOk = response.ok;
-			//actions.clearFormValues();
+			actions.clearFormValues();
 			return response.json();
 		});
 

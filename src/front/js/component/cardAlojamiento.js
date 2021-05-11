@@ -43,7 +43,7 @@ export const CardAlojamiento = props => {
 
 CardAlojamiento.propTypes = {
 	title: PropTypes.string,
-	huespedes: PropTypes.string,
+	huespedes: PropTypes.number,
 	dormitorios: PropTypes.string,
 	bathrooms: PropTypes.string,
 	ciudad: PropTypes.string,

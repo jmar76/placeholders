@@ -80,7 +80,7 @@ export const Navbar = () => {
 					Favoritos
 				</Link>
 				<Link className="dropdown-item" to="/misPropiedades">
-					Mis Propiedaes
+					Mis Propiedades
 				</Link>
 				<Link className="dropdown-item" to="#">
 					Reservas

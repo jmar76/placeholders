@@ -31,7 +31,8 @@ def signup():
     body = request.get_json()
     password = body["password"]
     hashed = generate_password_hash(password, "sha256")
-
+    if User.get_with_email(body["email"]):
+        raise APIException("Esta cuenta ya existe")
     User.create_user(body["name"], body["lastname"],
                         body["email"], hashed) 
 

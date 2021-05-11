@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment } from "react";
+import React, { useContext, useState, Fragment, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { DateRangePicker, START_DATE, END_DATE } from "react-nice-dates";

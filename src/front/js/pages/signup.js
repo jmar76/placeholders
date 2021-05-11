@@ -17,7 +17,7 @@ export const SignUp = () => {
 	function crear() {
 		setError("");
 		if (password != confirmpass) {
-			setError("Las contraseñas no coinciden, pruebe de nuevo!");
+			setError("Las contraseñas no coinciden");
 			return;
 		}
 
@@ -108,6 +108,7 @@ export const SignUp = () => {
 									<input
 										type="email"
 										id="email"
+										autoComplete="username"
 										placeholder="Email"
 										className="form-control"
 										required
