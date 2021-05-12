@@ -158,7 +158,7 @@ def mis_propiedades():
 @api.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     body = request.get_json()
-    test = str(body["precio"]) + "00"
+    precio = str(body["precio"]) + "00"
     try:
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -166,7 +166,7 @@ def create_checkout_session():
                 {
                     'price_data': {
                         'currency': 'eur',
-                        'unit_amount': test,
+                        'unit_amount': precio,
                         'product_data': {
                             'name': 'Tu reserva',
                             'images': ['https://turismoquechua.pe/images/pagina/turista2.png'],
