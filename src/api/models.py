@@ -5,9 +5,12 @@ import json
 db = SQLAlchemy()
 
 association_table = db.Table('association',
-    db.Column('propiedad_id', db.Integer, db.ForeignKey('propiedad.id')),
-    db.Column('amenidades_id', db.Integer, db.ForeignKey('amenidades.id'))
-)
+                             db.Column('propiedad_id', db.Integer,
+                                       db.ForeignKey('propiedad.id')),
+                             db.Column('amenidades_id', db.Integer,
+                                       db.ForeignKey('amenidades.id'))
+                             )
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -51,6 +54,7 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+
 class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -67,7 +71,8 @@ class Propiedad(db.Model):
     bathrooms = db.Column(db.String(120), unique=False, nullable=False)
     precio = db.Column(db.Integer(), unique=False, nullable=False)
     descripcion = db.Column(db.String(1200), unique=False, nullable=False)
-    amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
+    amenidades = db.relationship(
+        'Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
     def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
@@ -88,7 +93,7 @@ class Propiedad(db.Model):
 
         user = User.get(user_id)
         user.propiedades.append(propiedad)
-       
+
         db.session.add(propiedad)
         db.session.commit()
 
@@ -106,6 +111,7 @@ class Propiedad(db.Model):
         if huespedes == "":
             huespedes = 0
         return cls.query.filter_by(ciudad = ciudad).filter(cls.huespedes >= huespedes).all()
+        return cls.query.filter_by(ciudad=ciudad).filter(cls.huespedes >= huespedes).all()
 
     def serialize(self):
         amenidades = []
@@ -114,22 +120,24 @@ class Propiedad(db.Model):
         return {
             "titulo": self.titulo,
             "huespedes": self.huespedes,
-            "dormitorios" : self.dormitorios,
-            "bathrooms" : self.bathrooms,
-            "precio" : self.precio,
-            "ciudad" : self.ciudad,
-            "provincia" : self.provincia,
+            "dormitorios": self.dormitorios,
+            "bathrooms": self.bathrooms,
+            "precio": self.precio,
+            "ciudad": self.ciudad,
+            "provincia": self.provincia,
             "descripcion": self.descripcion,
             "id": self.id,
             "calle": self.calle,
-            "numero" : self.numero,
-            "codigo_postal" : self.codigo_postal,
+            "numero": self.numero,
+            "codigo_postal": self.codigo_postal,
             "amenidades": amenidades
         }
 
+
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    propiedades = db.relationship("Propiedad", secondary=association_table, back_populates="amenidades")
+    propiedades = db.relationship(
+        "Propiedad", secondary=association_table, back_populates="amenidades")
     amenity = db.Column(db.String(120), unique=False, nullable=False)
 
     @classmethod
@@ -148,5 +156,3 @@ class Amenidades(db.Model):
 
     def __str__(self):
         return str(self.amenity)
-    
-  
