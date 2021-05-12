@@ -38,7 +38,7 @@ const Profile = () => {
 						Hazte anfitrión y podrás transformar el espacio que no usas en una fuente de ingresos extra que
 						te ayude a conseguir tus metas
 					</p>
-					<Link to="/signup">
+					<Link to="/alquilaTuPropiedad">
 						<button type="button" className="btn text-white estilosBoton " value="crear">
 							Empieza ahora
 						</button>
@@ -190,7 +190,7 @@ const Profile = () => {
 									<p className="pl-2">Darse de alta son solo 15 minutos</p>
 								</div>
 
-								<Link to="/signup">
+								<Link to="/alquilaTuPropiedad">
 									<button type="button" className="btn text-white colorBotonProfile " value="crear">
 										<strong>Empezar</strong>
 									</button>
@@ -205,7 +205,7 @@ const Profile = () => {
 					<h1 className="text pl-3">Empieza tu aventura como anfitrión</h1>
 					<hr></hr>
 					<p className="fuenteText mt-5 pt-3 pl-3">Vamos a configurar juntos tu anuncio.</p>
-					<Link to="/signup">
+					<Link to="/alquilaTuPropiedad">
 						<button type="button" className="btn text-white estilosBoton " value="crear">
 							Empieza ahora
 						</button>

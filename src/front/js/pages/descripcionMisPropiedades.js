@@ -1,23 +1,22 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import "../../styles/descripcionMisPropiedades.scss";
 import ratings from "../../img/ratings.jpg";
 import { MisPropiedades } from "./misPropiedades";
 import { DateRangePicker, START_DATE, END_DATE } from "react-nice-dates";
 import { es } from "date-fns/locale";
 import "react-nice-dates/build/style.css";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 export const DescripcionPropiedades = props => {
-	const API_URL = process.env.BACKEND_URL;
 	const [startDate, setStartDate] = useState(0);
 	const [endDate, setEndDate] = useState(0);
 	const { actions } = useContext(Context);
+	const history = useHistory();
 	const location = useLocation();
-	const params = useParams();
 	const [propiedad, setPropiedad] = useState(props.location.state);
-	let arrayAmenidades = [];
 	const oneDay = 24 * 60 * 60 * 1000;
 	const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
 	let precioFinal = diffDays * propiedad.precio;
@@ -26,9 +25,14 @@ export const DescripcionPropiedades = props => {
 		<Fragment>
 			<div className="container marginDescripcion bg-white esquinasRedondas">
 				<div className="row pt-2">
+					<div className="col-2">
+						<div>
+							<IoArrowBackCircleOutline size={70} onClick={() => history.goBack()} />
+						</div>
+					</div>
 					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
-						<div className="form-group row ">
-							<div className=" row ">
+						<div className="form-group row">
+							<div className="row">
 								<div className="col-md-12 row contenedorNombreAlojamiento">
 									<div className="contenedorTitulo row ">
 										<i className="fas fa-home mt-2 ml-2 pl-1 color sizeCasa "></i>
