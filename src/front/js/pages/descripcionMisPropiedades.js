@@ -284,7 +284,11 @@ export const DescripcionPropiedades = props => {
 										)}
 									</div>
 									<div className="col-6 mt-5">
-										<Link to="/pago">
+										<Link
+											to={{
+												pathname: "/pago",
+												state: precioFinal
+											}}>
 											<button type="button" className="btn botonReservaAhora " value="crear">
 												<strong>Reserva ahora</strong>
 											</button>

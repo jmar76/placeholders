@@ -157,16 +157,18 @@ def mis_propiedades():
 
 @api.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
+    body = request.get_json()
+    test = str(body["precio"]) + "00"
     try:
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[
                 {
                     'price_data': {
-                        'currency': 'usd',
-                        'unit_amount': 2000,
+                        'currency': 'eur',
+                        'unit_amount': test,
                         'product_data': {
-                            'name': 'Stubborn Attachments',
+                            'name': 'Tu reserva',
                             'images': ['https://turismoquechua.pe/images/pagina/turista2.png'],
                         },
                     },

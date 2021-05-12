@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, Fragment } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "../../styles/profile.scss";
 import { loadStripe } from "@stripe/stripe-js";
 import PropTypes from "prop-types";
@@ -9,11 +9,19 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 export const Pago = props => {
 	const API_URL = process.env.BACKEND_URL;
+	const location = useLocation();
+	const [precio, setPrecio] = useState(props.location.state);
 
 	async function handleClick() {
 		const stripe = await stripePromise;
 		const response = await fetch(API_URL + "/api/create-checkout-session", {
-			method: "POST"
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				precio: precio
+			})
 		});
 		const session = await response.json();
 		// When the customer clicks on the button, redirect them to Checkout.
@@ -35,8 +43,8 @@ export const Pago = props => {
 					alt="The cover of Stubborn Attachments"
 				/>
 				<div className="description">
-					<h3>Stubborn Attachments</h3>
-					<h5>{props.precioFinal}€</h5>
+					<h3>Tu reserva</h3>
+					<h5>{precio}€</h5>
 				</div>
 			</div>
 			<button
@@ -51,5 +59,8 @@ export const Pago = props => {
 	);
 };
 Pago.propTypes = {
-	precioFinal: PropTypes.number
+	location: PropTypes.shape({
+		pathname: PropTypes.string.isRequired,
+		state: PropTypes.object
+	}).isRequired
 };

@@ -50,9 +50,7 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
-						<Route exact path="/pago">
-							<Pago />
-						</Route>
+						<Route exact path="/pago" component={Pago}></Route>
 
 						<Route exact path="/signup">
 							<SignUp />
