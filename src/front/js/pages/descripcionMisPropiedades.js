@@ -214,9 +214,11 @@ export const DescripcionPropiedades = props => {
 										)}
 									</div>
 									<div className="col-6">
-										<button type="button" className="btn botonReservaAhora " value="crear">
-											<strong>Reserva ahora</strong>
-										</button>
+										<Link to="/pago">
+											<button type="button" className="btn botonReservaAhora " value="crear">
+												<strong>Reserva ahora</strong>
+											</button>
+										</Link>
 									</div>
 								</div>
 								<div className="row mt-3">

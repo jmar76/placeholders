@@ -24,6 +24,7 @@ import { ForGot } from "./pages/forgot";
 import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 import { Viajeros } from "./pages/viajeros";
 import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
+import { Pago } from "./pages/pago";
 
 const Layout = () => {
 	const config = {
@@ -49,6 +50,10 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
+						<Route exact path="/pago">
+							<Pago />
+						</Route>
+
 						<Route exact path="/signup">
 							<SignUp />
 						</Route>

@@ -1,6 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import stripe
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Propiedad, Amenidades
@@ -11,6 +12,10 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 import random
 from werkzeug.security import generate_password_hash, check_password_hash
+
+# This is a sample test API key. Sign in to see examples pre-filled with your key.
+stripe.api_key = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+YOUR_DOMAIN = os.getenv('FRONTEND_URL')
 
 api = Blueprint('api', __name__)
 
@@ -149,5 +154,33 @@ def mis_propiedades():
         propiedades.append(propiedad.serialize())
 
     return jsonify(propiedades)
+
+@api.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    try:
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price_data': {
+                        'currency': 'usd',
+                        'unit_amount': 2000,
+                        'product_data': {
+                            'name': 'Stubborn Attachments',
+                            'images': ['https://i.imgur.com/EHyR2nP.png'],
+                        },
+                    },
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url=YOUR_DOMAIN + '?success=true',
+            cancel_url=YOUR_DOMAIN + '?canceled=true',
+        )
+        return jsonify({'id': checkout_session.id})
+    except Exception as e:
+        return jsonify(error=str(e)), 403
+# if __name__ == '__main__':
+#     app.run(port=4242)
 
 
