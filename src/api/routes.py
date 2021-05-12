@@ -167,7 +167,7 @@ def create_checkout_session():
                         'unit_amount': 2000,
                         'product_data': {
                             'name': 'Stubborn Attachments',
-                            'images': ['https://i.imgur.com/EHyR2nP.png'],
+                            'images': ['https://turismoquechua.pe/images/pagina/turista2.png'],
                         },
                     },
                     'quantity': 1,
@@ -180,7 +180,5 @@ def create_checkout_session():
         return jsonify({'id': checkout_session.id})
     except Exception as e:
         return jsonify(error=str(e)), 403
-# if __name__ == '__main__':
-#     app.run(port=4242)
 
 

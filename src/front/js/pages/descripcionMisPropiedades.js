@@ -20,15 +20,38 @@ export const DescripcionPropiedades = props => {
 	const [propiedad, setPropiedad] = useState(props.location.state);
 	const oneDay = 24 * 60 * 60 * 1000;
 	const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+
 	let precioFinal = diffDays * propiedad.precio;
 
 	return (
 		<Fragment>
 			<div className="container marginDescripcion bg-white esquinasRedondas">
 				<div className="row pt-2">
-					<div className="col-2">
-						<div>
-							<IoArrowBackCircleOutline size={70} onClick={() => history.goBack()} />
+					<div className="column">
+						<div className="col-2">
+							<div className="">
+								<IoArrowBackCircleOutline size={70} onClick={() => history.goBack()} />
+							</div>
+						</div>
+						<div className="column contenedorFlecha sticky-top">
+							<div className="col-2">
+								<div className="contenedorFloat">
+									<img
+										src="https://media-cdn.tripadvisor.com/media/photo-s/0f/8f/c0/74/vertical.jpg"
+										width="249px"
+										height="339px"
+										className="esquinas"
+									/>
+								</div>
+							</div>
+							<div className="col-2">
+								<div className="contenedorFloatTexto">
+									<p>
+										<strong>Ronda </strong>desde 59€/noche
+									</p>{" "}
+									<p>Aprovecha nuestras promos y disfruta de la naturaleza A TU AIRE</p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div className="col-8 bg-white centraje px-5 pt-0 pb-3 esquinasRedondas">
@@ -41,9 +64,9 @@ export const DescripcionPropiedades = props => {
 										<img src={ratings} width="121px" height="31px" className="pl-3 pt-2 " />
 									</div>
 									<div className="contenedorLikes mt-2">
-										<i className="far fa-thumbs-up pt-2 pl-1 color sizeCasa"></i>
-										<i className="far fa-heart pt-2  pl-3 color sizeCasa"></i>
-										<i className="fas fa-share-alt pt-2  pl-3 color sizeCasa"></i>
+										<i className="far fa-thumbs-up pt-2 pl-1 color sizeIcon"></i>
+										<i className="far fa-heart pt-2  pl-3 color sizeIcon"></i>
+										<i className="fas fa-share-alt pt-2  pl-3 color sizeIcon"></i>
 									</div>
 								</div>
 								<div className="col-md-6 mt-2 row contenedorNombreProvincia">
@@ -138,39 +161,39 @@ export const DescripcionPropiedades = props => {
 							</p>
 						</div>
 						<hr></hr>
-						<div className="row justificado color ">
+						<div className="row justificado mb-3 ">
 							<div className="items">
-								<i className="fas fa-bath color sizeCasa"></i>
+								<i className="fas fa-bath sizeCasa"></i>
 								<p className="#"> {propiedad.bathrooms} Baños</p>
 							</div>
 							<div className="items">
-								<i className="fas fa-users color sizeCasa"></i>
+								<i className="fas fa-users sizeCasa"></i>
 								<p className="#"> {propiedad.huespedes} Personas</p>
 							</div>
 							<div className="items">
-								<i className="fas fa-bed color sizeCasa"></i>
+								<i className="fas fa-bed sizeCasa"></i>
 								<p className="#">{propiedad.dormitorios} Dormitorios</p>
 							</div>
 							<div className="items">
-								<i className="fas fa-paw color sizeCasa"></i>
+								<i className="fas fa-paw sizeCasa"></i>
 								<p className="#"> Mascotas</p>
 							</div>
 						</div>
-						<div className="row">
+						<div className="row colorF mb-3">
 							<div className="col-md-12 mt-3">
 								<div className="row contenedorServicios pr-5">
-									<h6 className="#">
+									<h5 className="">
 										<strong>Servicios</strong>
-									</h6>
-									<ul className="#">
+									</h5>
+									<ul className="">
 										<hr></hr>
 										{propiedad.amenidades.map((amenidades, index) => {
 											return (
 												<i
 													key={index}
-													className="column far fa-check-circle color sizeItems pt-1 pl-5">
+													className="column far fa-check-circle sizeItems pt-1 pl-5">
 													{" "}
-													{amenidades}
+													<strong>{amenidades}</strong>
 												</i>
 											);
 										})}
@@ -178,47 +201,89 @@ export const DescripcionPropiedades = props => {
 								</div>
 							</div>
 						</div>
-						<div className="form-group row ">
-							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
+						<div className="form-group row mb-3  colorF">
+							<div className="col-md-12 mt-3  contenedorDescripcion">
 								<div className="row">
-									<h6 className="#">
+									<h5 className="#">
 										<strong>Descripción</strong>
-									</h6>
+									</h5>
 								</div>
 								<hr></hr>
 								<p>{propiedad.descripcion}</p>
 							</div>
 						</div>
+
 						<div className="form-group row ">
+							<div className="col-md-12 mt-3 mb-3">
+								<p>
+									4 motivos para elegir <strong>{propiedad.title}</strong>
+								</p>
+								<div className="contenedorElegir column sizeItems color">
+									<div className="posicioPrimeraFila row">
+										<div className="unionText row">
+											<strong>
+												<i className="far fa-check-circle text-success pt-1"></i>
+											</strong>
+											<p className="pl-1">¡Precios imbatibles!</p>
+										</div>
+										<div className="unionText row">
+											<strong>
+												<i className="far fa-check-circle text-success  t-1"></i>
+											</strong>
+											<p className="pl-1">Gestiona tus reservas online</p>
+										</div>
+									</div>
+
+									<div className="posicioPrimeraFila row">
+										<div className="unionText row">
+											<strong>
+												<i className="far fa-check-circle text-success pt-1"></i>
+											</strong>
+											<p className="pl-1">Hablan 3 idiomas</p>
+										</div>
+										<div className="unionText row">
+											<strong>
+												<i className="far fa-check-circle text-success pt-1"></i>
+											</strong>
+											<p className="pl-1">Una reserva segura</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="form-group  pago row mb-5">
 							<div className="col-md-12 mt-3 mb-3 contenedorDescripcion">
-								<div className="row">
-									<h6 className="#">
-										<strong>Precios</strong>
-									</h6>
+								<div
+									className="row justify-content-center
+                                ">
+									<h4 className="">
+										<strong>Tu Reserva</strong>
+									</h4>
 								</div>
 								<hr></hr>
 								<div className="row pl-3">
 									<div className="col-6">
-										<p>{propiedad.precio}€ la noche</p>
+										<h4>{propiedad.precio}€/noche</h4>
 										{startDate === 0 || startDate === null ? (
-											<p>0 noches seleccionadas</p>
+											<h4>0 noches seleccionadas</h4>
 										) : endDate === 0 || endDate === null ? (
-											<p>0 noches seleccionadas</p>
+											<h4>0 noches seleccionadas</h4>
 										) : (
-											<p>{diffDays} noches seleccionadas</p>
+											<h4>{diffDays} noches </h4>
 										)}
-										<p className="d-inline-block">
+										<h4 className="d-inline-block">
 											<strong>Total: </strong>
-										</p>
+										</h4>
 										{startDate === 0 || startDate === null ? (
-											<p className="d-inline-block">&nbsp;0€</p>
+											<h4 className="d-inline-block">&nbsp;0€</h4>
 										) : endDate === 0 || endDate === null ? (
-											<p className="d-inline-block">&nbsp;0€</p>
+											<h4 className="d-inline-block">&nbsp;0€</h4>
 										) : (
-											<p className="d-inline-block">&nbsp;{precioFinal}€</p>
+											<h4 className="d-inline-block">&nbsp;{precioFinal}€</h4>
 										)}
 									</div>
-									<div className="col-6">
+									<div className="col-6 mt-5">
 										<Link to="/pago">
 											<button type="button" className="btn botonReservaAhora " value="crear">
 												<strong>Reserva ahora</strong>
@@ -274,41 +339,10 @@ export const DescripcionPropiedades = props => {
 							</div>
 						</div>
 
-						<div className="form-group row ">
-							<div className="col-md-12 mt-3 mb-3">
-								<p>
-									4 motivos para elegir <strong>{propiedad.titulo}</strong>
-								</p>
-								<div className="contenedorElegir column sizeItems color">
-									<div className="posicioPrimeraFila row">
-										<div className="unionText row">
-											<i className="far fa-check-circle pt-1"></i>
-											<p className="pl-1">¡Precios imbatibles!</p>
-										</div>
-										<div className="unionText row">
-											<i className="far fa-check-circle pt-1"></i>
-											<p className="pl-1">Gestiona tus reservas online</p>
-										</div>
-									</div>
-
-									<div className="posicioPrimeraFila row">
-										<div className="unionText row">
-											<i className="far fa-check-circle pt-1"></i>
-											<p className="pl-1">Hablan 3 idiomas</p>
-										</div>
-										<div className="unionText row">
-											<i className="far fa-check-circle pt-1"></i>
-											<p className="pl-1">Una reserva segura</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div className="form-group row ">
+						<div className="form-group row mb-5 colorF">
 							<div className="col-md-12 mb-3 contenedorDescripcion">
 								<div className="row">
-									<h6 className="#">
+									<h6 className="pl-2 pt-3">
 										<strong>Info importante</strong>
 									</h6>
 								</div>

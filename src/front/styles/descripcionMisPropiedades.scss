@@ -1,6 +1,6 @@
 .sizeCasa{
-    font-size: 21px;
-}
+    font-size: 29px;
+color: black;}
 .contenedorNombreAlojamiento{
     margin: auto;
     background-color: rgba(77, 76, 10, 0.027);
@@ -10,13 +10,33 @@
 }
 .contenedorNombreProvincia{
     height: 39px;
-    margin: auto;
+    padding-left: 35px;
     background-color: rgba(77, 76, 10, 0.027);
     display: flex;
     flex-direction: row;
 }
 .sizeUbicacion{
   font-size: 19px;
+      color: rgb(16, 121, 240);
+}
+.contenedorFlecha{
+    width: 300px;
+    height: 500px;
+    padding-top: 100px;
+    justify-content: center;
+    border-radius: 11px;
+}
+.contenedorFloat{
+    width: 250px;
+    height: 340px;
+    border-radius: 11px;
+}
+.contenedorFloatTexto{
+    width: 250px;
+    height: 140px;
+}
+.esquinas{
+    border-radius: 11px;
 }
 .justificado{
     width: 500px;
@@ -30,6 +50,7 @@
 .items{
     width: 100px ;
     height: 50px;
+    color: rgb(15, 112, 238);
 }
 .center{
     margin: auto;
@@ -49,13 +70,10 @@
     justify-content: space-between;
 }
 .botonReservaAhora{
-    background-color: rgba(241, 28, 92, 0.918);
+    background-color: rgba(223, 28, 135, 0.959);
      color: white;
      padding-right: 69px;
      padding-left: 69px;
-}
-.color{
-   color: rgb(10, 31, 77);
 }
 .contenedorLikes{
     width: 100px;
@@ -77,6 +95,7 @@
 .unionText{
     width: 250px;
     height: 30px;
+    font-size: 17px;
 }
 .sizeText{
     font-size: 13px;
@@ -85,9 +104,20 @@
     font-size: 17px;
 }
 .sizeItems{
-    font-size: 15px;
+    font-size: 17px;
 }
 .marginDescripcion{
     margin-top: 125px;
+}
+.colorF{
+    border-radius: 11px;
+}
+.sizeIcon{
+    font-size: 21px;
+}
+.pago{
+    background-color: rgba(0, 0, 0, 0.932);
+    border-radius: 11px;
+    background: url(https://content.skyscnr.com/m/4bc4e6400feeb9e5/original/spain-andalucia-andalusia-cadiz-province-el-palmar-beach-gettyimages-566180985.jpg?resize=1800px:1800px&quality=100) ;
 }
 

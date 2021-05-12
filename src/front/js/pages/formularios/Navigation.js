@@ -78,7 +78,6 @@ export const Navigation = props => {
 				}
 			});
 	}
-
 	return (
 		<div className="container">
 			<div className="row ">
