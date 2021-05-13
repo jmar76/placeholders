@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/signup.scss";
-import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import { useHistory, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export const SignUp = () => {
+export const SignUp = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const [password, setPassword] = useState("");
 	const [confirmpass, setConfirmpass] = useState("");
@@ -11,6 +12,8 @@ export const SignUp = () => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 	const history = useHistory();
+	const location = useLocation();
+	const [previousPath, setPreviousPath] = useState(props.location.state);
 	const [name, setName] = useState("");
 	const [lastname, setLastname] = useState("");
 
@@ -37,7 +40,10 @@ export const SignUp = () => {
 			.then(response => {
 				responseOk = response.ok;
 				if (response.ok) {
-					history.push("/login");
+					history.push({
+						pathname: "/login",
+						state: previousPath
+					});
 				}
 				return response.json();
 			})
@@ -166,7 +172,12 @@ export const SignUp = () => {
 							<div className="row mt-3 mb-5">
 								<div className="col-12 d-inline text-center">
 									<p className="d-inline">¿Ya tienes una cuenta?&nbsp; </p>
-									<Link to="/login" className="d-inline">
+									<Link
+										className="d-inline"
+										to={{
+											pathname: "/login",
+											state: previousPath
+										}}>
 										<p className="d-inline">Inicia Sesión</p>
 									</Link>
 								</div>
@@ -177,4 +188,11 @@ export const SignUp = () => {
 			</div>
 		</div>
 	);
+};
+
+SignUp.propTypes = {
+	location: PropTypes.shape({
+		pathname: PropTypes.string.isRequired,
+		state: PropTypes.object
+	}).isRequired
 };

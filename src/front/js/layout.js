@@ -52,9 +52,7 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/pago" component={Pago}></Route>
 
-						<Route exact path="/signup">
-							<SignUp />
-						</Route>
+						<Route exact path="/signup" component={SignUp}></Route>
 						<Route exact path="/misPropiedades">
 							<MisPropiedades />
 						</Route>
@@ -65,9 +63,7 @@ const Layout = () => {
 						<Route exact path="/viajeros">
 							<Viajeros />
 						</Route>
-						<Route exact path="/login">
-							<LogIn />
-						</Route>
+						<Route exact path="/login" component={LogIn}></Route>
 						<Route exact path="/profile">
 							<Profile />
 						</Route>
