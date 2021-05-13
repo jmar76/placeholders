@@ -312,7 +312,7 @@ export const Home = () => {
 				</div>
 				<div className="row contenedorFrase">
 					<div className="col-md-10 pl-3 ">
-						<h1 className="pl-4 text-white">
+						<h1 className="pl-4 text-white mt-4">
 							<strong>Alquileres rurales en Andalucía</strong>
 						</h1>
 					</div>
