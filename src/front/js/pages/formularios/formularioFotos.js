@@ -12,6 +12,7 @@ export const FormularioFotos = props => {
 	const [files, setFiles] = useState(actions.getFormValue("fotos"));
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
+	let test = actions.getFormValue("errorFormulario");
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -45,9 +46,9 @@ export const FormularioFotos = props => {
 			<div className="row mt-5 pt-5">
 				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
-						{mensaje ? (
-							<div className="alert alert-success text-center" role="alert">
-								{mensaje}
+						{test ? (
+							<div className="alert alert-danger text-center" role="alert">
+								{test}
 							</div>
 						) : (
 							""

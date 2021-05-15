@@ -1,16 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import "../../styles/login.scss";
 import { Link } from "react-router-dom";
 
-export const LogIn = () => {
+export const LogIn = props => {
 	const API_URL = process.env.BACKEND_URL;
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [email, setEmail] = useState("");
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	const location = useLocation();
+	const [previousPath, setPreviousPath] = useState("");
+
+	useEffect(() => {
+		if (props.location.state != undefined) {
+			setPreviousPath(() => props.location.state);
+		}
+	}, []);
 
 	function login() {
 		setError("");
@@ -34,7 +43,10 @@ export const LogIn = () => {
 				return response.json();
 			})
 			.then(responseJson => {
-				if (responseOk) {
+				if (responseOk && previousPath === "/agregarPropiedades") {
+					actions.saveAccessToken(responseJson.access_token);
+					history.push("/alquilaTuPropiedad");
+				} else if (responseOk) {
 					actions.saveAccessToken(responseJson.access_token);
 					history.push("/profile");
 				} else {
@@ -125,4 +137,11 @@ export const LogIn = () => {
 			</div>
 		</div>
 	);
+};
+
+LogIn.propTypes = {
+	location: PropTypes.shape({
+		pathname: PropTypes.string.isRequired,
+		state: PropTypes.object
+	}).isRequired
 };

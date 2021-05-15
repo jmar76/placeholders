@@ -25,7 +25,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			chimenea: false,
 			mascotas: false,
 			zona_trabajo: false,
-			resultadosBusqueda: []
+			resultadosBusqueda: [],
+			pathDescripcionMisPropiedades: "",
+			errorFormulario: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -78,7 +80,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					calefaccion: false,
 					chimenea: false,
 					mascotas: false,
-					zona_trabajo: false
+					zona_trabajo: false,
+					errorFormulario: ""
 				});
 			},
 			getFormValues: () => {

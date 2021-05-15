@@ -23,6 +23,15 @@ export const DescripcionPropiedades = props => {
 
 	let precioFinal = diffDays * propiedad.precio;
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		actions.setFormValue("pathDescripcionMisPropiedades", window.location.pathname);
+		if (props.location.state.startDate && props.location.state.endDate != undefined) {
+			setStartDate(() => props.location.state.startDate);
+			setEndDate(() => props.location.state.endDate);
+		}
+	}, []);
+
 	return (
 		<Fragment>
 			<div className="container marginDescripcion bg-white esquinasRedondas">

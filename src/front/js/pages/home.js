@@ -1,11 +1,12 @@
-import React, { useContext, useState, Fragment, useEffect } from "react";
+import React, { useContext, useState, Fragment, useRef, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { DateRangePicker, START_DATE, END_DATE } from "react-nice-dates";
-import { es } from "date-fns/locale";
+import { es, tr } from "date-fns/locale";
 import "react-nice-dates/build/style.css";
 import { CardAlojamiento } from "../component/cardAlojamiento";
 import { Link } from "react-router-dom";
+import "../../styles/index.scss";
 
 export const Home = () => {
 	const API_URL = process.env.BACKEND_URL;
@@ -16,8 +17,15 @@ export const Home = () => {
 	const [provincia, setProvincia] = useState("");
 	const [ciudad, setCiudad] = useState("");
 	const [resultados, setResultados] = useState([]);
+	const [error, setError] = useState(false);
+	const titleRef = useRef();
+
+	if ("scrollRestoration" in history) {
+		history.scrollRestoration = "manual";
+	}
 
 	function handleSearch() {
+		titleRef.current.scrollIntoView({ behavior: "smooth" });
 		fetch(API_URL + "/api/", {
 			method: "POST",
 			headers: {
@@ -29,7 +37,15 @@ export const Home = () => {
 			})
 		})
 			.then(response => response.json())
-			.then(responseJson => actions.setFormValue("resultadosBusqueda", responseJson))
+			.then(responseJson => {
+				if (responseJson.length === 0) {
+					actions.setFormValue("resultadosBusqueda", []);
+					setError(true);
+				} else {
+					setError(false);
+					actions.setFormValue("resultadosBusqueda", responseJson);
+				}
+			})
 			.then(ok => setResultados(actions.getFormValue("resultadosBusqueda")));
 	}
 	return (
@@ -312,17 +328,26 @@ export const Home = () => {
 				</div>
 				<div className="row contenedorFrase">
 					<div className="col-md-10 pl-3 ">
-						<h1 className="pl-4 text-white">
+						<h1 className="pl-4 mt-5 pt-5 text-white">
 							<strong>Alquileres rurales en Andalucía</strong>
 						</h1>
 					</div>
 				</div>
 			</div>
 			<div className="container">
-				<div className="row ml-5">
+				<div className="row ml-5" ref={titleRef}>
+					{error ? (
+						<div className="col-12 mt-5">
+							<div className="alert alert-warning mt-5" role="alert">
+								No se encontraron resultados en este destino
+							</div>
+						</div>
+					) : (
+						""
+					)}
 					{resultados.map(propiedad => {
 						return (
-							<div className="col-4 marginMisPropiedades pb-3" key={propiedad.id}>
+							<div className="col-4 mt-5 pt-5 pb-3" key={propiedad.id}>
 								<CardAlojamiento
 									key={propiedad.id}
 									title={propiedad.titulo}
@@ -338,6 +363,8 @@ export const Home = () => {
 									codigo_postal={propiedad.codigo_postal}
 									amenidades={propiedad.amenidades}
 									precio={propiedad.precio}
+									startDate={startDate}
+									endDate={endDate}
 								/>
 							</div>
 						);
@@ -512,8 +539,8 @@ export const Home = () => {
 							</div>
 						</div>
 
-						<div className="form-group row posicionamiento ">
-							<div className="mt-3 contenedorOpinion ">
+						<div className="form-group row posicionamiento">
+							<div className="mt-3 contenedorOpinion">
 								<h3>DOÑANA, EL PARQUE POR EXCELENCIA</h3>
 								<p>
 									Debido a su privilegiada situación geográfica entre dos continentes y su proximidad

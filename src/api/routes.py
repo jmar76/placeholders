@@ -10,6 +10,8 @@ from aws import upload_file_to_s3
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import set_access_cookies
+
 import random
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -49,12 +51,13 @@ def login():
     email = body["email"]
     password = body["password"]
     user = User.get_with_email(email)
-    
+
     if user is None:
         raise APIException("Datos incorrectos")
     if check_password_hash(user.password, password):
         access_token = create_access_token(identity = user.id)
-        return jsonify({"access_token": access_token})
+        response = jsonify({"access_token": access_token})
+        return response
     else:
         raise APIException("Datos incorrectos")
     
@@ -125,24 +128,28 @@ def forgot_password ():
 @jwt_required()
 def propiedades():
     body = request.get_json()
-    user_id = get_jwt_identity()    
-    propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
+    user_id = get_jwt_identity()  
+    try:  
+        propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
                                 body["provincia"], body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["precio"], body["descripcion"])
-    propiedad = Propiedad.get(propiedad_id)
+        propiedad = Propiedad.get(propiedad_id)
         
-    for amenidad in body["amenidades"]:
-        if (Amenidades.get(amenidad) != None):
-            existing_amenity = Amenidades.get(amenidad)
-            propiedad.amenidades.append(existing_amenity)
-            db.session.add(existing_amenity)
-            db.session.commit()
-        else: 
-            raise APIException("Amenidad no existente")
-    
+        for amenidad in body["amenidades"]:
+            if (Amenidades.get(amenidad) != None):
+                existing_amenity = Amenidades.get(amenidad)
+                propiedad.amenidades.append(existing_amenity)
+                db.session.add(existing_amenity)
+                db.session.commit()
+            else: 
+                raise APIException("Amenidad no existente")
+    except Exception as e:
+        print(e)
+        raise APIException("Todos los campos son obligatorios")
     return jsonify("se subio la informacion"), 200
+    
 
 @api.route("/misPropiedades", methods=['GET'])
 @jwt_required()

@@ -51,5 +51,7 @@ CardAlojamiento.propTypes = {
 	descripcion: PropTypes.string,
 	amenidades: PropTypes.array,
 	id: PropTypes.number,
-	precio: PropTypes.number
+	precio: PropTypes.number,
+	startDate: PropTypes.instanceOf(Date),
+	endDate: PropTypes.instanceOf(Date)
 };

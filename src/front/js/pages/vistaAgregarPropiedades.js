@@ -9,7 +9,11 @@ export const VistaAgregarPropiedades = () => {
 				<div className="contenedorTexto">
 					<h1 className="text pl-3">Empieza tu aventura como anfitrión</h1>
 					<hr></hr>
-					<Link to="/signup">
+					<Link
+						to={{
+							pathname: "/signup",
+							state: "/agregarPropiedades"
+						}}>
 						<button type="button" className="btn text-white estilosBoton " value="crear">
 							Empieza ahora
 						</button>
@@ -101,7 +105,11 @@ export const VistaAgregarPropiedades = () => {
 									<p className="pl-2">Darse de alta son solo 15 minutos</p>
 								</div>
 
-								<Link to="/signup">
+								<Link
+									to={{
+										pathname: "/signup",
+										state: "/agregarPropiedades"
+									}}>
 									<button type="button" className="btn colorBotonDardeAlta " value="crear">
 										<strong>Empezar</strong>
 									</button>
