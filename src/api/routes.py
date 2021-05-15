@@ -10,6 +10,8 @@ from aws import upload_file_to_s3
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import set_access_cookies
+
 import random
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -18,6 +20,20 @@ stripe.api_key = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
 YOUR_DOMAIN = os.getenv('FRONTEND_URL')
 
 api = Blueprint('api', __name__)
+
+@app.after_request
+def refresh_expiring_jwts(response):
+    try:
+        exp_timestamp = get_jwt()["exp"]
+        now = datetime.now(timezone.utc)
+        target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
+        if target_timestamp > exp_timestamp:
+            access_token = create_access_token(identity=get_jwt_identity())
+            set_access_cookies(response, access_token)
+        return response
+    except (RuntimeError, KeyError):
+        # Case where there is not a valid JWT. Just return the original respone
+        return response
 
 @api.route('/', methods=['POST'])
 def search():
@@ -49,12 +65,14 @@ def login():
     email = body["email"]
     password = body["password"]
     user = User.get_with_email(email)
-    
+
     if user is None:
         raise APIException("Datos incorrectos")
     if check_password_hash(user.password, password):
         access_token = create_access_token(identity = user.id)
-        return jsonify({"access_token": access_token})
+        response = jsonify({"access_token": access_token})
+        set_access_cookies(response, access_token)
+        return response
     else:
         raise APIException("Datos incorrectos")
     

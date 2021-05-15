@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 import { Steps, Step } from "react-step-builder";
 import { Navigation } from "./pages/formularios/Navigation";
 
@@ -41,52 +40,50 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/pago" component={Pago}></Route>
+				<Navbar />
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
+					<Route exact path="/demo">
+						<Demo />
+					</Route>
+					<Route exact path="/pago" component={Pago}></Route>
 
-						<Route exact path="/signup" component={SignUp}></Route>
-						<Route exact path="/misPropiedades">
-							<MisPropiedades />
-						</Route>
-						<Route exact path="/descripcionMisPropiedades/:id" component={DescripcionPropiedades}></Route>
-						<Route exact path="/agregarPropiedades">
-							<VistaAgregarPropiedades />
-						</Route>
-						<Route exact path="/viajeros">
-							<Viajeros />
-						</Route>
-						<Route exact path="/login" component={LogIn}></Route>
-						<Route exact path="/profile">
-							<Profile />
-						</Route>
-						<Route exact path="/alquilaTuPropiedad">
-							<Steps config={config}>
-								<Step component={AlquilaTuPropiedad} />
-								<Step component={FormularioCapacidadAlojamiento} />
-								<Step component={FormularioAmenidades} />
-								<Step component={FormularioFotos} />
-							</Steps>
-						</Route>
-						<Route exact path="/forgot">
-							<ForGot />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
+					<Route exact path="/signup" component={SignUp}></Route>
+					<Route exact path="/misPropiedades">
+						<MisPropiedades />
+					</Route>
+					<Route exact path="/descripcionMisPropiedades/:id" component={DescripcionPropiedades}></Route>
+					<Route exact path="/agregarPropiedades">
+						<VistaAgregarPropiedades />
+					</Route>
+					<Route exact path="/viajeros">
+						<Viajeros />
+					</Route>
+					<Route exact path="/login" component={LogIn}></Route>
+					<Route exact path="/profile">
+						<Profile />
+					</Route>
+					<Route exact path="/alquilaTuPropiedad">
+						<Steps config={config}>
+							<Step component={AlquilaTuPropiedad} />
+							<Step component={FormularioCapacidadAlojamiento} />
+							<Step component={FormularioAmenidades} />
+							<Step component={FormularioFotos} />
+						</Steps>
+					</Route>
+					<Route exact path="/forgot">
+						<ForGot />
+					</Route>
+					<Route exact path="/single/:theid">
+						<Single />
+					</Route>
+					<Route>
+						<h1>Not found!</h1>
+					</Route>
+				</Switch>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);

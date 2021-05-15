@@ -12,8 +12,8 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export const DescripcionPropiedades = props => {
-	const [startDate, setStartDate] = useState(props.location.state.startDate);
-	const [endDate, setEndDate] = useState(props.location.state.endDate);
+	const [startDate, setStartDate] = useState(0);
+	const [endDate, setEndDate] = useState(0);
 	const { actions } = useContext(Context);
 	const history = useHistory();
 	const location = useLocation();
@@ -22,6 +22,15 @@ export const DescripcionPropiedades = props => {
 	const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
 
 	let precioFinal = diffDays * propiedad.precio;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		actions.setFormValue("pathDescripcionMisPropiedades", window.location.pathname);
+		if (props.location.state.startDate && props.location.state.endDate != undefined) {
+			setStartDate(() => props.location.state.startDate);
+			setEndDate(() => props.location.state.endDate);
+		}
+	}, []);
 
 	return (
 		<Fragment>
