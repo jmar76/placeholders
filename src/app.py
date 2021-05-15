@@ -14,6 +14,9 @@ from api.routes import api
 from api.admin import setup_admin
 from api.models import Amenidades
 from datetime import timedelta
+from flask_jwt_extended import get_jwt
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import set_access_cookies
 
 from flask_jwt_extended import JWTManager
 #from models import Person
@@ -25,9 +28,7 @@ app.url_map.strict_slashes = False
 
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = "bvhshdbvhb36fbfdgndfdhbvhhv5d4bv5ef4v5fbvdf5@"  # Change this!
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(hours = 1)
-app.config["JWT_COOKIE_SECURE"] = False
-app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(hours = 3)
 
 jwt = JWTManager(app)
 

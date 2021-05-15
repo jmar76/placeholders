@@ -21,20 +21,6 @@ YOUR_DOMAIN = os.getenv('FRONTEND_URL')
 
 api = Blueprint('api', __name__)
 
-@app.after_request
-def refresh_expiring_jwts(response):
-    try:
-        exp_timestamp = get_jwt()["exp"]
-        now = datetime.now(timezone.utc)
-        target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
-        if target_timestamp > exp_timestamp:
-            access_token = create_access_token(identity=get_jwt_identity())
-            set_access_cookies(response, access_token)
-        return response
-    except (RuntimeError, KeyError):
-        # Case where there is not a valid JWT. Just return the original respone
-        return response
-
 @api.route('/', methods=['POST'])
 def search():
     body = request.get_json()
@@ -71,7 +57,6 @@ def login():
     if check_password_hash(user.password, password):
         access_token = create_access_token(identity = user.id)
         response = jsonify({"access_token": access_token})
-        set_access_cookies(response, access_token)
         return response
     else:
         raise APIException("Datos incorrectos")
@@ -143,24 +128,28 @@ def forgot_password ():
 @jwt_required()
 def propiedades():
     body = request.get_json()
-    user_id = get_jwt_identity()    
-    propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
+    user_id = get_jwt_identity()  
+    try:  
+        propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
                                 body["provincia"], body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["precio"], body["descripcion"])
-    propiedad = Propiedad.get(propiedad_id)
+        propiedad = Propiedad.get(propiedad_id)
         
-    for amenidad in body["amenidades"]:
-        if (Amenidades.get(amenidad) != None):
-            existing_amenity = Amenidades.get(amenidad)
-            propiedad.amenidades.append(existing_amenity)
-            db.session.add(existing_amenity)
-            db.session.commit()
-        else: 
-            raise APIException("Amenidad no existente")
-    
+        for amenidad in body["amenidades"]:
+            if (Amenidades.get(amenidad) != None):
+                existing_amenity = Amenidades.get(amenidad)
+                propiedad.amenidades.append(existing_amenity)
+                db.session.add(existing_amenity)
+                db.session.commit()
+            else: 
+                raise APIException("Amenidad no existente")
+    except Exception as e:
+        print(e)
+        raise APIException("Todos los campos son obligatorios")
     return jsonify("se subio la informacion"), 200
+    
 
 @api.route("/misPropiedades", methods=['GET'])
 @jwt_required()

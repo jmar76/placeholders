@@ -24,6 +24,7 @@ export const Navigation = props => {
 	let responseOk = false;
 
 	function handleSubmit() {
+		let responseOk = false;
 		fetch(API_URL + "/api/propiedades", {
 			method: "POST",
 			headers: {
@@ -45,11 +46,21 @@ export const Navigation = props => {
 				descripcion: values.descripcion,
 				amenidades: values.activeAmenities
 			})
-		}).then(response => {
-			responseOk = response.ok;
-			actions.clearFormValues();
-			return response.json();
-		});
+		})
+			.then(response => {
+				responseOk = response.ok;
+				if (responseOk) {
+					actions.clearFormValues();
+					history.push("/misPropiedades");
+					return;
+				}
+				return response.json();
+			})
+			.then(responseJson => {
+				if (!responseOk) {
+					actions.setFormValue("errorFormulario", responseJson.message);
+				}
+			});
 
 		const formData = new FormData();
 
@@ -65,10 +76,8 @@ export const Navigation = props => {
 				responseOk = response.ok;
 				if (response.ok) {
 					setMensaje("Se subieron correctamente");
-				}
-				if (responseOk) {
-					history.push("/misPropiedades");
-					return;
+				} else {
+					setError(responseJson.message);
 				}
 				return response.json();
 			})

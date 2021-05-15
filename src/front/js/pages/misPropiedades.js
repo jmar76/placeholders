@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { CardAlojamiento } from "../component/cardAlojamiento";
@@ -28,7 +28,8 @@ export const MisPropiedades = () => {
 				{misPropiedades.length === 0 ? (
 					<div className="col-12 mt-5">
 						<div className="alert alert-warning" role="alert">
-							Aún no tienes alojamientos añadidos
+							Aún no tienes alojamientos añadidos &nbsp;
+							<Link to="/alquilaTuPropiedad">haz click aquí para añadir uno</Link>
 						</div>
 					</div>
 				) : (
