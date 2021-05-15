@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { CardAlojamiento } from "../component/cardAlojamiento";
 import { CardDescripcion } from "../component/cardDescripcion";
-import "../../styles/misPropiedades.scss";
 
 export const MisPropiedades = () => {
 	const API_URL = process.env.BACKEND_URL;
@@ -25,10 +24,19 @@ export const MisPropiedades = () => {
 
 	return (
 		<Fragment>
-			<div className="row mt-5  ml-5">
+			<div className="row mt-5 ml-5">
+				{misPropiedades.length === 0 ? (
+					<div className="col-12 mt-5">
+						<div className="alert alert-warning" role="alert">
+							Aún no tienes alojamientos añadidos
+						</div>
+					</div>
+				) : (
+					""
+				)}
 				{misPropiedades.map(propiedad => {
 					return (
-						<div className="col-4 marginMisPropiedades pb-3" key={propiedad.id}>
+						<div className="col-4 mt-5 pt-5 pb-3" key={propiedad.id}>
 							<CardAlojamiento
 								key={propiedad.id}
 								title={propiedad.titulo}

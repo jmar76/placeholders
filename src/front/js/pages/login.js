@@ -43,7 +43,10 @@ export const LogIn = props => {
 				return response.json();
 			})
 			.then(responseJson => {
-				if (responseOk) {
+				if (responseOk && previousPath === "/agregarPropiedades") {
+					actions.saveAccessToken(responseJson.access_token);
+					history.push("/alquilaTuPropiedad");
+				} else if (responseOk) {
 					actions.saveAccessToken(responseJson.access_token);
 					history.push("/profile");
 				} else {

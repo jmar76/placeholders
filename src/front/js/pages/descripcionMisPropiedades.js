@@ -12,8 +12,8 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export const DescripcionPropiedades = props => {
-	const [startDate, setStartDate] = useState(0);
-	const [endDate, setEndDate] = useState(0);
+	const [startDate, setStartDate] = useState(props.location.state.startDate);
+	const [endDate, setEndDate] = useState(props.location.state.endDate);
 	const { actions } = useContext(Context);
 	const history = useHistory();
 	const location = useLocation();
