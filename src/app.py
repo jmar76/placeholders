@@ -78,7 +78,7 @@ if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
 
-@app.cli.command("create-amenities")
+@app.cli.command("populate-database")
 def create_amenities():
     amenities = ["cocina","calefaccion","piscina","parking","wifi","tv","aire_acondicionado","chimenea","mascotas","zona_trabajo"]
     for amenidad in amenities:
@@ -86,8 +86,6 @@ def create_amenities():
         new_amenity.amenity = amenidad
         db.session.add(new_amenity)
         db.session.commit()
-
-@app.cli.command("create-provincias")
 def create_provincias():
     provincias = ["Almeria","Cadiz","Cordoba","Granada","Jaen","Huelva","Malaga","Sevilla"]
     for provincia in provincias:

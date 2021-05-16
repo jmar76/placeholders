@@ -145,6 +145,14 @@ def propiedades():
                                 body["bathrooms"], body["precio"], body["descripcion"])
         propiedad = Propiedad.get(propiedad_id)
 
+        if (Provincias.get(body["provincia"]) != None):
+                existing_provincia = Provincias.get(body["provincia"])
+                existing_provincia.propiedades.append(propiedad)
+                db.session.add(existing_provincia)
+                db.session.commit()
+        else:
+            raise APIException("Provincia no existente")
+
         for amenidad in body["amenidades"]:
             if (Amenidades.get(amenidad) != None):
                 existing_amenity = Amenidades.get(amenidad)

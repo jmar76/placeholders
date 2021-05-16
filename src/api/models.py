@@ -110,6 +110,7 @@ class Propiedad(db.Model):
         amenidades = []
         for amenidad in self.amenidades:
             amenidades.append(str(amenidad))
+        provincia = str(Provincias.get_by_id(self.provincia_id))
         return {
             "titulo": self.titulo,
             "huespedes": self.huespedes,
@@ -117,7 +118,7 @@ class Propiedad(db.Model):
             "bathrooms" : self.bathrooms,
             "precio" : self.precio,
             "ciudad" : self.ciudad,
-            "provincia" : self.provincia_id,
+            "provincia" : provincia,
             "descripcion": self.descripcion,
             "id": self.id,
             "calle": self.calle,
@@ -143,6 +144,14 @@ class Provincias(db.Model):
     provincia = db.Column(db.String(120), unique=True, nullable=False)
     propiedades = db.relationship("Propiedad", backref="provincia")
 
+    @classmethod
+    def get(cls, provincia):
+        return cls.query.filter_by(provincia=provincia).one_or_none()
+
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.query.get(id)
+
     def __str__(self):
         return str(self.provincia)
 
@@ -151,6 +160,7 @@ class Provincias(db.Model):
             "id": self.id,
             "provincias": self.provincia,
         }
+
 
 
 class Localidades(db.Model):

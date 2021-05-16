@@ -19,9 +19,21 @@ export const Home = () => {
 	const [resultados, setResultados] = useState([]);
 	const [error, setError] = useState(false);
 	const titleRef = useRef();
+	const [provincias, setProvincias] = useState(actions.getFormValue("provincias"));
 
 	if ("scrollRestoration" in history) {
 		history.scrollRestoration = "manual";
+	}
+
+	if (actions.getFormValue("provincias").length === 0) {
+		fetch(API_URL + "/api/provincias", {
+			method: "GET"
+		})
+			.then(response => response.json())
+			.then(responseJson => {
+				actions.setFormValue("provincias", responseJson);
+				setProvincias(responseJson);
+			});
 	}
 
 	function handleSearch() {
@@ -64,14 +76,9 @@ export const Home = () => {
 										className="form-control"
 										onChange={event => setProvincia(event.target.value)}>
 										<option>Selecciona Provincia</option>
-										<option>Almeria</option>
-										<option>Cadiz</option>
-										<option>Cordoba</option>
-										<option>Granada</option>
-										<option>Jaen</option>
-										<option>Huelva</option>
-										<option>Malaga</option>
-										<option>Sevilla</option>
+										{provincias.map(provincia => {
+											return <option key={provincia}>{provincia}</option>;
+										})}
 									</select>
 								</div>
 								<div className="col-3">

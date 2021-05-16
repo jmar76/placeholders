@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const AlquilaTuPropiedad = props => {
+	const API_URL = process.env.BACKEND_URL;
 	const { actions } = useContext(Context);
 	const history = useHistory();
 	const titulo = actions.getFormValue("titulo");
@@ -12,6 +13,7 @@ export const AlquilaTuPropiedad = props => {
 	const ciudad = actions.getFormValue("ciudad");
 	const codigoPostal = actions.getFormValue("codigoPostal");
 	const provincia = actions.getFormValue("provincia");
+	const [provincias, setProvincias] = useState(actions.getFormValue("provincias"));
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
@@ -20,6 +22,18 @@ export const AlquilaTuPropiedad = props => {
 			return;
 		}
 	}, []);
+
+	if (actions.getFormValue("provincias").length === 0) {
+		fetch(API_URL + "/api/provincias", {
+			method: "GET"
+		})
+			.then(response => response.json())
+			.then(responseJson => {
+				actions.setFormValue("provincias", responseJson);
+				setProvincias(responseJson);
+			});
+	}
+
 	return (
 		<div className="container mt-5">
 			<div className="row mt-5 pt-5">
@@ -79,14 +93,9 @@ export const AlquilaTuPropiedad = props => {
 									className="form-control"
 									onChange={event => actions.setFormValue("provincia", event.target.value)}>
 									<option>Selecciona Provincia</option>
-									<option>Almeria</option>
-									<option>Cadiz</option>
-									<option>Cordoba</option>
-									<option>Granada</option>
-									<option>Jaen</option>
-									<option>Huelva</option>
-									<option>Malaga</option>
-									<option>Sevilla</option>
+									{provincias.map(provincia => {
+										return <option key={provincia}>{provincia}</option>;
+									})}
 								</select>
 							</div>
 						</div>

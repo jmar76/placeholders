@@ -27,7 +27,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			zona_trabajo: false,
 			resultadosBusqueda: [],
 			pathDescripcionMisPropiedades: "",
-			errorFormulario: ""
+			errorFormulario: "",
+			provincias: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
