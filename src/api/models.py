@@ -54,13 +54,13 @@ class User(db.Model):
 class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    provincia_id = db.Column(db.Integer, db.ForeignKey('provincias.id'))
     user = db.relationship("User", back_populates="propiedades")
     titulo = db.Column(db.String(120), unique=False, nullable=False)
     calle = db.Column(db.String(120), unique=False, nullable=False)
     numero = db.Column(db.String(120), unique=False, nullable=False)
     ciudad = db.Column(db.String(120), unique=False, nullable=False)
     codigo_postal = db.Column(db.String(120), unique=False, nullable=False)
-    provincia = db.Column(db.String(120), unique=False, nullable=False)
     dormitorios = db.Column(db.String(120), unique=False, nullable=False)
     huespedes = db.Column(db.Integer(), unique=False, nullable=False)
     camas = db.Column(db.String(120), unique=False, nullable=False)
@@ -70,7 +70,7 @@ class Propiedad(db.Model):
     amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
-    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, provincia, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
+    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
         propiedad = cls()
         propiedad.user_id = user_id
         propiedad.titulo = titulo
@@ -78,7 +78,6 @@ class Propiedad(db.Model):
         propiedad.numero = numero
         propiedad.ciudad = ciudad
         propiedad.codigo_postal = codigo_postal
-        propiedad.provincia = provincia
         propiedad.dormitorios = dormitorios
         propiedad.huespedes = huespedes
         propiedad.camas = camas
@@ -118,7 +117,7 @@ class Propiedad(db.Model):
             "bathrooms" : self.bathrooms,
             "precio" : self.precio,
             "ciudad" : self.ciudad,
-            "provincia" : self.provincia,
+            "provincia" : self.provincia_id,
             "descripcion": self.descripcion,
             "id": self.id,
             "calle": self.calle,
@@ -130,17 +129,7 @@ class Propiedad(db.Model):
 class Amenidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     propiedades = db.relationship("Propiedad", secondary=association_table, back_populates="amenidades")
-    amenity = db.Column(db.String(120), unique=False, nullable=False)
-
-    @classmethod
-    def create_amenity(cls, new_amenity, propiedad):
-        amenity = cls()
-        amenity.amenity = new_amenity
-
-        propiedad.amenidades.append(amenity)
-
-        db.session.add(amenity)
-        db.session.commit()
+    amenity = db.Column(db.String(120), unique=True, nullable=False)
 
     @classmethod
     def get(cls, amenity):
@@ -148,5 +137,16 @@ class Amenidades(db.Model):
 
     def __str__(self):
         return str(self.amenity)
-    
-  
+
+class Provincias(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    provincia = db.Column(db.String(120), unique=True, nullable=False)
+    propiedades = db.relationship("Propiedad", backref="provincia")
+
+    def __str__(self):
+        return str(self.provincia)
+
+class Localidades(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    localidad = db.Column(db.String(120), unique=True, nullable=False)
+

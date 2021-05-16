@@ -132,7 +132,7 @@ def propiedades():
     try:  
         propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
-                                body["provincia"], body["dormitorios"],
+                               body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["precio"], body["descripcion"])
         propiedad = Propiedad.get(propiedad_id)

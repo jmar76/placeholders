@@ -12,7 +12,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
-from api.models import Amenidades
+from api.models import Amenidades, Provincias
 from datetime import timedelta
 from flask_jwt_extended import get_jwt
 from flask_jwt_extended import create_access_token
@@ -85,4 +85,13 @@ def create_amenities():
         new_amenity = Amenidades()
         new_amenity.amenity = amenidad
         db.session.add(new_amenity)
+        db.session.commit()
+
+@app.cli.command("create-provincias")
+def create_provincias():
+    provincias = ["Almería","Cádiz","Córdoba","Granada","Jaén","Huelva","Malaga","Sevilla"]
+    for provincia in provincias:
+        new_provincia = Provincias()
+        new_provincia.provincia = provincia
+        db.session.add(new_provincia)
         db.session.commit()
