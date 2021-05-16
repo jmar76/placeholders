@@ -20,6 +20,7 @@ export const Home = () => {
 	const [error, setError] = useState(false);
 	const titleRef = useRef();
 	const [provincias, setProvincias] = useState(actions.getFormValue("provincias"));
+	const [localidades, setLocalidades] = useState(actions.getFormValue("localidades"));
 
 	if ("scrollRestoration" in history) {
 		history.scrollRestoration = "manual";
@@ -31,8 +32,10 @@ export const Home = () => {
 		})
 			.then(response => response.json())
 			.then(responseJson => {
-				actions.setFormValue("provincias", responseJson);
-				setProvincias(responseJson);
+				actions.setFormValue("provincias", Object.keys(responseJson));
+				setProvincias(Object.keys(responseJson));
+				actions.setFormValue("localidades", responseJson);
+				setLocalidades(() => responseJson);
 			});
 	}
 
@@ -83,190 +86,21 @@ export const Home = () => {
 								</div>
 								<div className="col-3">
 									<label htmlFor="ciudad">Localidad</label>
-									{provincia == "Almeria" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Abrucena</option>
-											<option>Agua Amarga</option>
-											<option>Berja</option>
-											<option>Las Negras</option>
-											<option>Lucainema de las Torres</option>
-											<option>Mojacar</option>
-											<option>Rodalquilar</option>
-											<option>Velez-Blanco</option>
-										</select>
-									) : (
-										""
-									)}
-									{provincia == "" ? (
-										<select className="form-control">
-											<option>Selecciona Provincia</option>
-										</select>
-									) : provincia == "Selecciona Provincia" ? (
-										<select className="form-control">
-											<option>Selecciona Provincia</option>
-										</select>
-									) : (
-										""
-									)}
-									{provincia == "Cadiz" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Arcos de la Frontera</option>
-											<option>Castellar de la Frontera</option>
-											<option>Chipiona</option>
-											<option>Grazalema</option>
-											<option>Medina-Sidonia</option>
-											<option>Olvera</option>
-											<option>Sanlucar de Barrameda</option>
-											<option>Vejer de la Frontera</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Cordoba" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Almodovar del Rio</option>
-											<option>Baena</option>
-											<option>Espejo</option>
-											<option>Iznajar</option>
-											<option>Luque</option>
-											<option>Olvera</option>
-											<option>Priego de Córdoba</option>
-											<option>Zuheros</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Granada" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Albañuelas</option>
-											<option>Castril</option>
-											<option>Guadix</option>
-											<option>Montefrio</option>
-											<option>Nigüelas</option>
-											<option>Nivar</option>
-											<option>Pampaneira</option>
-											<option>Salobreña</option>
-											<option>Trevelez</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Jaen" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Alcala la Real</option>
-											<option>Alcaudete</option>
-											<option>Baeza</option>
-											<option>Baños de la Encima</option>
-											<option>Cazorla</option>
-											<option>Hornos</option>
-											<option>La Iruela</option>
-											<option>Úbeda</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Huelva" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Alajar</option>
-											<option>Almonaster La Real</option>
-											<option>Ayamonte</option>
-											<option>Aracena</option>
-											<option>El Rocio-Almonte</option>
-											<option>El Rompido</option>
-											<option>Jagubo</option>
-											<option>Moguer</option>
-											<option>Palos de Frontera</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Malaga" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Antequera</option>
-											<option>Archidona</option>
-											<option>Casares</option>
-											<option>Frigiliana</option>
-											<option>Marbella</option>
-											<option>Mijas</option>
-											<option>Nerja</option>
-											<option>Ojén</option>
-											<option>Ronda</option>
-										</select>
-									) : (
-										""
-									)}
-
-									{provincia == "Sevilla" ? (
-										<select
-											id="Ciudad"
-											name="Ciudad"
-											value={ciudad}
-											className="form-control"
-											onChange={event => setCiudad(event.target.value)}>
-											<option>Selecciona Localidad</option>
-											<option>Aznalcazar</option>
-											<option>Carmona</option>
-											<option>Cazalla de la Sierra</option>
-											<option>Constatina</option>
-											<option>Ecija</option>
-											<option>Estepa</option>
-											<option>Lebrija</option>
-											<option>Marchena</option>
-											<option>Osuna</option>
-											<option>Sanlucar La Mayor</option>
-											<option>Santiponce</option>
-											<option>Utrera</option>
-										</select>
-									) : (
-										""
-									)}
+									<select
+										id="Ciudad"
+										name="Ciudad"
+										value={ciudad}
+										className="form-control"
+										onChange={event => setCiudad(event.target.value)}>
+										<option>Selecciona Localidad</option>
+										{Object.keys(localidades).length === 0 ||
+										provincia === "" ||
+										provincia === "Selecciona Provincia"
+											? ""
+											: localidades[provincia].map(localidad => {
+													return <option key={localidad}>{localidad}</option>;
+											  })}
+									</select>
 								</div>
 								<div className="col-3">
 									<DateRangePicker

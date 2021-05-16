@@ -211,7 +211,10 @@ def create_checkout_session():
 @api.route("/provincias", methods=['GET'])
 def provincias():
     todas_las_provincias = Provincias.query.all()
-    provincias = []
+    provincias = {}
+
     for provincia in todas_las_provincias:
-        provincias.append(str(provincia))
+        provincias[str(provincia)] = []
+        for localidad in provincia.localidades:
+            provincias[str(provincia)].append(str(localidad))
     return jsonify(provincias)
