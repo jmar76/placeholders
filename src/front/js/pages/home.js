@@ -26,18 +26,20 @@ export const Home = () => {
 		history.scrollRestoration = "manual";
 	}
 
-	if (actions.getFormValue("provincias").length === 0) {
-		fetch(API_URL + "/api/provincias", {
-			method: "GET"
-		})
-			.then(response => response.json())
-			.then(responseJson => {
-				actions.setFormValue("provincias", Object.keys(responseJson));
-				setProvincias(Object.keys(responseJson));
-				actions.setFormValue("localidades", responseJson);
-				setLocalidades(() => responseJson);
-			});
-	}
+	useEffect(() => {
+		if (actions.getFormValue("provincias").length === 0) {
+			fetch(API_URL + "/api/provincias", {
+				method: "GET"
+			})
+				.then(response => response.json())
+				.then(responseJson => {
+					actions.setFormValue("provincias", Object.keys(responseJson));
+					setProvincias(Object.keys(responseJson));
+					actions.setFormValue("localidades", responseJson);
+					setLocalidades(() => responseJson);
+				});
+		}
+	}, []);
 
 	function handleSearch() {
 		titleRef.current.scrollIntoView({ behavior: "smooth" });

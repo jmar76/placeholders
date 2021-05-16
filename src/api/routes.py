@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import stripe
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Propiedad, Amenidades, Provincias
+from api.models import db, User, Propiedad, Amenidades, Provincias, Localidades
 from api.utils import generate_sitemap, APIException
 from aws import upload_file_to_s3
 from flask_jwt_extended import create_access_token
@@ -139,7 +139,7 @@ def propiedades():
     user_id = get_jwt_identity()
     try:
         propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
-                                body["ciudad"], body["codigo_postal"],
+                                body["codigo_postal"],
                                body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["precio"], body["descripcion"])
@@ -151,7 +151,19 @@ def propiedades():
                 db.session.add(existing_provincia)
                 db.session.commit()
         else:
+            propiedad = Propiedad.query.filter(Propiedad.id == propiedad_id).delete()
+            db.session.commit()
             raise APIException("Provincia no existente")
+
+        if (Localidades.get(body["ciudad"])):
+            existing_localidad = Localidades.get(body["ciudad"])
+            existing_localidad.propiedades.append(propiedad)
+            db.session.add(existing_localidad)
+            db.session.commit()
+        else:
+            propiedad = Propiedad.query.filter(Propiedad.id == propiedad_id).delete()
+            db.session.commit()
+            raise APIException("Localidad no existente")
 
         for amenidad in body["amenidades"]:
             if (Amenidades.get(amenidad) != None):

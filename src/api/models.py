@@ -55,11 +55,11 @@ class Propiedad(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     provincia_id = db.Column(db.Integer, db.ForeignKey('provincias.id'))
+    localidad_id = db.Column(db.Integer, db.ForeignKey('localidades.id'))
     user = db.relationship("User", back_populates="propiedades")
     titulo = db.Column(db.String(120), unique=False, nullable=False)
     calle = db.Column(db.String(120), unique=False, nullable=False)
     numero = db.Column(db.String(120), unique=False, nullable=False)
-    ciudad = db.Column(db.String(120), unique=False, nullable=False)
     codigo_postal = db.Column(db.String(120), unique=False, nullable=False)
     dormitorios = db.Column(db.String(120), unique=False, nullable=False)
     huespedes = db.Column(db.Integer(), unique=False, nullable=False)
@@ -70,13 +70,12 @@ class Propiedad(db.Model):
     amenidades = db.relationship('Amenidades', secondary=association_table, back_populates="propiedades")
 
     @classmethod
-    def create_propiedad(cls, user_id, titulo, calle, numero, ciudad, codigo_postal, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
+    def create_propiedad(cls, user_id, titulo, calle, numero, codigo_postal, dormitorios, huespedes, camas, bathrooms, precio, descripcion):
         propiedad = cls()
         propiedad.user_id = user_id
         propiedad.titulo = titulo
         propiedad.calle = calle
         propiedad.numero = numero
-        propiedad.ciudad = ciudad
         propiedad.codigo_postal = codigo_postal
         propiedad.dormitorios = dormitorios
         propiedad.huespedes = huespedes
@@ -104,20 +103,22 @@ class Propiedad(db.Model):
     def getByLocation(cls, ciudad, huespedes):
         if huespedes == "":
             huespedes = 0
-        return cls.query.filter_by(ciudad = ciudad).filter(cls.huespedes >= huespedes).all()
+        ciudad = Localidades.get(ciudad)
+        return cls.query.filter_by(localidad = ciudad).filter(cls.huespedes >= huespedes).all()
 
     def serialize(self):
         amenidades = []
         for amenidad in self.amenidades:
             amenidades.append(str(amenidad))
         provincia = str(Provincias.get_by_id(self.provincia_id))
+        ciudad = str(Localidades.get_by_id(self.localidad_id))
         return {
             "titulo": self.titulo,
             "huespedes": self.huespedes,
             "dormitorios" : self.dormitorios,
             "bathrooms" : self.bathrooms,
             "precio" : self.precio,
-            "ciudad" : self.ciudad,
+            "ciudad" : ciudad,
             "provincia" : provincia,
             "descripcion": self.descripcion,
             "id": self.id,
@@ -165,6 +166,7 @@ class Provincias(db.Model):
 class Localidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     provincia_id = db.Column(db.Integer, db.ForeignKey('provincias.id'))
+    propiedades = db.relationship("Propiedad", backref="localidad")
     localidad = db.Column(db.String(120), unique=True, nullable=False)
 
     @classmethod
