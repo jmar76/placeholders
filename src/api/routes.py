@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import stripe
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Propiedad, Amenidades
+from api.models import db, User, Propiedad, Amenidades, Provincias
 from api.utils import generate_sitemap, APIException
 from aws import upload_file_to_s3
 from flask_jwt_extended import create_access_token
@@ -21,12 +21,13 @@ YOUR_DOMAIN = os.getenv('FRONTEND_URL')
 
 api = Blueprint('api', __name__)
 
+
 @api.route('/', methods=['POST'])
 def search():
     body = request.get_json()
     availableProperties = []
     propiedades1 = Propiedad.getByLocation(body["location"], body["capacidad"])
-    
+
     for propiedad in propiedades1:
         availableProperties.append(propiedad.serialize())
 
@@ -41,9 +42,10 @@ def signup():
     if User.get_with_email(body["email"]):
         raise APIException("Esta cuenta ya existe")
     User.create_user(body["name"], body["lastname"],
-                        body["email"], hashed) 
+                        body["email"], hashed)
 
     return jsonify({}), 200
+
 
 @api.route("/login", methods=["POST"])
 def login():
@@ -55,12 +57,13 @@ def login():
     if user is None:
         raise APIException("Datos incorrectos")
     if check_password_hash(user.password, password):
-        access_token = create_access_token(identity = user.id)
+        access_token = create_access_token(identity=user.id)
         response = jsonify({"access_token": access_token})
         return response
     else:
         raise APIException("Datos incorrectos")
-    
+
+
 @api.route("/profile", methods=['GET'])
 @jwt_required()
 def profile():
@@ -69,9 +72,10 @@ def profile():
     print(user)
     return jsonify(user.serialize())
 
+
 @api.route("/upload-images", methods=["POST"])
 def upload_images():
-    url_image= ''
+    url_image = ''
     files = request.files
     print(files)
     for key in files:
@@ -80,18 +84,20 @@ def upload_images():
         # user_id = 10
         try:
             # new_filename ="{}-{}".format(user_id, file.filename)
-            url_image = upload_file_to_s3(file, os.environ.get('S3_BUCKET_NAME'))
+            url_image = upload_file_to_s3(
+                file, os.environ.get('S3_BUCKET_NAME'))
         except Exception as e:
             print(e)
             raise APIException(e)
 
-    return jsonify({"url":url_image}), 200
-    
+    return jsonify({"url": url_image}), 200
+
+
 @api.route("/forgot", methods=['POST'])
 def forgot():
     request_json = request.get_json()
- 
-    email=request_json ["email"]
+
+    email = request_json["email"]
 
     if email is None:
         raise APIException("Correo Electronico Requerido")
@@ -109,8 +115,9 @@ def forgot():
 
     return jsonify({}), 200
 
-@api.route('/reset-password' , methods=['POST'])
-def forgot_password ():
+
+@api.route('/reset-password', methods=['POST'])
+def forgot_password():
 
     request_json = request.get_json()
 
@@ -118,38 +125,39 @@ def forgot_password ():
     token = request_json["token"]
 
     user = User.get_for_forgot(email, token)
-    user.password = password 
+    user.password = password
     user.token = None
     db.session.commit()
 
     return jsonify({}), 200
 
+
 @api.route('/propiedades', methods=['POST'])
 @jwt_required()
 def propiedades():
     body = request.get_json()
-    user_id = get_jwt_identity()  
-    try:  
+    user_id = get_jwt_identity()
+    try:
         propiedad_id = Propiedad.create_propiedad(user_id, body["titulo"], body["calle"], body["numero"],
                                 body["ciudad"], body["codigo_postal"],
                                body["dormitorios"],
                                 body["huespedes"], body["camas"],
                                 body["bathrooms"], body["precio"], body["descripcion"])
         propiedad = Propiedad.get(propiedad_id)
-        
+
         for amenidad in body["amenidades"]:
             if (Amenidades.get(amenidad) != None):
                 existing_amenity = Amenidades.get(amenidad)
                 propiedad.amenidades.append(existing_amenity)
                 db.session.add(existing_amenity)
                 db.session.commit()
-            else: 
+            else:
                 raise APIException("Amenidad no existente")
     except Exception as e:
         print(e)
         raise APIException("Todos los campos son obligatorios")
     return jsonify("se subio la informacion"), 200
-    
+
 
 @api.route("/misPropiedades", methods=['GET'])
 @jwt_required()
@@ -161,6 +169,7 @@ def mis_propiedades():
         propiedades.append(propiedad.serialize())
 
     return jsonify(propiedades)
+
 
 @api.route('/create-checkout-session', methods=['POST'])
 def create_checkout_session():
@@ -191,3 +200,10 @@ def create_checkout_session():
         return jsonify(error=str(e)), 403
 
 
+@api.route("/provincias", methods=['GET'])
+def provincias():
+    todas_las_provincias = Provincias.query.all()
+    provincias = []
+    for provincia in todas_las_provincias:
+        provincias.append(str(provincia))
+    return jsonify(provincias)

@@ -146,6 +146,13 @@ class Provincias(db.Model):
     def __str__(self):
         return str(self.provincia)
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "provincias": self.provincia,
+        }
+
+
 class Localidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     localidad = db.Column(db.String(120), unique=True, nullable=False)

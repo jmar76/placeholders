@@ -89,7 +89,7 @@ def create_amenities():
 
 @app.cli.command("create-provincias")
 def create_provincias():
-    provincias = ["Almería","Cádiz","Córdoba","Granada","Jaén","Huelva","Malaga","Sevilla"]
+    provincias = ["Almeria","Cadiz","Cordoba","Granada","Jaen","Huelva","Malaga","Sevilla"]
     for provincia in provincias:
         new_provincia = Provincias()
         new_provincia.provincia = provincia
