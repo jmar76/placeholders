@@ -143,6 +143,7 @@ class Provincias(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     provincia = db.Column(db.String(120), unique=True, nullable=False)
     propiedades = db.relationship("Propiedad", backref="provincia")
+    localidades = db.relationship("Localidades", backref="provincia")
 
     @classmethod
     def get(cls, provincia):
@@ -161,9 +162,24 @@ class Provincias(db.Model):
             "provincias": self.provincia,
         }
 
-
-
 class Localidades(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    provincia_id = db.Column(db.Integer, db.ForeignKey('provincias.id'))
     localidad = db.Column(db.String(120), unique=True, nullable=False)
 
+    @classmethod
+    def get(cls, localidad):
+        return cls.query.filter_by(localidad=localidad).one_or_none()
+
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.query.get(id)
+
+    def __str__(self):
+        return str(self.localidad)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "localidad": self.localidad,
+        }

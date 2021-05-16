@@ -12,7 +12,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
-from api.models import Amenidades, Provincias
+from api.models import Amenidades, Provincias, Localidades
 from datetime import timedelta
 from flask_jwt_extended import get_jwt
 from flask_jwt_extended import create_access_token
@@ -91,4 +91,77 @@ def populate_database():
         new_provincia = Provincias()
         new_provincia.provincia = provincia
         db.session.add(new_provincia)
+        db.session.commit()
+
+    localidades_almeria = ["Abrucena","Agua Amarga","Berja","Las Negras","Lucainena de las Torres","Mojacar","Rodalquilar","Velez-Blanco"]
+    localidades_cadiz = ["Arcos de la Frontera","Castellar de la Frontera","Chipiona","Grazalema","Medina-Sidonia","Olvera","Sanlucar de Barrameda","Vejer de la Frontera"]
+    localidades_cordoba = ["Almodovar del Rio","Baena","Espejo","Iznajar","Luque","Priego de Córdoba","Zuheros"]
+    localidades_granada = ["Albañuelas","Castril","Guadix","Montefrio","Nigüelas","Nivar","Pampaneira","Salobreña","Trevelez"]
+    localidades_jaen = ["Alcala la Real","Alcaudete","Baeza","Baños de la Encima","Cazorla","Hornos","La Iruela","Ubeda"]
+    localidades_huelva = ["Alajar","Almonaster La Real","Ayamonte","Aracena","El Rocio-Almonte","El Rompido","Jagubo","Moguer","Palos de Frontera"]
+    localidades_malaga = ["Antequera","Archidona","Casares","Frigiliana","Marbella","Mijas","Nerja","Ojen","Ronda"]
+    localidades_sevilla = ["Aznalcazar","Carmona","Cazalla de la Sierra","Constatina","Ecija","Estepa","Lebrija","Marchena","Osuna","Sanlucar La Mayor","Santiponce","Utrera"]
+
+    for localidad in localidades_almeria:
+        almeria = Provincias.get("Almeria")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = almeria.id
+        db.session.add(new_localidad)
+        db.session.commit()
+
+    for localidad in localidades_cadiz:
+        cadiz = Provincias.get("Cadiz")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = cadiz.id
+        db.session.add(new_localidad)
+        db.session.commit()
+
+    for localidad in localidades_cordoba:
+        cordoba = Provincias.get("Cordoba")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = cordoba.id
+        db.session.add(new_localidad)
+        db.session.commit()
+
+    for localidad in localidades_granada:
+        granada = Provincias.get("Granada")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = granada.id
+        db.session.add(new_localidad)
+        db.session.commit()
+    
+    for localidad in localidades_jaen:
+        jaen = Provincias.get("Jaen")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = jaen.id
+        db.session.add(new_localidad)
+        db.session.commit()
+
+    for localidad in localidades_huelva:
+        huelva = Provincias.get("Huelva")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = huelva.id
+        db.session.add(new_localidad)
+        db.session.commit()
+    
+    for localidad in localidades_malaga:
+        malaga = Provincias.get("Malaga")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = malaga.id
+        db.session.add(new_localidad)
+        db.session.commit()
+
+    for localidad in localidades_sevilla:
+        sevilla = Provincias.get("Sevilla")
+        new_localidad = Localidades()
+        new_localidad.localidad = localidad
+        new_localidad.provincia_id = sevilla.id
+        db.session.add(new_localidad)
         db.session.commit()
