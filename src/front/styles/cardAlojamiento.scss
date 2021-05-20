@@ -1,0 +1,78 @@
+.agrupacion{
+    display: flex;
+    flex-direction: row;
+    width: 803px;
+    height: 206px;
+    margin: auto;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+.imagen{
+    width: 300px;
+    height: 200px;
+    margin-top: 3px;
+}
+.texto{
+    width: 500px;
+    height: 200px;
+    margin-top: 3px;
+    border-radius: 15px;
+    background-color: white;
+       padding-top: 156px;
+}
+.forma{
+     width: 300px;
+    height: 200px;
+}
+.sizetitulopropiedad{
+    width: 230px;
+    height: 30px;
+}
+.sizeestrellas{
+    width: 110px;
+    height: 40px;
+    font-size: 12px;
+}
+.contenedortres{
+    display: flex;
+    flex-direction: row;
+    width: 496px;
+    height: 30px;
+   margin-top: -150px;
+//    background-color: red;
+}
+.localidad{
+    width: 200px;
+    height: 30px;
+    font-size: 12px;
+// background-color: yellowgreen;
+color: blue;
+}
+.descripcionespersonal{
+        font-size: 13px;
+            width: 300px;
+    height: 60px;
+}
+.botondescripcioncasas{
+    width: 270px;
+    height: 50px;
+    border-radius: 13px;
+}
+.botontexto{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    height: 50px;
+    padding-bottom: 100px;
+}
+.tipotexto{
+    font-size: 17px;
+    padding-left: 60px;
+    padding-top: 10px;
+}
+.margenes{
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 9px;
+}

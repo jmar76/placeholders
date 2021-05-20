@@ -37,7 +37,7 @@ export const MisPropiedades = () => {
 				)}
 				{misPropiedades.map(propiedad => {
 					return (
-						<div className="col-4 mt-5 pt-5 pb-3" key={propiedad.id}>
+						<div className="col-12 mt-5 pb-3" key={propiedad.id}>
 							<CardAlojamiento
 								key={propiedad.id}
 								title={propiedad.titulo}

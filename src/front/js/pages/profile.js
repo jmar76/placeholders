@@ -32,7 +32,7 @@ const Profile = () => {
 		<Fragment>
 			<div className="container-fluid fondoDePantallaProfile">
 				<div className="contenedorText ">
-					<h1 className="texto pl-3">Compartir tu espacio es vivir</h1>
+					<h1 className="textouno pl-3">Compartir tu espacio es vivir</h1>
 					<hr></hr>
 					<p className="fuenteText pl-3">
 						Hazte anfitrión y podrás transformar el espacio que no usas en una fuente de ingresos extra que
