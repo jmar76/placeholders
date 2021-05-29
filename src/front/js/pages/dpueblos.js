@@ -111,7 +111,7 @@ export const Dpueblos = () => {
 							<div className="contenedorFlexible ">
 								<div className="contenedorParrafoUno pt-5">
 									<h4>Olvera, Cádiz</h4>
-									<p>
+									<p className="textjustify">
 										Situada en la Sierra Norte de Cádiz, Olvera se ha convertido en la Capital Rural
 										2021. La localidad gaditana ha conseguido imponerse a los otros nueves
 										finalistas —Daroca (Zaragoza), Yeste (Albacete), Taramundi (Asturias), Cuacos de
@@ -127,7 +127,7 @@ export const Dpueblos = () => {
 
 						<div className="form-group row posicionamiento ">
 							<div className="mt-3 contenedorOpinion ">
-								<p>
+								<p className="textjustify">
 									En el término municipal de Olvera —rodeado de olivar de montaña y cientos de caminos
 									rurales— finaliza la vía verde de la Sierra, una de las primeras en integrar la red
 									de vías verdes españolas: 36,5 kilómetros de senda exclusiva para caminantes y
@@ -181,7 +181,7 @@ export const Dpueblos = () => {
 					</div>
 					<div className="contenedorFlexible ">
 						<div className="contenedorParrafoUno pt-5">
-							<p>
+							<p className="textjustify">
 								Encaramada a las laderas de un risco coronado por un castillo de época nazarí y rodeada
 								de olivares, en la Ruta de los Pueblos Blancos, el casco urbano de Olvera, declarado
 								conjunto histórico artístico en 1983, es una amalgama de arquitectura histórica y

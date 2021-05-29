@@ -25,7 +25,7 @@ import { Viajeros } from "./pages/viajeros";
 import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
 import { Pago } from "./pages/pago";
 import { Dpueblos } from "./pages/dpueblos";
-
+import { Dnaturaleza } from "./pages/dnaturaleza";
 const Layout = () => {
 	const config = {
 		navigation: {
@@ -46,6 +46,10 @@ const Layout = () => {
 					<Route exact path="/">
 						<Home />
 					</Route>
+					<Route exact path="/dnaturaleza">
+						<Dnaturaleza />
+					</Route>
+
 					<Route exact path="/demo">
 						<Demo />
 					</Route>

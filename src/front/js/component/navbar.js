@@ -29,7 +29,12 @@ export const Navbar = () => {
 	}
 	let usuario = <i className="fas fa-user navbar-brand mb-0 h1 text-dark" />;
 
-	let barradNaturaleza = <span className="navbar-brand my-2 my-lg-0 text-white fontsize">dNaturaleza</span>;
+	let barradNaturaleza = (
+		<Link to="/dnaturaleza">
+			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dNaturaleza</span>
+		</Link>
+	);
+
 	let barraViajeros = (
 		<Link to="/viajeros">
 			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dViajeros</span>
@@ -108,9 +113,9 @@ export const Navbar = () => {
 				</div> */}
 			</div>
 			<div className="navbar-nav mr-auto ">
+				{!accesstoken ? barraViajeros : ""}
 				{!accesstoken ? barradPueblos : ""}
 				{!accesstoken ? barradNaturaleza : ""}
-				{!accesstoken ? barraViajeros : ""}
 				{!accesstoken ? barraSignup : ""}
 				{!accesstoken ? barraLogin : ""}
 				{!accesstoken ? barraPropiedad : ""}

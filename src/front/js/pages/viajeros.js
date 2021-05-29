@@ -46,7 +46,7 @@ export const Viajeros = () => {
 										<strong>Elegir</strong>
 									</h4>
 								</div>
-								<p>
+								<p className="textjustify">
 									Selecciona las fechas, el número de personas y tus preferencias. Descubrirás la
 									mejor selección entre más de 2000 alojamientos en Andalucía.
 								</p>
@@ -58,7 +58,7 @@ export const Viajeros = () => {
 										<strong>Reserva</strong>
 									</h4>
 								</div>
-								<p>
+								<p className="textjustify">
 									Encuentra la casa ideal para tus próximas vacaciones y reserva al instante. Sólo
 									tendrás que pagar el anticipo.
 								</p>
@@ -70,7 +70,7 @@ export const Viajeros = () => {
 										<strong>Viaja</strong>
 									</h4>
 								</div>
-								<p>
+								<p className="textjustify">
 									¡Prepárate para vivir unas vacaciones de ensueño! Disfruta de tu casa de vacaciones,
 									la piscina, las vistas, el entorno, y descansa como nunca antes lo habías hecho.
 								</p>
@@ -79,14 +79,6 @@ export const Viajeros = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div className="container ">
-				<div className="row justify-content-start pl-5">
-					<strong>
-						<h3>dudas... écha un vistazo!</h3>
-					</strong>
-				</div>
-			</div> */}
-
 			<div className="container text-dark mt-2 mb-5 ">
 				<div className="row ">
 					<div className="col-12  colorFondoProfile px-5 pb-3 esquinasRedondas">
@@ -196,23 +188,38 @@ export const Viajeros = () => {
 						</div>
 
 						<div className="form-group row posicionamiento">
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-4">
+								<div className="bgtext ">
 									<h4 className="">Playas de Huelva</h4>
 								</div>
-								<p>Promo: Desde 49€/noche</p>
-							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
-									<h4 className="">Playas de Almeria</h4>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 49€/noche</strong>
+									</p>
 								</div>
-								<p>Promo: Desde 51€/noche</p>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
-									<h4 className="">Carzorla, Jaén</h4>
+							<div className="contenedorPromo pl-3">
+								<div className="bgtext ">
+									<h4 className="">Playas de Almería</h4>
 								</div>
-								<p>Promo: Desde 55€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
+							</div>
+							<div className="contenedorPromo mr-4">
+								<div className="bgtext ">
+									<h4 className="">Cazorla, Jaén</h4>
+								</div>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -252,23 +259,38 @@ export const Viajeros = () => {
 						</div>
 
 						<div className="form-group row posicionamiento">
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-4">
+								<div className="bgtext ">
 									<h4 className="">Ronda, Málaga</h4>
 								</div>
-								<p>Promo: Desde 49€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-3">
+								<div className="bgtext ">
 									<h4 className="">Frigiliana, Málaga</h4>
 								</div>
-								<p>Promo: Desde 39€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 79€/noche</strong>
+									</p>
+								</div>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo mr-4">
+								<div className="bgtext ">
 									<h4 className="">Montefrio, Granada</h4>
 								</div>
-								<p>Promo: Desde 39€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 69€/noche</strong>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -278,7 +300,7 @@ export const Viajeros = () => {
 				<div className=" contenedorReserv mb-5">
 					<Link to="/">
 						<button type="button" className="btn colorBotonReservarYa " value="crear">
-							<strong>haz tu reserva!</strong>
+							<strong className="pt-3 pb-3">haz tu reserva!</strong>
 						</button>
 					</Link>
 				</div>

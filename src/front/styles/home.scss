@@ -25,11 +25,6 @@
     font-size: 23px;
     text-align: center;
 }
-.contenedorPromo{
-    width: 355px;
-    height: 190px;
-    text-align: center;
-}
 .contenedorDoñana{
     width: 390px;
     height: 218px;
@@ -64,6 +59,26 @@ transform: scale(1.2);
 // }
 .alignTextpromo{
     text-align: center;
+}
+.bgpromo{
+    width: 270px;
+    height: 50px;
+    background-color: black;
+    border-radius: 13px;
+    color: orange;
+    font-size: 17px;
+}
+.contenedorPromo{
+    width: 270px;
+    height: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.bgtext{
+       width: 270px;
+    height: 40px;
+ 
 }
 
 

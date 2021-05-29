@@ -171,7 +171,7 @@ export const Home = () => {
 				</div>
 				<div className="row contenedorFrase">
 					<div className="col-md-10 pl-3 ">
-						<h1 className="pl-4 mt-5 pt-5 text-white">
+						<h1 className="pl-4 mt-2 pt-4 text-white">
 							<strong>Alquileres rurales en Andalucía</strong>
 						</h1>
 					</div>
@@ -236,7 +236,7 @@ export const Home = () => {
 				</div>
 			</div>{" "}
 			<div className="container mt-3">
-				<h1 className="alignTextpromo">Echa un vistazo a nuestras promos</h1>
+				<h1 className="alignTextpromo">echa un vistazo a nuestras promos</h1>
 			</div>
 			<div className="container ">
 				<div className="row pt-5">
@@ -272,23 +272,38 @@ export const Home = () => {
 						</div>
 
 						<div className="form-group row posicionamiento">
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-4">
+								<div className="bgtext ">
 									<h4 className="">Playas de Huelva</h4>
 								</div>
-								<p>Promo: Desde 49€/noche</p>
-							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
-									<h4 className="">Playas de Almeria</h4>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 49€/noche</strong>
+									</p>
 								</div>
-								<p>Promo: Desde 51€/noche</p>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
-									<h4 className="">Carzorla, Jaén</h4>
+							<div className="contenedorPromo pl-3">
+								<div className="bgtext ">
+									<h4 className="">Playas de Almería</h4>
 								</div>
-								<p>Promo: Desde 55€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
+							</div>
+							<div className="contenedorPromo mr-4">
+								<div className="bgtext ">
+									<h4 className="">Cazorla, Jaén</h4>
+								</div>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -328,23 +343,38 @@ export const Home = () => {
 						</div>
 
 						<div className="form-group row posicionamiento">
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-4">
+								<div className="bgtext ">
 									<h4 className="">Ronda, Málaga</h4>
 								</div>
-								<p>Promo: Desde 49€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 59€/noche</strong>
+									</p>
+								</div>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo pl-3">
+								<div className="bgtext ">
 									<h4 className="">Frigiliana, Málaga</h4>
 								</div>
-								<p>Promo: Desde 39€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 79€/noche</strong>
+									</p>
+								</div>
 							</div>
-							<div className="contenedorPromo">
-								<div className="row justify-content-center">
+							<div className="contenedorPromo mr-4">
+								<div className="bgtext ">
 									<h4 className="">Montefrio, Granada</h4>
 								</div>
-								<p>Promo: Desde 39€/noche</p>
+								<div className="bgpromo">
+									<p className="pt-2">
+										{" "}
+										<strong>Promo: Desde 69€/noche</strong>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
