@@ -5,28 +5,45 @@ export const Viajeros = () => {
 	return (
 		<Fragment>
 			<div className="container-fluid mb-5 fondoDePantallaviajero">
-				<div className="contenedorTexto"></div>
+				<div className="contenedorTextoviajero ">
+					<div className="textocontenedorfamilia">
+						<p>
+							<strong>viajar es vivir, disfruta viajando</strong>
+						</p>
+					</div>
+					<hr></hr>
+					<div className="contieneboton ">
+						<Link to="/">
+							<button type="button" className="btn btn-danger estilosBotonagregar" value="crear">
+								<strong>reserva ahora</strong>
+							</button>
+						</Link>
+					</div>
+				</div>
 			</div>
 			<div className="container marginViajeros">
 				<div className="row ">
-					<div className="col-12 colorFondoViajeros  px-5  pb-0 esquinasRedondas">
+					<div className="col-12 colorFondoViajeros px-5  pb-0 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorBienvenidosViajeros">
-								<h1>Bienvenidos Viajeros!</h1>
-								<p className="tamano">
+								<h1 className="tamanoletraviajeros">Bienvenidos Viajeros!</h1>
+								<p className="tamanoLetraAndaluciaDescubre">
 									<strong>
-										Descubre Andalucía y sácale mayor provecho a tus vacaciones con dturist.com
+										Descubre Andalucía y sácale mayor provecho a tus viajes con dturist.com
 									</strong>
+								</p>
+								<p className="tamanoLetraAndaluciaDescubre mt-5 mb-5">
+									<strong>tan sencillo como elegir-reservar-viajar</strong>
 								</p>
 							</div>
 						</div>
 
-						<div className="form-group row posicionamiento">
-							<div className="contenedorBuscaReservaViaja">
+						<div className="form-group row viajerosposicionamientocontenedores ">
+							<div className="contenedorBuscaReservaViaja ">
 								<div className="row">
 									<i className="fas fa-search sizeLupa pt-1"></i>
 									<h4 className="pl-2">
-										<strong>Busca</strong>
+										<strong>Elegir</strong>
 									</h4>
 								</div>
 								<p>
@@ -58,36 +75,96 @@ export const Viajeros = () => {
 									la piscina, las vistas, el entorno, y descansa como nunca antes lo habías hecho.
 								</p>
 							</div>
-							<div className="form-group row ">
-								<div className="col-md-7 contenedorReservaYa">
-									<div className="row">
-										<i className="fas fa-luggage-cart sizeCarrito"></i>
-										<h2 className="pl-3 pt-1">Haz tu Reserva ya!</h2>
-									</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* <div className="container ">
+				<div className="row justify-content-start pl-5">
+					<strong>
+						<h3>dudas... écha un vistazo!</h3>
+					</strong>
+				</div>
+			</div> */}
 
-									<Link to="/">
-										<button type="button" className="btn colorBotonReservarYa " value="crear">
-											<strong>Empezar</strong>
-										</button>
-									</Link>
+			<div className="container text-dark mt-2 mb-5 ">
+				<div className="row ">
+					<div className="col-12  colorFondoProfile px-5 pb-3 esquinasRedondas">
+						<div className="form-group  row posicionamiento">
+							<div className="contenedorConImagen">
+								<div className="row">
+									<div className="borderCentrado">
+										<img
+											src="https://blog.playasenator.com/wp-content/uploads/2018/02/shutterstock_225185140.jpg"
+											width="650px"
+											height="385px"
+											className="borderRadio"
+										/>
+									</div>
 								</div>
+							</div>
+							<div className="contenedorFlexibledpueblos ">
+								<div className="contenedorParrafoUno pt-5">
+									<h4>dpueblos</h4>
+									<p className="textjustify">
+										El sur de España está repleto de localidades con mucho encanto. Pueblos blancos,
+										con balcones llenos de flores y casas encaramadas a lo alto de las montañas,
+										desde donde se perciben vistas espectaculares de la costa y sus serranías. Hay
+										que perderse por sus calles para descubrir su historia de mezcla de culturas.
+									</p>
+								</div>
+								<Link to="/dpueblos">
+									<button
+										type="button"
+										className="btn btn-primary mt-5 respirapueblosboton"
+										value="crear">
+										<strong>respira dpueblos</strong>
+									</button>
+								</Link>
+							</div>
+						</div>
+
+						<div className="form-group row posicionamiento">
+							<div className=" bgdnaturaleza">
+								<h3>dnaturaleza</h3>
+								<p className="textjustify">
+									Andalucía es una joya de la naturaleza en la que conviven diferentes tipos de
+									vegetaciones y paisajes que la hacen única en España. Acantilados, playas de
+									ensueño, sierras peculiares y un largo etcétera conforman su inmenso legado. Te
+									proponemos veinte ejemplos de maravillas naturales de Andalucía. Buceemos juntos en
+									los apasionantes ecosistemas del sur de Europa.{" "}
+								</p>
+								<Link to="/dnaturaleza">
+									<button type="button" className="btn btn-primary" value="crear">
+										<strong>respira dnaturaleza</strong>
+									</button>
+								</Link>
+							</div>
+
+							<div className="contenedorDoñana ">
+								<img
+									src="https://blog.fuertehoteles.com/wp-content/uploads/2018/11/brena-natural-park.jpg"
+									width="390px"
+									height="218px"
+									className="borderRadio"
+								/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<hr></hr>
 			<div className="container ">
 				<div className="row justify-content-center">
 					<strong>
-						<h1>Descubre nuestras Promos!</h1>
+						<h1>descubre nuestras Promos!</h1>
 					</strong>
 				</div>
 			</div>
 
 			<div className="container ">
-				<div className="row pt-5">
-					<div className="col-12  colorFondoProfile px-5 pt-5 pb-3 esquinasRedondas">
+				<div className="row ">
+					<div className="col-12  colorFondoProfile px-5 pt-5 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className=" mov contenedorPromocionInternacional">
 								<div className="row"></div>
@@ -195,6 +272,15 @@ export const Viajeros = () => {
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div className="form-group mb-5 row">
+				<div className=" contenedorReserv mb-5">
+					<Link to="/">
+						<button type="button" className="btn colorBotonReservarYa " value="crear">
+							<strong>haz tu reserva!</strong>
+						</button>
+					</Link>
 				</div>
 			</div>
 		</Fragment>

@@ -235,6 +235,9 @@ export const Home = () => {
 					<hr></hr>
 				</div>
 			</div>{" "}
+			<div className="container mt-3">
+				<h1 className="alignTextpromo">Echa un vistazo a nuestras promos</h1>
+			</div>
 			<div className="container ">
 				<div className="row pt-5">
 					<div className="col-12  colorFondoProfile px-5 pt-5 pb-3 esquinasRedondas">
@@ -366,7 +369,7 @@ export const Home = () => {
 							<div className="contenedorFlexible ">
 								<div className="contenedorParrafoUno pt-5">
 									<h4>El Torcal de Antequera</h4>
-									<p>
+									<p className="textjustify">
 										El Torcal de Antequera es un paraje natural de 1171 ha (11,7 km²) situado en los
 										términos municipales de Antequera y Villanueva de la Concepción de la provincia
 										de Málaga, en Andalucía (España), y se lo conoce por las caprichosas formas que
@@ -384,8 +387,8 @@ export const Home = () => {
 
 						<div className="form-group row posicionamiento">
 							<div className="mt-3 contenedorOpinion">
-								<h3>DOÑANA, EL PARQUE POR EXCELENCIA</h3>
-								<p>
+								<h3>Doñana, el parque por excelencia</h3>
+								<p className="textjustify">
 									Debido a su privilegiada situación geográfica entre dos continentes y su proximidad
 									al lugar de encuentro del Atlántico y el Mediterráneo, el estrecho de Gibraltar, en
 									Doñana se pueden observar más de 300 especies diferentes de aves a lo largo del año,

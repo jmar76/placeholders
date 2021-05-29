@@ -18,8 +18,9 @@
     text-align: center;
     border-radius: 11px;
 }
-.posicionamiento{
+.viajerosposicionamientocontenedores{
    justify-content: space-between;
+   margin-top: 50px;
 }
 .sizeCarrito
 {font-size: 29px;
@@ -48,7 +49,7 @@ padding-top: 11px;
     margin-top: 110px;
 }
 .fondoDePantallaviajero{
-        background: url(https://negociosyconvenciones.com/wp-content/uploads/2019/02/iStock_000026015779_Large.jpg) no-repeat center center fixed;
+        background: url(https://foodandtravel.mx/wp-content/uploads/2020/11/Ninos-viajeros-Po.jpg) no-repeat center center fixed;
         background-size: cover;
         -moz-background-size: cover;
         -webkit-background-size: cover;
@@ -58,4 +59,59 @@ padding-top: 11px;
 .fondoDePantallaviajero{
     font-size: 33px;
 }
+.tamanoletraviajeros{
+    font-size: 56px;
+}
+.tamanoLetraAndaluciaDescubre{
+    font-size: 29px;
+}
+.contenedorFlexibledpueblos{
+    text-align: justify;
+        width: 389px;
+    height: 397px;
+    color: black;
+    border-radius: 13px;
+    background-color: rgba(255, 255, 0, 0.021);
+}
+.textjustify{
+text-align: justify;
+}
+.margintureserva{
+    margin: auto;
+    justify-content: center;
+border-radius: 13px;
+}
+.bgdnaturaleza{
+    background-color: rgba(255, 255, 0, 0.036);
+    width: 650px;
+    height: 220px;
+        color: black;
+        border-radius: 13px;
+}
+.contenedorReserv{
+  margin: auto;
+}
+.contenedorTextoviajero{
+  display: flex;
+  flex-direction: column;
+    width: 600px;
+    height: 650px;
+    float: left;
+    text-align: center;
+    color: black;
+}
+.contieneboton{
+        width: 250px;
+    height: 100px;
+    margin:auto;
+    margin-bottom: 150px;
+}
+.textocontenedorfamilia{
+    width: 400px;
+    height: 200px;
+    font-size: 47px;
+  margin: auto;
+    margin-top: 190px;
 
+
+}

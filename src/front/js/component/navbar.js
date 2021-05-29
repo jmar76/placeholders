@@ -29,11 +29,15 @@ export const Navbar = () => {
 	}
 	let usuario = <i className="fas fa-user navbar-brand mb-0 h1 text-dark" />;
 
-	let barradPueblos = <span className="navbar-brand my-2 my-lg-0 text-white fontsize">dPueblos</span>;
 	let barradNaturaleza = <span className="navbar-brand my-2 my-lg-0 text-white fontsize">dNaturaleza</span>;
 	let barraViajeros = (
 		<Link to="/viajeros">
 			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dViajeros</span>
+		</Link>
+	);
+	let barradPueblos = (
+		<Link to="/dpueblos">
+			<span className="navbar-brand my-2 my-lg-0 text-white fontsize">dPueblos</span>
 		</Link>
 	);
 	let barraSignup = (

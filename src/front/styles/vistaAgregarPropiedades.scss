@@ -28,7 +28,6 @@
     width: 330px;
     height: 218px;
     background-color: rgba(13, 13, 14, 0.877);
-    border-radius: 11px;
     text-align: center;
     color: white;
     padding-top: 5px;
@@ -58,13 +57,57 @@
         margin-bottom: 150px;
 }
 .marginAgrega{
-        margin-bottom: 150px;
+        margin-bottom:41px;
 }
 .fondoDePantallaDos{
-        background: url(https://www.sophya.es/wp-content/uploads/2011/03/shutterstock_570119506_easy-resize-com.jpg) no-repeat center center fixed;
+        background: url(https://www.sophya.es/wp-content/uploads/2011/03/shutterstock_570119506_easy-resize-com.jpg) no-repeat  fixed;
         background-size: cover;
         -moz-background-size: cover;
         -webkit-background-size: cover;
         -o-background-size: cover;
         height: 750px;
 }
+.contenedorTextoAgregar{
+        width: 530px;
+    height: 489px;
+    margin-top: 200px;
+    float: right;
+}
+.Agregartexto{
+    font-size: 47px;
+}
+.estilosBotonagregar{
+    padding-left: 27px;
+    padding-top: 9px;
+    padding-right: 27px;
+    padding-bottom: 9px;
+    border-radius: 9px;
+    margin-left: 31px;
+    margin-top: 9px;
+    font-size: 19px;
+    background-color: rgb(241, 14, 90);
+}
+.fondoDePantallaDownAgregar{
+        background: url(https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/09/06175536/Felicidad02.jpg) no-repeat center center;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 750px;
+        border-radius: 17px;
+}
+.contenedorTextoAgregarimagen{
+    width: 530px;
+    height: 489px;
+    float: right;
+    background-color: rgba(255, 255, 255, 0.11);
+}
+.textjuntosdos{
+    font-size: 46px;
+}
+.fuenteTextjuntosdos{
+    font-size: 27px;
+}
+
+
+

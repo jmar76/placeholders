@@ -1,4 +1,4 @@
-.fondoDePantallaProfile{
+.fondoDePantallaProfiles{
         background: url(https://cloudfront-eu-central-1.images.arcpublishing.com/larazon/G5ZZMMXZAVECPPUVGFS6SBXTXQ.jpg) no-repeat center center fixed;
         background-size: cover;
         -moz-background-size: cover;
@@ -6,16 +6,16 @@
         -o-background-size: cover;
         height: 750px;
 }
-.fondoDePantallaDown{
-        background: url(https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/09/06175536/Felicidad02.jpg) no-repeat center center;
-        background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        -o-background-size: cover;
-        height: 750px;
-        border-radius: 17px;
-}
-.contenedorText{
+// .fondoDePantallaDown{
+//         background: url(https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/09/06175536/Felicidad02.jpg) no-repeat center center;
+//         background-size: cover;
+//         -moz-background-size: cover;
+//         -webkit-background-size: cover;
+//         -o-background-size: cover;
+//         height: 750px;
+//         border-radius: 17px;
+// }
+.contenedorTextprofile{
     width: 600px;
     height: 650px;
     // background-color: rgba(14, 13, 13, 0.301);
@@ -54,7 +54,6 @@
     width: 330px;
     height: 218px;
     background-color: rgba(13, 13, 14, 0.877);
-    border-radius: 11px;
     text-align: center;
     color: white;
     padding-top: 5px;
@@ -68,6 +67,7 @@
     width: 365px;
     height: 525px;
     color: black;
+    text-align: center;
 }
 .contenedorParrafoUno{
     width: 365px;
@@ -80,8 +80,7 @@
 .contenedorOpinion{
     width: 650px;
     height: 180px;
-    text-align: center;
-    border-radius: 11px;
+    text-align: justify;
         color: black;
 }
 .posicionamiento{
@@ -98,7 +97,7 @@
 .fuenteText{
     font-size: 27px;
 }
-.estilosBoton{
+.estilosBotonprofile{
     padding-left: 27px;
     padding-top: 13px;
     padding-right: 27px;

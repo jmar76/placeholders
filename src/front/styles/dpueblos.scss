@@ -1,0 +1,140 @@
+.fondoDePantallaProfile{
+        background: url(https://i0.wp.com/4x4marbella.com/wp-content/uploads/2021/03/pueblos-blancos-andalucia-olvera.jpg?fit=1920%2C1280&ssl=1) no-repeat fixed;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 750px;
+        
+}
+.fondoDePantallaDown{
+        background: url(https://www.costatropical.net/images/full-screen/olvera/olvera-iglesia-encarnacion-2.jpg) no-repeat center center;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        height: 450px;
+        border-radius: 17px;
+}
+.contenedorTexto{
+    width: 500px;
+    height: 350px;
+    float: left;
+    text-align: center;
+    color: black;
+}
+.text{
+    font-size: 29px;
+   padding-top: 16px;
+}
+
+.borderCentrado{
+    margin: auto;
+}
+.borderRadio{
+    border-radius: 17px;
+}
+.sizePlanet{
+    color: black;
+    font-size: 27px;
+    padding-left: 30px;
+}
+.colorNombre{
+    color: black;
+}
+.colorFondoProfile{
+        background-color: rgba(12, 12, 14, 0.021);
+    }
+.colorBotonProfile{
+    background-color: rgb(241, 14, 90);
+     color: white;
+     padding-right: 89px;
+     padding-left: 89px;
+}
+.contenedorProfiles{
+    width: 330px;
+    height: 218px;
+    background-color: rgba(13, 13, 14, 0.877);
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+}
+.contenedorConImagen{
+    width: 659px;
+    height: 490px;
+    border-radius: 11px;
+}
+.contenedorFlexible{
+    width: 365px;
+    height: 525px;
+    color: black;
+}
+.contenedorParrafoUno{
+    width: 365px;
+    height: 265px;
+}
+.contenedorParrafoDos{
+    width: 365px;
+    height: 265px;
+}
+.contenedorOpinion{
+    width: 650px;
+    height: 180px;
+    text-align: center;
+    border-radius: 11px;
+        color: black;
+}
+.posicionamiento{
+   justify-content: space-between;
+}
+.fuenteText{
+    font-size: 27px;
+}
+.estilosBoton{
+    padding-left: 27px;
+    padding-top: 9px;
+    padding-right: 27px;
+    padding-bottom: 9px;
+    border-radius: 9px;
+    margin-left: 31px;
+    margin-top: 109px;
+    font-size: 19px;
+    background-color: rgb(241, 14, 90);
+}
+.contenedorTextoRealidad{
+    width: 651px;
+    margin: auto;
+    font-size: 46px;
+    text-align: center;
+}
+.contenedorText{
+    width: 300px;
+    height: 210px;
+    display: flex;
+  margin-top: 645px;
+// background-color: red;
+    // background-color: rgba(13, 13, 14, 0.637);
+
+}
+.subcontenedor{
+    width: 201px;
+    height: 200px;
+    margin: auto;
+    text-align: center;
+    // background-color: red;
+    border-radius: 120px;
+    background-color: rgba(13, 13, 14, 0.89);
+    padding-top: 47px;
+    padding-right: 8px;
+}
+.sizetextviajar{
+    font-size: 41px;
+    color: rgb(255, 153, 0);
+}
+.contenedorTextorincones{
+    width: 651px;
+    margin: auto;
+    font-size: 35px;
+    text-align: center;
+}
+

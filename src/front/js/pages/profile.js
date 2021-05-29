@@ -30,8 +30,8 @@ const Profile = () => {
 
 	return (
 		<Fragment>
-			<div className="container-fluid fondoDePantallaProfile">
-				<div className="contenedorText ">
+			<div className="container-fluid fondoDePantallaProfiles">
+				<div className="contenedorTextprofile ">
 					<h1 className="textouno pl-3">Compartir tu espacio es vivir</h1>
 					<hr></hr>
 					<p className="fuenteText pl-3">
@@ -39,7 +39,7 @@ const Profile = () => {
 						te ayude a conseguir tus metas
 					</p>
 					<Link to="/alquilaTuPropiedad">
-						<button type="button" className="btn text-white estilosBoton " value="crear">
+						<button type="button" className="btn text-white estilosBotonprofile " value="crear">
 							Empieza ahora
 						</button>
 					</Link>
@@ -48,7 +48,7 @@ const Profile = () => {
 			<div className="container mt-5 ">
 				<div className="contenedorTextoRealidad">
 					<p>
-						<strong>Haz realidad tu próxima aventura. Todo es posible como anfitrión.</strong>
+						<strong>Empieza como anfitrión y disfruta de las ventajas</strong>
 					</p>
 				</div>
 			</div>
@@ -130,7 +130,7 @@ const Profile = () => {
 				</div>
 			</div>
 
-			<div className="container text-dark mt-1 mb-5 ">
+			{/* <div className="container text-dark mt-1 mb-5 ">
 				<div className="row pt-5">
 					<div className="col-12  colorFondoProfile px-5 pt-5 pb-3 esquinasRedondas">
 						<div className="form-group  row posicionamiento">
@@ -199,8 +199,8 @@ const Profile = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="container mb-5 fondoDePantallaDown">
+			</div> */}
+			{/* <div className="container mb-5 fondoDePantallaDown">
 				<div className="contenedorTexto">
 					<h1 className="text pl-3">Empieza tu aventura como anfitrión</h1>
 					<hr></hr>
@@ -213,7 +213,7 @@ const Profile = () => {
 				</div>
 			</div>
 			<br></br>
-			<br></br>
+			<br></br> */}
 		</Fragment>
 	);
 };

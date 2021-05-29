@@ -24,6 +24,7 @@ import { VistaAgregarPropiedades } from "./pages/vistaAgregarPropiedades";
 import { Viajeros } from "./pages/viajeros";
 import { DescripcionPropiedades } from "./pages/descripcionMisPropiedades";
 import { Pago } from "./pages/pago";
+import { Dpueblos } from "./pages/dpueblos";
 
 const Layout = () => {
 	const config = {
@@ -47,6 +48,9 @@ const Layout = () => {
 					</Route>
 					<Route exact path="/demo">
 						<Demo />
+					</Route>
+					<Route exact path="/dpueblos">
+						<Dpueblos />
 					</Route>
 					<Route exact path="/pago" component={Pago}></Route>
 
