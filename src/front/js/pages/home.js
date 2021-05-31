@@ -25,7 +25,9 @@ export const Home = () => {
 	if ("scrollRestoration" in history) {
 		history.scrollRestoration = "manual";
 	}
-
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	useEffect(() => {
 		if (actions.getFormValue("provincias").length === 0) {
 			fetch(API_URL + "/api/provincias", {
@@ -69,7 +71,14 @@ export const Home = () => {
 		<Fragment>
 			<div className="container-fluid fondoDePantalla">
 				<div className="row text-white margin">
-					<div className="col-10 colorFondoBusqueda offset-md-1 px-4 py-3 mt-5 esquinasRedondas">
+					<div className="row contenedorFrase">
+						<div className="col-md-10 pl-3 ">
+							<h1 className="pl-4 text-white">
+								<strong>Alquileres rurales en Andalucía</strong>
+							</h1>
+						</div>
+					</div>
+					<div className="col-10 colorFondoBusqueda offset-md-1 px-4 py-3 mt-2 esquinasRedondas">
 						<form>
 							<div className="form-row">
 								<div className="col-2">
@@ -117,7 +126,7 @@ export const Home = () => {
 										{({ startDateInputProps, endDateInputProps, focus }) => (
 											<div className="date-range">
 												<div className="col-6 d-inline-block pl-0 pr-1">
-													<label htmlFor="llegada">Fecha de Llegada</label>
+													<label htmlFor="llegada">Llegada</label>
 													<input
 														className={
 															"form-control input" +
@@ -125,13 +134,13 @@ export const Home = () => {
 														}
 														id="llegada"
 														{...startDateInputProps}
-														placeholder="Fecha de Llegada"
+														placeholder="Llegada"
 														autoComplete="off"
 													/>
 												</div>
 												<span className="date-range_arrow d-inline" />
 												<div className="col-6 d-inline-block pr-0 pl-1">
-													<label htmlFor="salida">fecha de Salida</label>
+													<label htmlFor="salida">Salida</label>
 													<input
 														className={
 															" form-control input" +
@@ -139,7 +148,7 @@ export const Home = () => {
 														}
 														id="salida"
 														{...endDateInputProps}
-														placeholder="fecha de Salida"
+														placeholder="Salida"
 														autoComplete="off"
 													/>
 												</div>
@@ -162,18 +171,22 @@ export const Home = () => {
 										type="button"
 										className="btn btn-warning btn-block mt-4"
 										onClick={handleSearch}>
-										<strong>Buscar</strong>
+										<strong>¡Yo voy!</strong>
 									</button>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
-				<div className="row contenedorFrase">
+				<div className="row contenedorFrasehome">
 					<div className="col-md-10 pl-3 ">
-						<h1 className="pl-4 mt-2 pt-4 text-white">
-							<strong>Alquileres rurales en Andalucía</strong>
-						</h1>
+						<h4 className="pl-4 mt-2 pt-2 text-white centermargin">
+							{" "}
+							<span className="text-white">
+								de pueblos, de naturaleza, de viajes,
+								<strong> dturist.com</strong>
+							</span>
+						</h4>
 					</div>
 				</div>
 			</div>
@@ -236,7 +249,7 @@ export const Home = () => {
 				</div>
 			</div>{" "}
 			<div className="container mt-3">
-				<h1 className="alignTextpromo">echa un vistazo a nuestras promos</h1>
+				<h1 className="alignTextpromo">¡echa un vistazo a nuestras promos!</h1>
 			</div>
 			<div className="container ">
 				<div className="row pt-5">
@@ -380,7 +393,10 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-			<div className="container text-dark mt-1 mb-5 ">
+			<div className="container mt-2">
+				<h1 className="alignTextpromo">¡disfruta Andalucia!</h1>
+			</div>
+			<div className="container text-dark mt-5 mb-5 ">
 				<div className="row ">
 					<div className="col-12  colorFondoProfile px-5 pb-3 esquinasRedondas">
 						<div className="form-group  row posicionamiento">
@@ -446,7 +462,6 @@ export const Home = () => {
 					<p className="pl-3 mt-5 pt-5">
 						<strong>Playa de los Genoveses, Nijar (Almería)</strong>
 					</p>
-					<hr></hr>
 				</div>
 			</div>
 			<br></br>

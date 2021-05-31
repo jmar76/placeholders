@@ -13,7 +13,9 @@ export const FormularioFotos = props => {
 	const [mensaje, setMensaje] = useState("");
 	const [error, setError] = useState("");
 	let test = actions.getFormValue("errorFormulario");
-
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
 		if (!accesstoken) {
@@ -44,7 +46,7 @@ export const FormularioFotos = props => {
 	return (
 		<div className="container mt-5">
 			<div className="row mt-5 pt-5">
-				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
+				<div className="col-6 offset-md-3 bgform px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
 						{test ? (
 							<div className="alert alert-danger text-center" role="alert">

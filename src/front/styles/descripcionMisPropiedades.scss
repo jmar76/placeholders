@@ -17,7 +17,6 @@ color: black;}
 }
 .sizeUbicacion{
   font-size: 19px;
-      color: rgb(16, 121, 240);
 }
 .contenedorFlecha{
     width: 300px;
@@ -32,8 +31,8 @@ color: black;}
     border-radius: 11px;
 }
 .contenedorFloatTexto{
-    width: 250px;
-    height: 140px;
+    width: 245px;
+    height: 100px;
 }
 .esquinas{
     border-radius: 11px;
@@ -50,7 +49,6 @@ color: black;}
 .items{
     width: 100px ;
     height: 50px;
-    color: rgb(15, 112, 238);
 }
 .center{
     margin: auto;
@@ -120,4 +118,12 @@ color: black;}
     border-radius: 11px;
     background: url(https://content.skyscnr.com/m/4bc4e6400feeb9e5/original/spain-andalucia-andalusia-cadiz-province-el-palmar-beach-gettyimages-566180985.jpg?resize=1800px:1800px&quality=100) ;
 }
-
+.bgpromos{
+    width: 240px;
+    height: 50px;
+    background-color: black;
+    border-radius: 13px;
+    color: orange;
+    font-size: 17px;
+    margin-top: 15px;
+}

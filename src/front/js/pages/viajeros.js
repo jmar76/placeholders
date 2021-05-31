@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 export const Viajeros = () => {
 	return (
 		<Fragment>
-			<div className="container-fluid mb-5 fondoDePantallaviajero">
+			<div className="container-fluid fondoDePantallaviajero">
 				<div className="contenedorTextoviajero ">
 					<div className="textocontenedorfamilia">
 						<p>
-							<strong>viajar es vivir, disfruta viajando</strong>
+							<strong>Viajar es vivir.</strong> <span className="">disfruta con dturist.com</span>
 						</p>
 					</div>
 					<hr></hr>
 					<div className="contieneboton ">
 						<Link to="/">
-							<button type="button" className="btn btn-danger estilosBotonagregar" value="crear">
+							<button type="button" className="btn btn-danger mr-2 estilosBotonagregar" value="crear">
 								<strong>reserva ahora</strong>
 							</button>
 						</Link>
@@ -26,14 +26,12 @@ export const Viajeros = () => {
 					<div className="col-12 colorFondoViajeros px-5  pb-0 esquinasRedondas">
 						<div className="form-group row posicionamiento">
 							<div className="contenedorBienvenidosViajeros">
-								<h1 className="tamanoletraviajeros">Bienvenidos Viajeros!</h1>
-								<p className="tamanoLetraAndaluciaDescubre">
-									<strong>
-										Descubre Andalucía y sácale mayor provecho a tus viajes con dturist.com
-									</strong>
+								<h1 className="tamanoletraviajeros">¡Bienvenidos Viajeros!</h1>
+								<p className="tamanoLetraAndaluciaDescubre pt-2">
+									Descubre Andalucía y sácale mayor provecho a tus viajes con dturist.com
 								</p>
-								<p className="tamanoLetraAndaluciaDescubre mt-5 mb-5">
-									<strong>tan sencillo como elegir-reservar-viajar</strong>
+								<p className="tamanoLetraAndaluciaDescubre mt-2 mb-5">
+									tan sencillo como <strong>elegir-reservar-viajar</strong>
 								</p>
 							</div>
 						</div>
@@ -110,7 +108,7 @@ export const Viajeros = () => {
 										type="button"
 										className="btn btn-primary mt-5 respirapueblosboton"
 										value="crear">
-										<strong>respira dpueblos</strong>
+										<strong>descubre dpueblos</strong>
 									</button>
 								</Link>
 							</div>
@@ -128,7 +126,7 @@ export const Viajeros = () => {
 								</p>
 								<Link to="/dnaturaleza">
 									<button type="button" className="btn btn-primary" value="crear">
-										<strong>respira dnaturaleza</strong>
+										<strong>descubre dnaturaleza</strong>
 									</button>
 								</Link>
 							</div>
@@ -299,8 +297,8 @@ export const Viajeros = () => {
 			<div className="form-group mb-5 row">
 				<div className=" contenedorReserv mb-5">
 					<Link to="/">
-						<button type="button" className="btn colorBotonReservarYa " value="crear">
-							<strong className="pt-3 pb-3">haz tu reserva!</strong>
+						<button type="button" className="btn btn-warning colorBotonReservarYa " value="crear">
+							<strong className="pt-3 pb-3">¡quiero viajar!</strong>
 						</button>
 					</Link>
 				</div>

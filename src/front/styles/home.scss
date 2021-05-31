@@ -6,9 +6,8 @@
 }
 .contenedorFrase{
     width: 800px;
-    height: 339px;
+    height: 61px;
    margin: auto;
-
    justify-content: center;
 }
 .fondoDePantalla{
@@ -63,7 +62,7 @@ transform: scale(1.2);
 .bgpromo{
     width: 270px;
     height: 50px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.808);
     border-radius: 13px;
     color: orange;
     font-size: 17px;
@@ -78,9 +77,15 @@ transform: scale(1.2);
 .bgtext{
        width: 270px;
     height: 40px;
- 
 }
-
+.contenedorFrasehome{
+    width: 900px;
+    height: 361px;
+   margin: auto;
+}
+.centermargin{
+  margin-left: 141px;
+}
 
 
 

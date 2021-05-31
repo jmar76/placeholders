@@ -1,8 +1,11 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import "../../styles/vistaAgregarPropiedades.scss";
 import { Link } from "react-router-dom";
 
 export const VistaAgregarPropiedades = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	return (
 		<Fragment>
 			<div className="container-fluid mb-5 fondoDePantallaDos">

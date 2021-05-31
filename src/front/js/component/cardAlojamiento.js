@@ -13,17 +13,24 @@ export const CardAlojamiento = props => {
 	return (
 		<Fragment>
 			<div className="container mb-5 ">
-				<div className="agrupacion bg-dark">
+				<div className="agrupacion bg-secondary">
 					<div className="imagen">
-						<img src="https://i.blogs.es/bcc6a3/img_3573/840_560.jpg" className="forma borderRadio"></img>
+						<img
+							src="http://viajes.101lugaresincreibles.com/wp-content/uploads/2014/06/pueblos-bonitos-andalucia.jpg"
+							className="forma borderRadios"></img>
 					</div>
-					<div className="texto">
+					<div className="textocardpropiedad">
 						<div className="contenedortres">
 							<div className="sizetitulopropiedad ml-2">
 								<h5 className="text-primary">{props.title}</h5>
 							</div>
 							<div className="sizeestrellas">
 								<img src={ratings} width="89px" height="21px" />
+							</div>
+							<div className="contenedorLikescard ml-3">
+								<i className="far fa-thumbs-up pt-2 pl-1 color sizeIconcard"></i>
+								<i className="far fa-heart pt-2  pl-3 color sizeIconcard"></i>
+								<i className="fas fa-share-alt pt-2  pl-3 color sizeIconcard"></i>
 							</div>
 						</div>
 						<div className="localidad pl-3">
@@ -34,8 +41,10 @@ export const CardAlojamiento = props => {
 						<div className="agrupacion botontexto">
 							<div className="descripcionespersonal pl-3">
 								<p className="">
-									Alojamiento disponible máximo para {props.huespedes} personas, dispone de{" "}
-									{props.dormitorios} dormitorios y de {props.bathrooms} baños{" "}
+									<strong>
+										Alojamiento disponible máximo para {props.huespedes} personas, dispone de{" "}
+										{props.dormitorios} dormitorios y de {props.bathrooms} baños{" "}
+									</strong>
 								</p>
 							</div>
 							<div className="botondescripcioncasas pl-3 bg-dark">

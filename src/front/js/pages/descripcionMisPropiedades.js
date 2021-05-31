@@ -55,10 +55,18 @@ export const DescripcionPropiedades = props => {
 							</div>
 							<div className="col-2">
 								<div className="contenedorFloatTexto">
-									<p>
+									<div className="contenedorPromo pl-1">
+										<div className="bgpromos">
+											<p className="pt-2">
+												{" "}
+												<strong>Ronda desde 59€/noche</strong>
+											</p>
+										</div>
+									</div>
+									{/* <p>
 										<strong>Ronda </strong>desde 59€/noche
 									</p>{" "}
-									<p>Aprovecha nuestras promos y disfruta de la naturaleza A TU AIRE</p>
+									<p>Aprovecha nuestras promos y disfruta de la naturaleza A TU AIRE</p> */}
 								</div>
 							</div>
 						</div>

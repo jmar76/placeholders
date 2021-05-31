@@ -19,11 +19,14 @@ export const FormularioCapacidadAlojamiento = props => {
 			return;
 		}
 	}, []);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div className="container mt-5">
 			<div className="row mt-5 pt-5">
-				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-5 esquinasRedondasFormulario">
+				<div className="col-6 offset-md-3 bgform px-5 pt-5 pb-5 esquinasRedondasFormulario">
 					<form>
 						<div className="form-row">
 							<div className="col-md-12">

@@ -25,11 +25,14 @@ export const FormularioAmenidades = props => {
 			return;
 		}
 	}, []);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<div className="container mt-5 pt-5">
 			<div className="row mt-2 pt-4">
-				<div className="col-6 offset-md-3 bg-white px-5 pt-5 pb-3 esquinasRedondasFormulario">
+				<div className="col-6 offset-md-3 bgform px-5 pt-5 pb-3 esquinasRedondasFormulario">
 					<form>
 						<div className="form-row">
 							<div className="form-group col-md-12">

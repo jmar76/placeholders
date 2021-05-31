@@ -96,19 +96,27 @@ export const Navigation = props => {
 					) : (
 						<button
 							onClick={props.prev}
-							className={props.current === 4 ? "btn btn-primary" : "btn btn-primary mr-5"}>
-							Anterior
+							className={
+								props.current === 4
+									? "btn btn-primary pl-5 pr-5 mt-5 mb-5"
+									: "btn btn-primary pl-5 pr-5 mt-5 mr-5 mb-5"
+							}>
+							<strong>Anterior</strong>
 						</button>
 					)}
 					{props.current === 4 ? (
-						<button className="btn btn-success ml-5" onClick={handleSubmit}>
-							Enviar
+						<button className="btn btn-success pl-5 pr-5 ml-5" onClick={handleSubmit}>
+							<strong>Enviar</strong>
 						</button>
 					) : (
 						<button
 							onClick={props.next}
-							className={props.current === 1 ? "btn btn-primary" : "btn btn-primary ml-5"}>
-							Siguiente
+							className={
+								props.current === 1
+									? "btn btn-primary pl-5 pr-5 mb-5"
+									: "btn btn-primary pl-5 pr-5 mt-5 mb-5 ml-5"
+							}>
+							<strong>Siguiente</strong>
 						</button>
 					)}
 				</div>

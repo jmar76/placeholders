@@ -52,7 +52,7 @@ export const Navbar = () => {
 	);
 	let barraLogin = (
 		<Link to="/login">
-			<span className="navbar-brand my-2 my-lg-0 text-primary fontsize">Inicia Sesión</span>
+			<span className="navbar-brand my-2 my-lg-0  text-white fontsize">Inicia Sesión</span>
 		</Link>
 	);
 	let barraPropiedad = (
