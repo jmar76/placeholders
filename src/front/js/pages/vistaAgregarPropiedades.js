@@ -163,8 +163,11 @@ export const VistaAgregarPropiedades = () => {
 						<div className="form-group row posicionamiento ">
 							<div className="mt-5 contenedorOpinion ">
 								<h3 className="pt-5">
-									No es como un trabajo con horario fijo, ni tampoco te ata a un mismo lugar. ¡Puedes
-									hospedar incluso estando de viaje!
+									<p className="fonsizeopinion">opiniones de propietarios</p>
+									<i>
+										No es como un trabajo con horario fijo, ni tampoco te ata a un mismo lugar.
+										¡Puedes hospedar incluso estando de viaje!
+									</i>
 								</h3>
 								<p>Mary, anfitriona en Ronda, Málaga</p>
 							</div>

@@ -14,7 +14,9 @@ export const LogIn = props => {
 	const history = useHistory();
 	const location = useLocation();
 	const [previousPath, setPreviousPath] = useState("");
-
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	useEffect(() => {
 		if (props.location.state != undefined) {
 			setPreviousPath(() => props.location.state);

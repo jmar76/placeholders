@@ -16,7 +16,9 @@ export const SignUp = props => {
 	const [previousPath, setPreviousPath] = useState(props.location.state);
 	const [name, setName] = useState("");
 	const [lastname, setLastname] = useState("");
-
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	function crear() {
 		setError("");
 		if (password != confirmpass) {

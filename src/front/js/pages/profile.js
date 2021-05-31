@@ -10,6 +10,9 @@ const Profile = () => {
 	const [name, setName] = useState("");
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	useEffect(() => {
 		let accesstoken = actions.getAccessToken();
