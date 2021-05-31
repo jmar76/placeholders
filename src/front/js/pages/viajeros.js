@@ -8,7 +8,7 @@ export const Viajeros = () => {
 				<div className="contenedorTextoviajero ">
 					<div className="textocontenedorfamilia">
 						<p>
-							<strong>Viajar es vivir.</strong> <span className="">disfruta con dturist.com</span>
+							<strong>Viajar es vivir,</strong> <span className="">disfruta con dturist.com</span>
 						</p>
 					</div>
 					<hr></hr>

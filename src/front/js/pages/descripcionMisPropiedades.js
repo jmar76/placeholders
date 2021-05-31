@@ -42,7 +42,7 @@ export const DescripcionPropiedades = props => {
 								<IoArrowBackCircleOutline size={70} onClick={() => history.goBack()} />
 							</div>
 						</div>
-						<div className="column contenedorFlecha sticky-top">
+						<div className="column contenedorFlecha mb-5 sticky-top">
 							<div className="col-2">
 								<div className="contenedorFloat">
 									<img
@@ -54,7 +54,7 @@ export const DescripcionPropiedades = props => {
 								</div>
 							</div>
 							<div className="col-2">
-								<div className="contenedorFloatTexto">
+								<div className="contenedorFloatTexto ">
 									<div className="contenedorPromo pl-1">
 										<div className="bgpromos">
 											<p className="pt-2">
@@ -360,8 +360,8 @@ export const DescripcionPropiedades = props => {
 							</div>
 						</div>
 
-						<div className="form-group row mb-5 colorF">
-							<div className="col-md-12 mb-3 contenedorDescripcion">
+						<div className="form-group row mb-5 ">
+							<div className="col-md-12 mb-3  colorFwe contenedorDescripcion">
 								<div className="row">
 									<h6 className="pl-2 pt-3">
 										<strong>Info importante</strong>

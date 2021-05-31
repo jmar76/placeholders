@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../styles/footer.scss";
 
 export const Footer = () => (
-	<footer className="footer fondoFooter mt-auto py-3 text-white text-center">
+	<footer className="footer fondoFooter mt-5 mt-auto py-3 text-white text-center">
 		<div className="contenedorFooter">
 			<div className="contenedordturist">
 				<h5>

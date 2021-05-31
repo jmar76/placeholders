@@ -89,7 +89,7 @@ export const Home = () => {
 										value={provincia}
 										className="form-control"
 										onChange={event => setProvincia(event.target.value)}>
-										<option>Selecciona Provincia</option>
+										<option>Provincia</option>
 										{provincias.map(provincia => {
 											return <option key={provincia}>{provincia}</option>;
 										})}
@@ -103,10 +103,10 @@ export const Home = () => {
 										value={ciudad}
 										className="form-control"
 										onChange={event => setCiudad(event.target.value)}>
-										<option>Selecciona Localidad</option>
+										<option>Localidad</option>
 										{Object.keys(localidades).length === 0 ||
 										provincia === "" ||
-										provincia === "Selecciona Provincia"
+										provincia === "Provincia"
 											? ""
 											: localidades[provincia].map(localidad => {
 													return <option key={localidad}>{localidad}</option>;
@@ -183,7 +183,7 @@ export const Home = () => {
 						<h4 className="pl-4 mt-2 pt-2 text-white centermargin">
 							{" "}
 							<span className="text-white">
-								de pueblos, de naturaleza, de viajes,
+								de viajes, de pueblos, de naturaleza,
 								<strong> dturist.com</strong>
 							</span>
 						</h4>

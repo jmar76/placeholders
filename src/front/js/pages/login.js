@@ -119,14 +119,14 @@ export const LogIn = props => {
 									</button>
 								</div>
 							</div>
-							<div className="row mt-3">
+							<div className="row mt-3 marginblogin">
 								<div className="col-12 d-inline text-center">
 									<p className="d-inline">¿No tienes una cuenta?&nbsp; </p>
 									<Link to="/signup" className="d-inline">
 										<p className="d-inline">Crea una cuenta</p>
 									</Link>
 								</div>
-								<div className="col-12 d-inline mb-5 text-center">
+								<div className="col-12 d-inline text-center">
 									<p className="d-inline">¿Olvidaste tu contraseña?&nbsp; </p>
 									<Link to="/forgot" className="d-inline">
 										<p className="d-inline">Recuperar</p>
