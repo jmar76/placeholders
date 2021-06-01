@@ -2,6 +2,9 @@ import React, { Fragment } from "react";
 import "../../styles/viajeros.scss";
 import { Link } from "react-router-dom";
 export const Viajeros = () => {
+    useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	return (
 		<Fragment>
 			<div className="container-fluid fondoDePantallaviajero">
