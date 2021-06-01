@@ -218,8 +218,8 @@ export const DescripcionPropiedades = props => {
 								</div>
 							</div>
 						</div>
-						<div className="form-group row mb-3  colorF">
-							<div className="col-md-12 mt-3  contenedorDescripcion">
+						<div className="form-group row mb-3 colorF">
+							<div className="col-md-12 mt-3 contenedorDescripcion">
 								<div className="row">
 									<h5 className="#">
 										<strong>Descripción</strong>
