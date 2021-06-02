@@ -130,8 +130,6 @@ class Propiedad(db.Model):
             "dormitorios": self.dormitorios,
             "bathrooms": self.bathrooms,
             "precio": self.precio,
-            "ciudad": self.ciudad,
-            "provincia": self.provincia,
             "descripcion": self.descripcion,
             "id": self.id,
             "calle": self.calle,
